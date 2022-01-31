@@ -5,7 +5,7 @@ module.exports = {
   devtool: 'source-map',
   entry: [
     
-    './client/reduxstagram'
+    './client/App'
   ],
   output: {
     path: path.join(__dirname, 'dist'),
@@ -16,7 +16,7 @@ module.exports = {
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': "'production'"
+        'NODE_ENV': '\'production\''
       }
     }),
     new webpack.optimize.UglifyJsPlugin({
