@@ -28,13 +28,14 @@ const Comments = React.createClass({
     const author = this.refs.author.value;
     const comment = this.refs.comment.value;
     this.props.addComment(postId, author, comment);
+    this.refs.commentForm.reset();
   },
   render() {
     return (
       <div className="comments">
         {this.props.postComments.map(this.renderComment)}
         <form
-          ref="commentform"
+          ref="commentForm"
           className="comment-form"
           onSubmit={this.handleSubmit}
         >
