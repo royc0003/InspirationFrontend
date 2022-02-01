@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   devtool: 'source-map',
   entry: [
-    
+    'webpack-hot-middleware/client',
     './client/index.js'
   ],
   output: {
