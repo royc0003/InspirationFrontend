@@ -10,7 +10,7 @@ module.exports = {
     hot: true,
 },
   entry: [
-    './client/index.js'
+    './client/inspiration.js'
   ],
   output: {
     clean: true,
