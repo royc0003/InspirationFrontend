@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   devtool: 'source-map',
@@ -8,7 +9,7 @@ module.exports = {
     './client/Index'
   ],
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, ''),
     filename: 'bundle.js',
     publicPath: '/static/'
   },
