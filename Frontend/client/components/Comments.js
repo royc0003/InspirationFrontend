@@ -15,7 +15,6 @@ const Comments = React.createClass({
     handleSubmit(e) {
         // Prevents form from refreshing
         e.preventDefault();
-        console.log("submitting the form");
         const {postId} = this.props.params;
         const author = this.refs.author.value;
         const comment = this.refs.comment.value;
