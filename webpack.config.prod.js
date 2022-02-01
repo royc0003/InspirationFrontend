@@ -13,7 +13,8 @@ module.exports = {
     './client/index.js'
   ],
   output: {
-    path: path.join(__dirname, 'dist'),
+    clean: true,
+    path: path.join(__dirname, "dist"),
     filename: 'bundle.js',
     publicPath: '/'
   },
