@@ -2,7 +2,9 @@ import React from 'react';
 import Photo from './Photo';
 import Comments from './Comments';
 
-const Single = React.createClass({
+
+// export default class Main extends React.Component
+export default class extends React.Component{
   render() {
     const { postId } = this.props.params;
     const i = this.props.posts.findIndex((post) => post.code === postId);
@@ -16,7 +18,6 @@ const Single = React.createClass({
           <Comments postComments={postComments} {...this.props}/>
       </div>
     );
-  },
-});
+  }
+}
 
-export default Single;

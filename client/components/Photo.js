@@ -1,10 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router';
-import CSSTransitionGroup from 'react-addons-css-transition-group';
+import { Link } from 'react-router-dom';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
-const Photo = React.createClass({
+// export default class Main extends React.Component
+export default class Photo extends React.Component{
   render() {
     const { post, comments, i } = this.props;
+
     return (
       <figure className="grid-figure">
         <div className="grid-photo-wrap">
@@ -15,22 +17,22 @@ const Photo = React.createClass({
               className="grid-photo"
             />
           </Link>
-
-          <CSSTransitionGroup
-            transitionName="like"
-            transitionEnterTimeout={500}
-            transitionLeaveTimeout={500}
-          >
+          <CSSTransition classNames="like" timeOut={{ enter: 500, exit: 500 }}>
             <span key={post.likes} className="likes-heart">
               {post.likes}
             </span>
-          </CSSTransitionGroup>
+          </CSSTransition>
         </div>
 
         <figcaption>
           <p>{post.caption}</p>
           <div className="control-buttons">
-            <button onClick={this.props.increment.bind(null, i)} className="likes">&hearts; {post.likes}</button>
+            <button
+              onClick={this.props.increment.bind(null, i)}
+              className="likes"
+            >
+              &hearts; {post.likes}
+            </button>
             <Link className="button" to={`/view/${post.code}`}>
               <span className="comment-count">
                 <span className="speech-bubble"></span>
@@ -42,7 +44,6 @@ const Photo = React.createClass({
         </figcaption>
       </figure>
     );
-  },
-});
+  }
+};
 
-export default Photo;
