@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 // Router Related Imports
 import { Link } from 'react-router-dom';
@@ -6,9 +6,10 @@ import { Link } from 'react-router-dom';
 // Transition/Effects Related Imports
 import { CSSTransition } from 'react-transition-group';
 
-export default class Photo extends React.Component{
-  render() {
-    const { post, comments, i } = this.props;
+export function Photo (props) {
+  
+    const { post, comments, i } = props;
+    const [inProp, setInProp] = useState(false);
 
     return (
       <figure className="grid-figure">
@@ -20,8 +21,9 @@ export default class Photo extends React.Component{
               className="grid-photo"
             />
           </Link>
-          <CSSTransition classNames="like" timeOut={{ enter: 500, exit: 500 }}>
-            <span key={post.likes} className="likes-heart">
+
+          <CSSTransition in={inProp} onEnter={() => setInProp(true)} onExit={() => setInProp(false)} classNames="like" timeout={500}>
+            <span key={post.likes} className="likes-heart" >
               {post.likes}
             </span>
           </CSSTransition>
@@ -31,7 +33,7 @@ export default class Photo extends React.Component{
           <p>{post.caption}</p>
           <div className="control-buttons">
             <button
-              onClick={this.props.increment.bind(null, i)}
+              onClick={props.increment.bind(null, i)}
               className="likes"
             >
               &hearts; {post.likes}
@@ -47,6 +49,5 @@ export default class Photo extends React.Component{
         </figcaption>
       </figure>
     );
-  }
 };
 

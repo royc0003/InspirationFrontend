@@ -8,46 +8,46 @@ import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 // Component Related Imports
-import Photo from './Photo';
-import Comments from './Comments';
+import { Photo } from './Photo';
+import  Comments  from './Comments';
 
 // TODO: Fix class components
 // https://chrisvhur.medium.com/how-to-access-url-parameters-using-react-router-6-a4cf6bdad4dd
 
-// export function Single(props) {
-//   const { postId } = useParams();
-//   const i = props.posts.findIndex((post) => post.code === postId);
-//   const post = props.posts[i];
+export function Single(props) {
+  const { postId } = useParams();
+  const i = props.posts.findIndex((post) => post.code === postId);
+  const post = props.posts[i];
 
-//   const postComments = props.comments[postId] || [];
+  const postComments = props.comments[postId] || [];
 
-//   return (
-//     <div className="single-photo">
-//       <Photo i={i} post={post} {...props}></Photo>
-//       <Comments postComments={postComments} {...props} />
-//     </div>
-//   );
-// }
-
-export class Single extends React.Component{
-
-  render() {
-    // const { postId } = useParams();
-    // // const { postId } = this.props.params;
-    // const i = this.props.posts.findIndex((post) => post.code === postId);
-    // const post = this.props.posts[i];
-
-    // const postComments = this.props.comments[postId] || [];
-
-    return (
-      <div className="single-photo">
-        hi
-        {/* <Photo i={i} post={post} {...this.props}></Photo>
-        <Comments postComments={postComments} {...this.props}/> */}
-      </div>
-    );
-  }
+  return (
+    <div className="single-photo">
+      <Photo i={i} post={post} {...props}></Photo>
+      <Comments postComments={postComments} {...props} />
+    </div>
+  );
 }
+
+// export class Single extends React.Component{
+
+//   render() {
+//     // const { postId } = useParams();
+//     // // const { postId } = this.props.params;
+//     // const i = this.props.posts.findIndex((post) => post.code === postId);
+//     // const post = this.props.posts[i];
+
+//     // const postComments = this.props.comments[postId] || [];
+
+//     return (
+//       <div className="single-photo">
+//         hi
+//         {/* <Photo i={i} post={post} {...this.props}></Photo>
+//         <Comments postComments={postComments} {...this.props}/> */}
+//       </div>
+//     );
+//   }
+// }
 
 function mapStateToProps(state) {
   return {

@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 // Component Related Imports
-import Photo from './Photo';
+import { Photo } from './Photo';
 
 
 // export default class Main extends React.Component
@@ -18,7 +18,6 @@ export class PhotoGrid extends React.Component{
     );
   }
 };
-
 
 
 function mapStateToProps(state) {

@@ -43,7 +43,7 @@ export default class Comments extends React.Component {
         >
           <input type="text" ref="author" placeholder="author" />
           <input type="text" ref="comment" placeholder="comment" />
-          <input type="submit" hidden />
+        <input type="submit" hidden />
         </form>
       </div>
     );
