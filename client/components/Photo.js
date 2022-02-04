@@ -1,8 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
-// export default class Main extends React.Component
+// Router Related Imports
+import { Link } from 'react-router-dom';
+
+// Transition/Effects Related Imports
+import { CSSTransition } from 'react-transition-group';
+
 export default class Photo extends React.Component{
   render() {
     const { post, comments, i } = this.props;
