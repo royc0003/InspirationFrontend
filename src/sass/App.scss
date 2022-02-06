@@ -1,31 +1,35 @@
 @import '../../node_modules//bootstrap/scss/bootstrap.scss';
-
 @import './abstracts/_variables.scss';
 @import './core/_typography.scss';
 @import './core/_normalize.scss';
+@import './core/_animations.scss';
 
 
 body {
 	background: $offwhite;
 }
-// .friends-start {
-// 	display: inline flex;
-// 	.friends-red {
-// 		position: relative;
-// 		color: #f00;
-// 		bottom: 30px;
-// 	}
-// 	.friends-blue {
-// 		position: relative;
-// 		color: $blue-green;
-// 		bottom: 30px;
-// 	}
-// 	.friends-yellow {
-// 		position: relative;
-// 		color: $yellow-orange;
-// 		bottom: 30px;
-// 	}
-// }
+
+.friends{
+    font-size: 13rem;
+}
+.friends-start {
+	display: inline flex;
+	.friends-red {
+		position: relative;
+		color: $red;
+		// bottom: 30px;
+	}
+	.friends-blue {
+		position: relative;
+		color: $blue-green;
+		// bottom: 30px;
+	}
+	.friends-yellow {
+		position: relative;
+		color: $yellow-orange;
+		// bottom: 30px;
+	}
+}
 .photo-grid {
 	display: flex;
 	flex-wrap: wrap;
