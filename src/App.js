@@ -11,6 +11,10 @@ import Header from './components/Header';
 import PhotoGrid from './components/PhotoGrid';
 import Single from './components/Single';
 
+// Pages Related Imports
+import { Login } from './pages/Login';
+import { Signup } from './pages/Signup';
+
 
 
 export function App() {
@@ -20,6 +24,8 @@ export function App() {
       <Routes>
         <Route path="/" element={<PhotoGrid />}/>
         <Route path="/view/:postId" element={<Single/>}/>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/signup" element={<Signup/>}/>
       </Routes>
     </div>
     

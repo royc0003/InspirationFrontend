@@ -12,10 +12,16 @@ import styles from "../sass/components/_Header.module.scss";
 export default class Header extends React.Component {
   render() {
     const signOutHandler = async () => {
-      console.log('Signing')
-    }
+      console.log("Signing");
+    };
     return (
-      <Navbar collapseOnSelect sticky="top" expand="xl" bg="dark" variant="dark">
+      <Navbar
+        collapseOnSelect
+        sticky="top"
+        expand="xl"
+        bg="dark"
+        variant="dark"
+      >
         <Container fluid>
           <Link to="/">
             <Navbar.Brand className={styles.friends}>
@@ -32,13 +38,14 @@ export default class Header extends React.Component {
           </Link>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav >
-              <Link to="/login">
-                <Nav.Link>Login</Nav.Link>
-              </Link>
-              <Link to="/signup">
-                <Nav.Link>Signup</Nav.Link>
-              </Link>
+            <Nav>
+              <Nav.Link>
+                <Link to="/login"> Login </Link>
+              </Nav.Link>
+
+              <Nav.Link>
+                <Link to="/signup">Signup</Link>
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
