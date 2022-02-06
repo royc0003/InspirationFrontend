@@ -10,7 +10,6 @@ import * as actionCreators from './actions/actionCreators';
 import Header from './components/Header';
 import PhotoGrid from './components/PhotoGrid';
 import Single from './components/Single';
-import store from './store';
 
 
 

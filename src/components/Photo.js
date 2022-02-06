@@ -6,6 +6,9 @@ import { Link } from 'react-router-dom';
 // Transition/Effects Related Imports
 import { CSSTransition } from 'react-transition-group';
 
+// Import CSS
+import '../sass/components/_Photo.scss';
+
 export function Photo (props) {
   
     const { post, comments, i } = props;

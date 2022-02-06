@@ -1,4 +1,5 @@
 import React from 'react';
+
 // export default class Main extends React.Component
 export default class Comments extends React.Component {
   renderComment(comment, i) {

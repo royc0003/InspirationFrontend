@@ -11,6 +11,9 @@ import { useParams } from 'react-router-dom';
 import { Photo } from './Photo';
 import  Comments  from './Comments';
 
+// Import CSS
+import '../sass/components/_Single.scss';
+
 // TODO: Fix class components
 // https://chrisvhur.medium.com/how-to-access-url-parameters-using-react-router-6-a4cf6bdad4dd
 
