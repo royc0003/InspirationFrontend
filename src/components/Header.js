@@ -11,9 +11,7 @@ import styles from "../sass/components/_Header.module.scss";
 // Header Component
 export default class Header extends React.Component {
   render() {
-    const signOutHandler = async () => {
-      console.log("Signing");
-    };
+
     return (
       <Navbar
         collapseOnSelect
