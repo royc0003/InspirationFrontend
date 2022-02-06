@@ -2,6 +2,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+//Import CSS
+import '../sass/components/_Header.scss';
+
 // Header Component
 export default class Header extends React.Component{
   render() {

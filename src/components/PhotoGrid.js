@@ -7,6 +7,9 @@ import { connect } from 'react-redux';
 // Component Related Imports
 import { Photo } from './Photo';
 
+// Import CSS
+import '../sass/components/_PhotoGrid.scss';
+
 
 // export default class Main extends React.Component
 export class PhotoGrid extends React.Component{

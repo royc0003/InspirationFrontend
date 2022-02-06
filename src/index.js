@@ -5,7 +5,6 @@ import React from "react";
 import { render } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 // Import CSS
-import css from './styles/style.styl';
 import 'bootstrap/dist/css/bootstrap.css';
 import './sass/App.scss';
 
