@@ -28,6 +28,8 @@ export function Landingpage(props) {
           </h1>
         </div>
         <div className="landingpage-button-overall">
+            {/* TODO: Check if logged in or not before going to match page e.g. <NavLink className={({ isActive }) => isActive ? "red" : "blue"} />*/}
+            {/* https://reactrouter.com/docs/en/v6/getting-started/tutorial */}
           <Button className="landingpage-button" onClick={() => {navigate("/photogrid");}}>FIND FRIENDS!</Button>
         </div>
       </div>
