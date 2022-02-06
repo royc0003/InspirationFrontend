@@ -11,12 +11,11 @@ import styles from "../sass/components/_Header.module.scss";
 // Header Component
 export default class Header extends React.Component {
   render() {
-
     return (
       <Navbar
         collapseOnSelect
         sticky="top"
-        expand="xl"
+        expand="lg"
         bg="dark"
         variant="dark"
       >
@@ -48,14 +47,6 @@ export default class Header extends React.Component {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-
-      // <div>
-      //   <h1>
-      //     <Link className="friends" to="/"></Link>
-      //   </h1>
-      //   {/* Passes down props from main to the first child */}
-      //   {/* {React.cloneElement(this.props.children, this.props)}; */}
-      // </div>
     );
   }
 }

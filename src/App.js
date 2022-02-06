@@ -14,6 +14,7 @@ import Single from './components/Single';
 // Pages Related Imports
 import { Login } from './pages/Login';
 import { Signup } from './pages/Signup';
+import { Landingpage } from './pages/Landingpage';
 
 
 
@@ -26,6 +27,7 @@ export function App() {
         <Route path="/view/:postId" element={<Single/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<Signup/>}/>
+        <Route path="/landingpage" element={<Landingpage/>}/>
       </Routes>
     </div>
     
