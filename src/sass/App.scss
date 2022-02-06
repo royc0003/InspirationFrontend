@@ -1,9 +1,17 @@
-@import '../../node_modules//bootstrap/scss/bootstrap.scss';
 @import './abstracts/_variables.scss';
 @import './core/_typography.scss';
 @import './core/_normalize.scss';
 @import './core/_animations.scss';
 
+// To overwrite any bootstrap CSS, refer to this link:
+// https://github.com/twbs/bootstrap/blob/main/scss/_variables.scss
+
+// navBar overwrite
+$navbar-brand-font-size: 3rem;
+
+// navLink overwrite
+// $navbar-nav-link-padding-x: 10rem;
+$nav-link-font-size: 1.8rem;
 
 body {
 	background: $offwhite;
@@ -69,3 +77,5 @@ button:focus,
 	border-color: $blue;
 	outline: 0;
 }
+
+@import '../../node_modules//bootstrap/scss/bootstrap.scss';
