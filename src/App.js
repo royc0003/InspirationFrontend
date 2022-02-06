@@ -23,11 +23,11 @@ export function App() {
     <div>
       <Header/>
       <Routes>
-        <Route path="/" element={<PhotoGrid />}/>
+        <Route path="/" element={<Landingpage />}/>
         <Route path="/view/:postId" element={<Single/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<Signup/>}/>
-        <Route path="/landingpage" element={<Landingpage/>}/>
+        <Route path="/photogrid" element={<PhotoGrid/>}/>
       </Routes>
     </div>
     
