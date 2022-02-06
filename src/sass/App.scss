@@ -9,30 +9,6 @@ body {
 	background: $offwhite;
 }
 
-.friends{
-    font-size: 13rem;
-}
-.friends-start {
-	display: inline flex;
-	.friends-red {
-		position: relative;
-		color: $red;
-		// bottom: 30px;
-	}
-	.friends-blue {
-		position: relative;
-		color: $blue-green;
-		// bottom: 30px;
-	}
-	.friends-yellow {
-		position: relative;
-		color: $yellow-orange;
-		// bottom: 30px;
-	}
-}
-
-
-
 .remove-comment {
 	background: none;
 	border: 0;
