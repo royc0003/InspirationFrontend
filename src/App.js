@@ -14,6 +14,7 @@ import Single from './components/Single';
 // Pages Related Imports
 import { Login } from './pages/Login';
 import { Signup } from './pages/Signup';
+import { Landingpage } from './pages/Landingpage';
 
 
 
@@ -22,10 +23,11 @@ export function App() {
     <div>
       <Header/>
       <Routes>
-        <Route path="/" element={<PhotoGrid />}/>
+        <Route path="/" element={<Landingpage />}/>
         <Route path="/view/:postId" element={<Single/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<Signup/>}/>
+        <Route path="/photogrid" element={<PhotoGrid/>}/>
       </Routes>
     </div>
     

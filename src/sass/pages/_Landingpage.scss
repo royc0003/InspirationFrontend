@@ -1,0 +1,49 @@
+@import '../App.scss';
+
+.overallLanding {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-image: url("../../assets/groupfriends.jpg");
+    background-size: cover;
+    background-image: center top;
+    margin-top: 0.1%;
+    min-height: 100.4vh;
+    background-blend-mode: lighten;
+    padding-top: 100px;;
+}
+
+
+.captiontitlefirst {
+    display: flex;
+    justify-content: center;
+}
+
+.captiontitlesecond {
+    display: flex;
+    justify-content: center;
+    text-decoration: underline;
+    margin-top: 20px;
+}
+.landingpage-button-overall{
+    margin-top: 20%;
+    align-self: center;
+    align-content: center;
+    display: flex;
+    justify-content: center;
+}
+
+.landingpage-button {
+    color: white;
+    padding: 8px 10px;
+    font-family: 'Rubik';
+    background-color: $dark-orange;
+    border-color: $dark-orange;
+    font-size: 15px;
+    &:hover {
+        background-color: $gold;
+        border-color: $gold;
+    }
+}
+
