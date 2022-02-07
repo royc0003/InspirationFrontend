@@ -1,12 +1,13 @@
 import React from "react";
 import { Button, ButtonGroup, DropdownButton, Dropdown} from "react-bootstrap";
 
-
+//Import sass
+import '../sass/pages/_Questionaire1.scss'
 export default class Questionarie1 extends React.Component {
     constructor() {
         super();
         this.state = {
-            halls: [1]
+            halls: []
 
         }
     }
@@ -30,18 +31,22 @@ export default class Questionarie1 extends React.Component {
         const { halls } = this.state
         return(
             <div className="questionaire1overall">
-                <span> Which hall do you stay in?</span>
+                <span style={{marginTop:"20px"}}> Which hall do you stay in?</span>
                 <DropdownButton
                 as={ButtonGroup}
                 size="lg"
-                variant="primary"
-                title="Select Hall">
+                variant="secondary"
+                title="Select Hall"
+                style={{marginTop:"40px"}}>
                     {
                         halls.map((value, i) => <Dropdown.Item eventKey={`${i}`} key={i}>{`${value}`}</Dropdown.Item>)
                     }
                     
                 </DropdownButton>
-                <Button onClick={nextQuestionHandler}>
+                <div className="HallSelection">
+
+                </div>
+                <Button style={{marginTop:"50%"}} onClick={nextQuestionHandler}>
                     Click to qn2
                 </Button>
             </div>
