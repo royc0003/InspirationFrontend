@@ -16,11 +16,10 @@ import { Login } from './pages/Login';
 import { Signup } from './pages/Signup';
 import { Landingpage } from './pages/Landingpage';
 import Formpage from './pages/Formpage';
-import auth from './reducers/auth';
 
 
 
-export function App() {
+export function App(props) {
   return (
     <div>
       <Header/>
@@ -30,12 +29,12 @@ export function App() {
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route
-        path="/photogrid"
+        path="/protected"
         element={
           // Good! Do your composition here instead of wrapping <Route>.
           // This is really just inverting the wrapping, but it's a lot
           // more clear which components expect which props.
-          <RequireAuth redirectTo="/login">
+          <RequireAuth redirectTo="/login" auth={props.auth}>
             <PhotoGrid/>
           </RequireAuth>
         }
@@ -61,15 +60,12 @@ function mapDispatchToProps(dispatch) {
 }
 
 // https://stackoverflow.com/questions/62384395/protected-route-with-react-router-v6
-function RequireAuth({ children, redirectTo }) {
+function RequireAuth({ children, redirectTo, auth }) {
+  console.log(auth);
   if(auth.isLoading) {
     return <h2>Loading...</h2>
   }
-  else if(!auth.isAuthenticated){
-    return <Navigate to="/login"/>
-  }else {
-    <Navigate to={redirectTo}  />
-  }
+  return auth.isAuthenticated ? children : <Navigate to={redirectTo} />;
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
