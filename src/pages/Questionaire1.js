@@ -1,18 +1,18 @@
 import React from "react";
-import { Button } from "react-bootstrap";
+import { Button, ButtonGroup, DropdownButton, Dropdown} from "react-bootstrap";
 
 
 export default class Questionarie1 extends React.Component {
     constructor() {
         super();
         this.state = {
-            halls: []
+            halls: [1]
 
         }
     }
 
     componentDidMount() {
-        // initialize halls
+        // Initialize halls state
         var n = 15;
         // begins from 0; since there isn't a hall 0, we add 1 to it
         var numericalHalls = []
@@ -26,10 +26,21 @@ export default class Questionarie1 extends React.Component {
     }
 
     render() {
-        const {nextQuestionHandler} = this.props
+        const {nextQuestionHandler } = this.props
+        const { halls } = this.state
         return(
             <div className="questionaire1overall">
                 <span> Which hall do you stay in?</span>
+                <DropdownButton
+                as={ButtonGroup}
+                size="lg"
+                variant="primary"
+                title="Select Hall">
+                    {
+                        halls.map((value, i) => <Dropdown.Item eventKey={`${i}`} key={i}>{`${value}`}</Dropdown.Item>)
+                    }
+                    
+                </DropdownButton>
                 <Button onClick={nextQuestionHandler}>
                     Click to qn2
                 </Button>
