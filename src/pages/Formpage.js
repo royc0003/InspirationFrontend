@@ -1,5 +1,4 @@
 import React from "react";
-import { Button } from "react-bootstrap";
 
 // Import Pages
 import Questionaire1 from "./Questionaire1";

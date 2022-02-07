@@ -3,9 +3,9 @@ import { Button } from "react-bootstrap";
 
 
 export default class Questionarie2 extends React.Component {
-    constructor() {
-        super();
-    }
+    // constructor() {
+    //     super();
+    // }
 
 
     render() {
