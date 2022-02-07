@@ -15,6 +15,7 @@ import Single from './components/Single';
 import { Login } from './pages/Login';
 import { Signup } from './pages/Signup';
 import { Landingpage } from './pages/Landingpage';
+import Formpage from './pages/Formpage';
 
 
 
@@ -28,6 +29,7 @@ export function App() {
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/photogrid" element={<PhotoGrid/>}/>
+        <Route path="/formpage" element={<Formpage/>}/>
       </Routes>
     </div>
     
