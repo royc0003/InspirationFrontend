@@ -46,7 +46,7 @@ export default class Questionarie1 extends React.Component {
                 <div className="HallSelection">
 
                 </div>
-                <Button style={{marginTop:"50%"}} onClick={nextQuestionHandler}>
+                <Button style={{marginTop:"20%"}} onClick={nextQuestionHandler}>
                     Click to qn2
                 </Button>
             </div>
