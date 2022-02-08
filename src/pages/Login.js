@@ -2,11 +2,14 @@ import React from 'react';
 import { Button, Card, Container, Form } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import styles from '../sass/pages/loginpage.module.scss';
+ 
 
 export function Login(props) {
+
+
 	return (
 		<Container id={styles.loginContainer}>
-			<div className='d-flex justify-content-center align-items-center' style={{height: '100%'}}>
+			<div className='d-flex justify-content-center align-items-center' id={styles.loginCardContainer}>
 				<Card id={styles.loginCard}>
 					<Card.Body>
 						<Card.Title><strong>Login</strong></Card.Title>
