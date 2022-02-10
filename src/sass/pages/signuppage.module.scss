@@ -1,4 +1,10 @@
 
+#logoContainer{
+	font-size: 3.5rem;
+	margin: 0 auto;
+	margin-bottom: 0.5em;
+}
+
 #signupContainer{
 	height: 100%;
 }
@@ -6,7 +12,7 @@
 #signupCardContainer{
 	height: 100%;
 	position: relative;
-	top:-20%;
+	top:-15%;
 }
 
 #signupCard{
@@ -15,5 +21,10 @@
 }
 
 #signupForm{
-	margin-top: 23px;
+	margin-top: 18px;
+
+	.errorMsg{
+		font-size: 0.95em;
+		font-style: italic;
+	}
 }

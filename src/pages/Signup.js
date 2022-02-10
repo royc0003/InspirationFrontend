@@ -36,7 +36,9 @@ export function Signup(props) {
 			<div className='d-flex justify-content-center align-items-center' id={styles.signupCardContainer}>
 				<Card id={styles.signupCard}>
 					<Card.Body>
-						<Logo />
+						<div id={styles.logoContainer}>
+							<Logo />
+						</div>
 						<Card.Title><strong>Sign up</strong></Card.Title>
 						<Card.Subtitle>Not a member yet? Fill up the form to join us!</Card.Subtitle>
 						<Form
@@ -58,8 +60,9 @@ export function Signup(props) {
 											message: 'Invalid email address!'
 										}
 									})}
+									className={errors.email ? 'is-invalid form-control' : 'form-control'}
 								/>
-								<Form.Text className="text-danger">
+								<Form.Text className={`${styles.errorMsg} text-danger d-block`}>
 									{errors.email ? errors.email.message : ''}
 								</Form.Text>
 							</Form.Group>
@@ -76,8 +79,9 @@ export function Signup(props) {
 											message: 'Password is too short!'
 										}
 									})}
+									className={errors.password ? 'is-invalid form-control' : 'form-control'}
 								/>
-								<Form.Text className="text-danger">
+								<Form.Text className={`${styles.errorMsg} text-danger d-block`}>
 									{errors.password ? errors.password.message : ''}
 								</Form.Text>
 							</Form.Group>
@@ -91,8 +95,9 @@ export function Signup(props) {
 											validate: v => v === password.current || 'The passwords do not match'
 										})
 									}
+									className={errors.passwordConfirm ? 'is-invalid form-control' : 'form-control'}
 								/>
-								<Form.Text className="text-danger">
+								<Form.Text className={`${styles.errorMsg} text-danger d-block`}>
 									{errors.passwordConfirm ? errors.passwordConfirm.message : ''}
 								</Form.Text>
 							</Form.Group>

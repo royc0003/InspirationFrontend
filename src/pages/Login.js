@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Card, Container, Form } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import Logo from '../components/Logo';
 import styles from '../sass/pages/loginpage.module.scss';
 
 export function Login(props) {
@@ -20,12 +21,15 @@ export function Login(props) {
 			<div className='d-flex justify-content-center align-items-center' id={styles.loginCardContainer}>
 				<Card id={styles.loginCard}>
 					<Card.Body>
+						<div id={styles.logoContainer}>
+							<Logo />
+						</div>
 						<Card.Title><strong>Login</strong></Card.Title>
 						<Card.Subtitle>Welcome back, please login to continue!</Card.Subtitle>
-						<Form 
+						<Form
 							id={styles.loginForm}
 							onSubmit={handleSubmit(handleOnSubmit)}
-							>
+						>
 							<Form.Group className="mb-3" controlId="email">
 								<Form.Label>Email address</Form.Label>
 								<Form.Control
@@ -38,8 +42,9 @@ export function Login(props) {
 											message: 'Invalid email address!'
 										}
 									})}
+									className={errors.email ? 'is-invalid form-control' : 'form-control'}
 								/>
-								<Form.Text className="text-danger d-block">
+								<Form.Text className={`${styles.errorMsg} text-danger d-block`}>
 									{errors.email ? errors.email.message : ''}
 								</Form.Text>
 								<Form.Text className="text-muted">
@@ -60,11 +65,12 @@ export function Login(props) {
 											message: 'Password is too short!'
 										}
 									})}
+									className={errors.password ? 'is-invalid form-control' : 'form-control'}
 								/>
-							</Form.Group>
-							<Form.Text className="text-danger d-block">
-								{errors.passwordConfirm ? errors.passwordConfirm.message : ''}
+							<Form.Text className={`${styles.errorMsg} text-danger d-block`}>
+								{errors.password ? errors.password.message : ''}
 							</Form.Text>
+							</Form.Group>
 							<br />
 							<Button variant="primary" type="submit">
 								Login
