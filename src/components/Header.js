@@ -2,6 +2,7 @@ import React from "react";
 // Import Bootstrap
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import styles from "../sass/components/_Header.module.scss";
 //Import CSS
 import "../sass/components/_Header.scss";
 import Logo from "./Logo";
@@ -26,8 +27,8 @@ export default class Header extends React.Component {
             </Navbar.Brand>
           </Link>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav>
+          <Navbar.Collapse className="justify-content-end">
+            <Nav id={styles.navMenu}>
               <Nav.Link as={Link} to="/login">
                 Login
               </Nav.Link>
