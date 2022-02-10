@@ -12,6 +12,8 @@ import { Landingpage } from './pages/Landingpage';
 // Pages Related Imports
 import { Login } from './pages/Login';
 import { Signup } from './pages/Signup';
+import Formpage from './pages/Formpage';
+
 
 
 export function App() {
@@ -24,6 +26,7 @@ export function App() {
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/photogrid" element={<PhotoGrid/>}/>
+        <Route path="/formpage" element={<Formpage/>}/>
       </Routes>
     </main>
     

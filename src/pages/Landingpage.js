@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import "../sass/pages/_Landingpage.scss";
 
 export function Landingpage(props) {
-    let navigate = useNavigate();
+  let navigate = useNavigate();
   return (
     <div className="overallLanding">
       <div className="overall">
@@ -28,7 +28,22 @@ export function Landingpage(props) {
           </h1>
         </div>
         <div className="landingpage-button-overall">
-          <Button className="landingpage-button" onClick={() => {navigate("/photogrid");}}>FIND FRIENDS!</Button>
+          {/* TODO: Check if logged in or not before going to match page e.g. <NavLink className={({ isActive }) => isActive ? "red" : "blue"} />*/}
+          {/* https://reactrouter.com/docs/en/v6/getting-started/tutorial */}
+          <Button
+            className="landingpage-button"
+            style={{
+              backgroundColor: "#FF8F45",
+              padding: "8px 10px",
+              fontFamily: "Rubik",
+              borderColor: "#FF8F45",
+            }}
+            onClick={() => {
+              navigate("/photogrid");
+            }}
+          >
+            FIND FRIENDS!
+          </Button>
         </div>
       </div>
     </div>
