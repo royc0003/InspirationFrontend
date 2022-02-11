@@ -1,0 +1,30 @@
+#logoContainer{
+	font-size: 3.5rem;
+	margin: 0 auto;
+	margin-bottom: 0.5em;
+	cursor:default;
+}
+
+#loginContainer{
+	height: 100%;
+}
+
+#loginCardContainer{
+	height: 100%;
+	position: relative;
+	top:-20%;
+}
+
+#loginCard{
+	width: 369px;
+	padding: 21px;
+}
+
+form#loginForm{
+	margin-top: 18px;
+
+	.errorMsg{
+		font-size: 0.95em;
+		font-style: italic;
+	}
+}
