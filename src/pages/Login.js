@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { Button, Card, Container, Form } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import Logo from '../components/Logo';
 import styles from '../sass/pages/loginpage.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
@@ -30,6 +30,7 @@ export function Login(props) {
 
 	return (
 		<Container id={styles.loginContainer}>
+			{ isAuthenticated ? <Navigate to={"/"}/> : "" }
 			<div className='d-flex justify-content-center align-items-center' id={styles.loginCardContainer}>
 				<Card id={styles.loginCard}>
 					<Card.Body>
