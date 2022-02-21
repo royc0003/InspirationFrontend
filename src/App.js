@@ -18,10 +18,11 @@ import Formpage from './pages/Formpage';
 import { loadUser } from './actions/auth';
 
 export function App(props) {
-  // const dispatch = useDispatch()
-  // useEffect(() => {
-  //   dispatch(loadUser());
-  // })
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(loadUser());
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
   return (
     <main style={{ height: '100vh'}}>
       <Header/>

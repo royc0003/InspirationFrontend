@@ -7,12 +7,12 @@ import styles from "../sass/components/_Header.module.scss";
 import "../sass/components/_Header.scss";
 import Logo from "./Logo";
 import { connect } from "react-redux";
-import { useDispatch, useSelector } from "react-redux";
+import { logout } from '../actions/auth';
 
 // Header Component
 export class Header extends React.Component {
   render() {
-    const { isAuthenticated, user } = this.props.auth;
+    const { isAuthenticated } = this.props.auth;
 
     const authLinks = (
       <Nav id={styles.navMenu}>
@@ -62,4 +62,4 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, { logout })(Header);

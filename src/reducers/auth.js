@@ -3,7 +3,8 @@ import {
     USER_LOADING,
     AUTH_ERROR,
     LOGIN_FAIL,
-    LOGIN_SUCCESS
+    LOGIN_SUCCESS,
+    LOGOUT_SUCCESS
 } from '../actions/types';
 
 
@@ -39,7 +40,8 @@ function auth(state = initialState, action){
             }
         case AUTH_ERROR:
         case LOGIN_FAIL:
-            localStorage.removeItem('token');
+        case LOGOUT_SUCCESS:
+            localStorage.removeItem("friendstagram-email");
             return {
                 ...state,
                 token: null,

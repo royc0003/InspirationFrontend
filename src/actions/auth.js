@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { USER_LOADED, USER_LOADING, LOGIN_SUCCESS, LOGIN_FAIL, AUTH_ERROR } from "./types";
+import { USER_LOADED, USER_LOADING, LOGIN_SUCCESS, LOGIN_FAIL, AUTH_ERROR, LOGOUT_SUCCESS } from "./types";
 
 // base url
 const url = "https://zhuweiji.pythonanywhere.com";
@@ -14,6 +14,7 @@ export const loadUser = () => (dispatch, getState) => {
 
   // Get token from state
   const token = getState().auth.token;
+  const friendstagram_email = localStorage.getItem("friendstagram-email");
 
   // Headers
   const config = {
@@ -27,8 +28,10 @@ export const loadUser = () => (dispatch, getState) => {
     config.headers["Authorization"] = `Token ${token}`;
   }
 
-  axios.post(`${url}/rest-auth/login/`, config)
+  axios.get(`${url}/user_information/${friendstagram_email}`, config)
   .then((res) => {
+    console.log("Successfully logged in");
+    console.log(res);
     dispatch({
       type: USER_LOADED,
       payload: res.data,
@@ -58,7 +61,8 @@ export const login = (email, password) => dispatch => {
     console.log(body);
     axios.post(`${url}/rest-auth/login/`, body, config).then((res) => {
         console.log("success log in")
-        console.log({res})
+        // Cache email into local storage
+        localStorage.setItem("friendstagram-email", email);
       dispatch({
         type: LOGIN_SUCCESS,
         payload: res.data,
@@ -70,3 +74,17 @@ export const login = (email, password) => dispatch => {
       })
     });
   };
+
+  // CHECK TOKEN & Logout
+export const logout = () => (dispatch, getState) => {
+
+  // Get token from state
+  const token = getState().auth.token;
+
+  // If token, then logout
+  if (token) {
+    dispatch({
+      type: LOGOUT_SUCCESS,
+    })
+  }
+};

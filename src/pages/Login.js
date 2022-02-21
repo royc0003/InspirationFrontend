@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React  from 'react';
 import { Button, Card, Container, Form } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
 import { Link, Navigate } from "react-router-dom";
@@ -26,6 +26,7 @@ export function Login(props) {
 		console.log("Login");
 		dispatch(login(data.email, data.password));
 		console.log("Tried to login")
+		e.target.reset();
 	};
 
 	return (
