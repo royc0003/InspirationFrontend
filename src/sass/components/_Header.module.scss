@@ -1,7 +1,16 @@
-@import '../App.scss';
+@import '../abstracts/variables';
+
 
 .friends{
     font-family: $shadow-light-font;
 }
 
+#navMenu{
+	a{
+		color: #fdfdfd;
+	}
 
+	a:hover{
+		color: $dark-orange;
+	}
+}

@@ -1,27 +1,26 @@
 import React from 'react';
-
+import { connect } from 'react-redux';
+import { Route, Routes } from 'react-router-dom';
 // Redux-Store Related Imports
 import { bindActionCreators } from 'redux';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actionCreators from './actions/actionCreators';
-
 // Component Related Imports
 import Header from './components/Header';
 import PhotoGrid from './components/PhotoGrid';
 import Single from './components/Single';
-
+import { Landingpage } from './pages/Landingpage';
 // Pages Related Imports
 import { Login } from './pages/Login';
 import { Signup } from './pages/Signup';
-import { Landingpage } from './pages/Landingpage';
 import Formpage from './pages/Formpage';
 
 
 
 export function App(props) {
   return (
-    <div>
+    <main style={{ height: '100vh'}}>
       <Header/>
       <Routes>
         <Route path="/" element={<Landingpage />}/>
@@ -42,7 +41,7 @@ export function App(props) {
         {/* <Route path="/photogrid" element={<PhotoGrid/>}/> */}
         <Route path="/formpage" element={<Formpage/>}/>
       </Routes>
-    </div>
+    </main>
     
   );
 }

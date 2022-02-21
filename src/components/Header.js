@@ -1,12 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
-
 // Import Bootstrap
-import { Navbar, Nav, Container } from "react-bootstrap";
-
+import { Container, Nav, Navbar } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import styles from "../sass/components/_Header.module.scss";
 //Import CSS
 import "../sass/components/_Header.scss";
-import styles from "../sass/components/_Header.module.scss";
+import Logo from "./Logo";
+
+
 
 // Header Component
 export default class Header extends React.Component {
@@ -21,27 +22,19 @@ export default class Header extends React.Component {
       >
         <Container fluid>
           <Link to="/">
-            <Navbar.Brand className={styles.friends}>
-              <span className="friends-start">
-                F<span className="friends-red">.</span>R
-                <span className="friends-blue">.</span>I
-                <span className="friends-yellow">.</span>E
-                <span className="friends-red">.</span>N
-                <span className="friends-yellow">.</span>D
-                <span className="friends-blue">.</span>S
-              </span>
-              <span className="friends-end">tagram</span>
+            <Navbar.Brand>
+							<Logo />
             </Navbar.Brand>
           </Link>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav>
-              <Nav.Link>
-                <Link to="/login"> Login </Link>
+          <Navbar.Collapse className="justify-content-end">
+            <Nav id={styles.navMenu}>
+              <Nav.Link as={Link} to="/login">
+                Login
               </Nav.Link>
 
-              <Nav.Link>
-                <Link to="/signup">Signup</Link>
+              <Nav.Link as={Link} to="/signup">
+								Sign Up
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>

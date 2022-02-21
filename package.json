@@ -1,5 +1,5 @@
 {
-  "name": "Friendstagram",
+  "name": "friendstagram",
   "version": "1.0.0",
   "description": ":) ",
   "scripts": {
@@ -25,6 +25,7 @@
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.3",
     "react-dom": "^17.0.2",
+    "react-hook-form": "^7.26.0",
     "react-modal": "^3.14.3",
     "react-redux": "^7.2.5",
     "react-router-dom": "^6.2.1",
@@ -37,10 +38,17 @@
     "util": "^0.12.4",
     "web-vitals": "^1.1.2"
   },
+  "devDependencies": {
+    "react-error-overlay": "^6.0.10",
+    "redux-mock-store": "^1.5.4"
+  },
   "eslintConfig": {
     "extends": [
       "react-app"
-    ]
+    ],
+		"rules": {
+			"no-control-regex": 0
+		}
   },
   "devDependencies": {
     "redux-devtools-extension": "^2.13.9",
