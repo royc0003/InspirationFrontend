@@ -1,23 +1,37 @@
-import React from 'react';
+import React  from 'react';
 import { Button, Card, Container, Form } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import Logo from '../components/Logo';
 import styles from '../sass/pages/loginpage.module.scss';
+import { useDispatch, useSelector } from 'react-redux';
+
+// import actions
+import { login } from '../actions/auth';
 
 export function Login(props) {
+	const dispatch = useDispatch();
+	const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+	console.log("checking authentication")
+	console.log(isAuthenticated)
 	const {
 		register,
 		handleSubmit,
 		formState: { errors }
 	} = useForm({ mode: 'onBlur' });
 
-	const handleOnSubmit = (data) => {
-		console.log(data);
+	const handleOnSubmit = (data, e) => {
+		e.preventDefault();
+		console.log(data)
+		console.log("Login");
+		dispatch(login(data.email, data.password));
+		console.log("Tried to login")
+		e.target.reset();
 	};
 
 	return (
 		<Container id={styles.loginContainer}>
+			{ isAuthenticated ? <Navigate to={"/"}/> : "" }
 			<div className='d-flex justify-content-center align-items-center' id={styles.loginCardContainer}>
 				<Card id={styles.loginCard}>
 					<Card.Body>

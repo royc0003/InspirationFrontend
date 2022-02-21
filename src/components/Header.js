@@ -6,12 +6,34 @@ import styles from "../sass/components/_Header.module.scss";
 //Import CSS
 import "../sass/components/_Header.scss";
 import Logo from "./Logo";
-
-
+import { connect } from "react-redux";
+import { logout } from '../actions/auth';
 
 // Header Component
-export default class Header extends React.Component {
+export class Header extends React.Component {
   render() {
+    const { isAuthenticated } = this.props.auth;
+
+    const authLinks = (
+      <Nav id={styles.navMenu}>
+        <Nav.Link as={Link} to="/login">
+          Logout
+        </Nav.Link>
+      </Nav>
+    );
+
+    const guestLinks = (
+      <Nav id={styles.navMenu}>
+        <Nav.Link as={Link} to="/login">
+          Login
+        </Nav.Link>
+
+        <Nav.Link as={Link} to="/signup">
+          Sign Up
+        </Nav.Link>
+      </Nav>
+    );
+
     return (
       <Navbar
         collapseOnSelect
@@ -23,23 +45,21 @@ export default class Header extends React.Component {
         <Container fluid>
           <Link to="/">
             <Navbar.Brand>
-							<Logo />
+              <Logo />
             </Navbar.Brand>
           </Link>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse className="justify-content-end">
-            <Nav id={styles.navMenu}>
-              <Nav.Link as={Link} to="/login">
-                Login
-              </Nav.Link>
-
-              <Nav.Link as={Link} to="/signup">
-								Sign Up
-              </Nav.Link>
-            </Nav>
+            {isAuthenticated ? authLinks : guestLinks}
           </Navbar.Collapse>
         </Container>
       </Navbar>
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, { logout })(Header);

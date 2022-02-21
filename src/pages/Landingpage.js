@@ -5,6 +5,10 @@ import { useNavigate } from "react-router-dom";
 // Import CSS
 import "../sass/pages/_Landingpage.scss";
 
+// Import Redux
+import { connect } from 'react-redux';
+
+
 export function Landingpage(props) {
   let navigate = useNavigate();
   return (
@@ -39,7 +43,7 @@ export function Landingpage(props) {
               borderColor: "#FF8F45",
             }}
             onClick={() => {
-              navigate("/photogrid");
+              navigate("/protected");
             }}
           >
             FIND FRIENDS!
@@ -49,3 +53,11 @@ export function Landingpage(props) {
     </div>
   );
 }
+
+
+const mapStateToProps = state => ( {
+  auth: state.auth,
+})
+
+
+export default connect(mapStateToProps)(Landingpage);
