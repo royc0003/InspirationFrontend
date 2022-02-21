@@ -3,9 +3,15 @@ import { Button, Card, Container, Form } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
 import Logo from '../components/Logo';
 import styles from '../sass/pages/signuppage.module.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom';
+
+// import actions
+import { signup } from '../actions/auth';
 
 export function Signup(props) {
-
+	const dispatch = useDispatch();
+	const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
 	const {
 		register,
 		handleSubmit,
@@ -21,10 +27,13 @@ export function Signup(props) {
 		setValue(event.target.name, event.target.value);
 	}
 
-	const handleOnSubmit = (data) => {
+	const handleOnSubmit = (data, e) => {
 		// event.preventDefault();
 		console.log(data);
 		console.log(errors);
+		e.preventDefault();
+		dispatch(signup(data.email, data.password, data.passwordConfirm));
+		e.target.reset();
 	}
 
 	useEffect(() => {
@@ -33,6 +42,7 @@ export function Signup(props) {
 
 	return (
 		<Container id={styles.signupContainer}>
+			{ isAuthenticated ? <Navigate to={"/formpage"}/> : "" }
 			<div className='d-flex justify-content-center align-items-center' id={styles.signupCardContainer}>
 				<Card id={styles.signupCard}>
 					<Card.Body>

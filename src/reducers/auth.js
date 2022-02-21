@@ -4,7 +4,9 @@ import {
     AUTH_ERROR,
     LOGIN_FAIL,
     LOGIN_SUCCESS,
-    LOGOUT_SUCCESS
+    LOGOUT_SUCCESS,
+    SIGNUP_SUCCESS,
+    SIGNUP_FAIL
 } from '../actions/types';
 
 
@@ -31,6 +33,7 @@ function auth(state = initialState, action){
                 user: action.payload
             }
         case LOGIN_SUCCESS:
+        case SIGNUP_SUCCESS:
             localStorage.setItem("token", action.payload.key);
             return {
                 ...state,
@@ -41,6 +44,7 @@ function auth(state = initialState, action){
         case AUTH_ERROR:
         case LOGIN_FAIL:
         case LOGOUT_SUCCESS:
+        case SIGNUP_FAIL:
             localStorage.removeItem("friendstagram-email");
             return {
                 ...state,
