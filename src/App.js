@@ -1,10 +1,8 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Route, Routes } from 'react-router-dom';
+import React, { useEffect } from 'react';
 // Redux-Store Related Imports
 import { bindActionCreators } from 'redux';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import * as actionCreators from './actions/actionCreators';
 // Component Related Imports
 import Header from './components/Header';
@@ -16,9 +14,14 @@ import { Login } from './pages/Login';
 import { Signup } from './pages/Signup';
 import Formpage from './pages/Formpage';
 
-
+// Import action
+import { loadUser } from './actions/auth';
 
 export function App(props) {
+  // const dispatch = useDispatch()
+  // useEffect(() => {
+  //   dispatch(loadUser());
+  // })
   return (
     <main style={{ height: '100vh'}}>
       <Header/>
