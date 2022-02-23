@@ -27,6 +27,7 @@ export default class Formpage extends React.Component {
 
   render() {
     // if end of questions and
+    
 
     const { qnNo } = this.state;
 
