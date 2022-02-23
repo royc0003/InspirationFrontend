@@ -1,9 +1,10 @@
 import React, { useEffect, useRef } from 'react';
-import { Button, Card, Container, Form } from 'react-bootstrap';
+import { Button, Card, Container, Form} from 'react-bootstrap';
 import { useForm } from "react-hook-form";
+import { Toasts } from '../components/Toasts';
 import Logo from '../components/Logo';
 import styles from '../sass/pages/signuppage.module.scss';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector} from 'react-redux';
 import { Navigate } from 'react-router-dom';
 
 // import actions
@@ -12,6 +13,7 @@ import { signup } from '../actions/auth';
 export function Signup(props) {
 	const dispatch = useDispatch();
 	const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+	const errorMessage  = useSelector(state => state.auth.password1)
 	const {
 		register,
 		handleSubmit,
@@ -42,6 +44,7 @@ export function Signup(props) {
 
 	return (
 		<Container id={styles.signupContainer}>
+			{errorMessage ? errorMessage.map((item, i) => <Toasts key={i} item={item}></Toasts>) : ""}
 			{ isAuthenticated ? <Navigate to={"/formpage"}/> : "" }
 			<div className='d-flex justify-content-center align-items-center' id={styles.signupCardContainer}>
 				<Card id={styles.signupCard}>
