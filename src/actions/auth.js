@@ -9,6 +9,7 @@ import {
   LOGOUT_SUCCESS,
   SIGNUP_SUCCESS,
   SIGNUP_FAIL,
+  CLEAR_ERROR 
 } from "./types";
 
 // base url
@@ -143,3 +144,10 @@ export const signup = (email, password1, password2) => (dispatch) => {
       });
     });
   };
+
+  export const clearError = () => (dispatch) => {
+    console.log("Clearing error cache")
+    dispatch({
+      type: CLEAR_ERROR,
+    })
+  }

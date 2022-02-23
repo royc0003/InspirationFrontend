@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Button, Card, Container, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { Toasts } from "../components/Toasts";
@@ -8,9 +8,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 
 // import actions
-import { signup } from "../actions/auth";
+import { signup, clearError } from "../actions/auth";
 
 export function Signup(props) {
+  const [rerender, setRerender] = useState(false);
+
+  useEffect(() => {
+    setRerender(!rerender);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const dispatch = useDispatch();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const errorMessage = useSelector((state) => state.auth.password1);
@@ -35,7 +41,11 @@ export function Signup(props) {
     console.log(errors);
     e.preventDefault();
     dispatch(signup(data.email, data.password, data.passwordConfirm));
-    e.target.reset();
+	e.target.reset();
+	// re-render
+	setRerender(!rerender)
+	// clear error cache
+	dispatch(clearError());
   };
 
   useEffect(() => {
@@ -45,7 +55,7 @@ export function Signup(props) {
   return (
     <Container id={styles.signupContainer}>
       {isAuthenticated ? <Navigate to={"/formpage"} /> : ""}
-	  {errorMessage
+      {errorMessage
         ? errorMessage.map((item, i) => <Toasts key={i} item={item}></Toasts>)
         : ""}
       <div
