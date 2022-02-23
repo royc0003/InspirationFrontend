@@ -122,14 +122,21 @@ export const signup = (email, password1, password2) => (dispatch) => {
     dispatch({
       type: SIGNUP_SUCCESS,
       payload: res.data,
-    }).catch((err) => {
-      console.log("error with sign up");
-      console.log(err);
-      console.log(err.response.status);
-      console.log(err.message);
+    })
+  })
+  .catch((err) => {
+      if (err.response) {
+        console.log(err.response.data)
+      }
+      else if (err.request) {
+        console.log(err.request);
+      }
+      else {
+        console.log(err.message);
+      }
+      console.log(err.config);
       dispatch({
         type: SIGNUP_FAIL,
       });
     });
-  });
-};
+  };
