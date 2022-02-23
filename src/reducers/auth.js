@@ -44,10 +44,18 @@ function auth(state = initialState, action){
         case AUTH_ERROR:
         case LOGIN_FAIL:
         case LOGOUT_SUCCESS:
-        case SIGNUP_FAIL:
             localStorage.removeItem("friendstagram-email");
             return {
                 ...state,
+                token: null,
+                isAuthenticated: false,
+                isLoading: false
+            }
+            case SIGNUP_FAIL:
+                localStorage.removeItem("friendstagram-email");
+            return {
+                ...state,
+                ...action.payload,
                 token: null,
                 isAuthenticated: false,
                 isLoading: false

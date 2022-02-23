@@ -126,7 +126,9 @@ export const signup = (email, password1, password2) => (dispatch) => {
   })
   .catch((err) => {
       if (err.response) {
-        console.log(err.response.data)
+        console.log("respone")
+        console.log(err.response.data.password1)
+        // to insert a alert block here
       }
       else if (err.request) {
         console.log(err.request);
@@ -137,6 +139,7 @@ export const signup = (email, password1, password2) => (dispatch) => {
       console.log(err.config);
       dispatch({
         type: SIGNUP_FAIL,
+        payload: err.response.data
       });
     });
   };
