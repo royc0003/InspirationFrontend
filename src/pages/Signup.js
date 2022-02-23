@@ -44,10 +44,10 @@ export function Signup(props) {
 
   return (
     <Container id={styles.signupContainer}>
-      {errorMessage
+      {isAuthenticated ? <Navigate to={"/formpage"} /> : ""}
+	  {errorMessage
         ? errorMessage.map((item, i) => <Toasts key={i} item={item}></Toasts>)
         : ""}
-      {isAuthenticated ? <Navigate to={"/formpage"} /> : ""}
       <div
         className="d-flex justify-content-center align-items-center"
         id={styles.signupCardContainer}
