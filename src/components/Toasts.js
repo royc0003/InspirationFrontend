@@ -10,14 +10,14 @@ export function Toasts(props) {
       show={show}
       delay={8000}
       autohide
-      className="d-inline-block m-1"
-      bg={"warning"}
+      bg={"danger"}
+      animation={true}
     >
-      <Toast.Header>
+      <Toast.Header closeButton={false}>
         <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
         <strong className="me-auto">Error</strong>
       </Toast.Header>
-      <Toast.Body>{item}</Toast.Body>
+      <Toast.Body className={'Dark'}>{item}</Toast.Body>
     </Toast>
   );
 }
