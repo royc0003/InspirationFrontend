@@ -21,11 +21,11 @@ export function Formpage(props) {
   return (
     <div className="formpageoverall">
       {qnNo === 1 ? (
-        <Questionaire1 nextQuestionHandler={nextQuestionHandler} />
+        <Questionaire1 key={1} nextQuestionHandler={nextQuestionHandler} />
       ) : (
         [
           qnNo === 2 ? (
-            <Questionaire2 nextQuestionHandler={nextQuestionHandler} />
+            <Questionaire2 key={2} nextQuestionHandler={nextQuestionHandler} />
           ) : (
             <div> hello </div>
           ),
