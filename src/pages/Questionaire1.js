@@ -189,20 +189,22 @@ export function Questionaire1(props) {
   const { nextQuestionHandler } = props;
 
   const handleSelect = (evt) => {
-    var _selectedID = parseInt(evt)
+    var _selectedID = parseInt(evt);
     // filter array of objects
-    var tmpArray = [...halls]
-    if (storeHalls){
-        // change to api's storedHalls if data is present
-        tmpArray = [...storeHalls]
+    var tmpArray = [...halls];
+    if (storeHalls) {
+      // change to api's storedHalls if data is present
+      tmpArray = [...storeHalls];
     }
     var _selectedHall = tmpArray.filter(
-        (_singleHall) => parseInt(_singleHall.id) === _selectedID 
-      );
+      (_singleHall) => parseInt(_singleHall.id) === _selectedID
+    );
     // Save selected hall in store
-    console.log("Dispatched to userHall: "+ _selectedHall[0].name)
+    console.log("Dispatched to userHall: " + _selectedHall[0].name);
     dispatch(selecthall(_selectedHall[0].name));
   };
+
+  // global tmpArray
 
   return (
     <div className="questionaire1overall">
@@ -215,12 +217,20 @@ export function Questionaire1(props) {
         title="Select Hall"
         style={{ marginTop: "40px" }}
       >
-        {halls.map((value, i) => (
-          <Dropdown.Item
-            eventKey={`${value.id}`}
-            key={i}
-          >{`${value.name}`}</Dropdown.Item>
-        ))}
+        { // Error Handling: In case API Fails
+        storeHalls === null
+          ? halls.map((value, i) => (
+              <Dropdown.Item
+                eventKey={`${value.id}`}
+                key={i}
+              >{`${value.name}`}</Dropdown.Item>
+            ))
+          : storeHalls.map((value, i) => (
+              <Dropdown.Item
+                eventKey={`${value.id}`}
+                key={i}
+              >{`${value.name}`}</Dropdown.Item>
+            ))}
       </DropdownButton>
       <div className="HallSelection"></div>
       <Button style={{ marginTop: "20%" }} onClick={nextQuestionHandler}>
