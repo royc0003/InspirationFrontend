@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { IMPORT_HALL } from "./types";
+import { IMPORT_HALL, IMPORT_HALL_FAIL } from "./types";
 
 // base url
 const url = "https://zhuweiji.pythonanywhere.com";
@@ -44,5 +44,8 @@ export const gethalls = () => (dispatch, getState) => {
         console.log(err.message);
       }
       console.log(err.config);
+      dispatch({
+        type: IMPORT_HALL_FAIL,
+      })
     });
 };
