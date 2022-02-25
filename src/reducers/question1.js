@@ -5,7 +5,7 @@ const someInitialState = {
   userHall: null,
 };
 
-function formpage(state = someInitialState, action) {
+function question1(state = someInitialState, action) {
   switch (action.type) {
     case SELECT_HALL:
       return {
@@ -28,4 +28,4 @@ function formpage(state = someInitialState, action) {
   }
 }
 
-export default formpage;
+export default question1;
