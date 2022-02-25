@@ -9,7 +9,6 @@ import { gethalls, selecthall } from "../actions/formpage";
 
 //Import sass
 import "../sass/pages/_Questionaire1.scss";
-import store from "../store";
 export function Questionaire1(props) {
   // Set All States
   const [halls, setHalls] = useState([]);
