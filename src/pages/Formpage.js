@@ -1,19 +1,14 @@
 import React, { useState } from "react";
 
 // Import Pages
-import Questionaire1 from "./Questionaire1";
+import { Questionaire1 } from "./Questionaire1";
 import Questionaire2 from "./Questionaire2";
 
 export function Formpage(props) {
-  // set all states here
+  // Set All States
   const [ qnNo, setQnNo ] = useState(1); // sets qnNo = 0
 
   // All Functions
-  // nextQuestionHandler((prevState) => ({
-  //   console.log("Updating qn no:");
-  //   window.scrollTo(0, 0);
- 
-  // }));
   const nextQuestionHandler = () => {
     // setQnNo(prevState => ({...prevState, qnNo: prevState.qnNo + 1}));
     console.log ("Updating qnNo");
