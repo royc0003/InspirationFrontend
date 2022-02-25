@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { IMPORT_HALL, IMPORT_HALL_FAIL } from "./types";
+import { IMPORT_HALL, IMPORT_HALL_FAIL, SELECT_HALL } from "./types";
 
 // base url
 const url = "https://zhuweiji.pythonanywhere.com";
@@ -48,4 +48,13 @@ export const gethalls = () => (dispatch, getState) => {
         type: IMPORT_HALL_FAIL,
       })
     });
+};
+
+
+// User Selects hall
+export const selecthall = (hallName) => (dispatch, getState) => {
+  dispatch({
+    type: SELECT_HALL,
+    payload: hallName,
+  })
 };

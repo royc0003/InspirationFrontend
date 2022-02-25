@@ -1,20 +1,27 @@
-import { IMPORT_HALL, IMPORT_HALL_FAIL } from "../actions/types";
+import { IMPORT_HALL, IMPORT_HALL_FAIL, SELECT_HALL } from "../actions/types";
 
 const someInitialState = {
-  halls: null,
+  storeHalls: null,
+  userHall: null,
 };
 
 function formpage(state = someInitialState, action) {
   switch (action.type) {
+    case SELECT_HALL:
+      return {
+        ...state,
+        userHall: action.payload,
+      }
     case IMPORT_HALL:
       return {
         ...state,
-        halls: action.payload,
+        storehalls: action.payload,
       };
     case IMPORT_HALL_FAIL:
       return {
         ...state,
-        halls: null,
+        storehalls: null,
+        userHall: null,
       }
     default:
       return state;

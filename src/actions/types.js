@@ -10,3 +10,4 @@ export const SIGNUP_FAIL = "SIGNUP_FAIL";
 export const CLEAR_ERROR = "CLEAR_ERROR";
 export const IMPORT_HALL = "IMPORT_HALL"
 export const IMPORT_HALL_FAIL = "IMPORT_HALL_FAIL";
+export const SELECT_HALL = "SELECT_HALL";

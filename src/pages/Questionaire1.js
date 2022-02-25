@@ -5,15 +5,16 @@ import { Button, ButtonGroup, DropdownButton, Dropdown } from "react-bootstrap";
 
 // Import Redux Related Components/Library
 import { useDispatch, useSelector } from "react-redux";
-import { gethalls } from "../actions/formpage";
+import { gethalls, selecthall } from "../actions/formpage";
 
 //Import sass
 import "../sass/pages/_Questionaire1.scss";
+import store from "../store";
 export function Questionaire1(props) {
   // Set All States
   const [halls, setHalls] = useState([]);
-  const storeHalls = useSelector((state) => state.formpage);
-  const [selectedVal, setVal] = useState("");
+  // Redux-store storeHalls key -- when calling api
+  const storeHalls = useSelector((state) => state.formpage.storeHalls);
   console.log("Checking halls state");
   console.log(storeHalls);
 
@@ -25,7 +26,7 @@ export function Questionaire1(props) {
     // Load Halls From API
     dispatch(gethalls());
 
-    if (storeHalls !== null) {
+    if (storeHalls === null) {
       // ERROR HANDLING: If API Doesn't Load Any Hall
       //   // Initialize halls state
       //   var n = 15;
@@ -184,12 +185,23 @@ export function Questionaire1(props) {
 
   // All Functions
 
-  // Decompose
+  // Destructuring
   const { nextQuestionHandler } = props;
 
   const handleSelect = (evt) => {
-    console.log("I've selected");
-    console.log(evt);
+    var _selectedID = parseInt(evt)
+    // filter array of objects
+    var tmpArray = [...halls]
+    if (storeHalls){
+        // change to api's storedHalls if data is present
+        tmpArray = [...storeHalls]
+    }
+    var _selectedHall = tmpArray.filter(
+        (_singleHall) => parseInt(_singleHall.id) === _selectedID 
+      );
+    // Save selected hall in store
+    console.log("Dispatched to userHall: "+ _selectedHall[0].name)
+    dispatch(selecthall(_selectedHall[0].name));
   };
 
   return (
@@ -206,7 +218,7 @@ export function Questionaire1(props) {
         {halls.map((value, i) => (
           <Dropdown.Item
             eventKey={`${value.id}`}
-            key={value.id}
+            key={i}
           >{`${value.name}`}</Dropdown.Item>
         ))}
       </DropdownButton>
