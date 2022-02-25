@@ -12,7 +12,7 @@ import { Landingpage } from './pages/Landingpage';
 // Pages Related Imports
 import { Login } from './pages/Login';
 import { Signup } from './pages/Signup';
-import Formpage from './pages/Formpage';
+import { Formpage } from './pages/Formpage';
 
 // Import action
 import { loadUser } from './actions/auth';
