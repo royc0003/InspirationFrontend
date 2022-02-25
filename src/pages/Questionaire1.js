@@ -14,6 +14,7 @@ export function Questionaire1(props) {
   const [halls, setHalls] = useState([]);
   // Redux-store storeHalls key -- when calling api
   const storeHalls = useSelector((state) => state.formpage.storeHalls);
+  const userHall = useSelector(state => state.formpage.userHall);
   console.log("Checking halls state");
   console.log(storeHalls);
 
@@ -203,7 +204,6 @@ export function Questionaire1(props) {
     dispatch(selecthall(_selectedHall[0].name));
   };
 
-  // global tmpArray
 
   return (
     <div className="questionaire1overall">
@@ -232,7 +232,7 @@ export function Questionaire1(props) {
             ))}
       </DropdownButton>
       <div className="HallSelection"></div>
-      <Button style={{ marginTop: "20%" }} onClick={nextQuestionHandler}>
+      <Button style={{ marginTop: "20%" }} disabled={userHall === null ? true : false} onClick={nextQuestionHandler}>
         Click to qn2
       </Button>
     </div>
