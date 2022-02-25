@@ -5,7 +5,7 @@ import { Button, ButtonGroup, DropdownButton, Dropdown } from "react-bootstrap";
 
 // Import Redux Related Components/Library
 import { useDispatch, useSelector } from "react-redux";
-import { gethalls, selecthall } from "../actions/formpage";
+import { gethalls, selecthall } from "../actions/question1";
 
 //Import sass
 import "../sass/pages/_Questionaire1.scss";
@@ -13,7 +13,8 @@ export function Questionaire1(props) {
   // Set All States
   const [halls, setHalls] = useState([]);
   // Redux-store storeHalls key -- when calling api
-  const storeHalls = useSelector((state) => state.formpage.storeHalls);
+  const storeHalls = useSelector((state) => state.question1.storeHalls);
+  const userHall = useSelector(state => state.question1.userHall);
   console.log("Checking halls state");
   console.log(storeHalls);
 
@@ -203,7 +204,6 @@ export function Questionaire1(props) {
     dispatch(selecthall(_selectedHall[0].name));
   };
 
-  // global tmpArray
 
   return (
     <div className="questionaire1overall">
@@ -232,7 +232,7 @@ export function Questionaire1(props) {
             ))}
       </DropdownButton>
       <div className="HallSelection"></div>
-      <Button style={{ marginTop: "20%" }} onClick={nextQuestionHandler}>
+      <Button style={{ marginTop: "20%" }} disabled={userHall === null ? true : false} onClick={nextQuestionHandler}>
         Click to qn2
       </Button>
     </div>

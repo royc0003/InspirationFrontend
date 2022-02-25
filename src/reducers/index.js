@@ -3,14 +3,14 @@ import { combineReducers } from 'redux';
 import posts from './posts';
 import comments from './comments';
 import auth from './auth';
-import formpage from './formpage';
+import question1 from './question1';
 
 
 const rootReducer = combineReducers( {
     posts,
     comments,
     auth,
-    formpage,
+    question1,
 });
 
 export default rootReducer;
