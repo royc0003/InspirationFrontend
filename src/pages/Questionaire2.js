@@ -6,7 +6,7 @@ import { SingleInterest } from "../components/SingleInterest";
 
 // Import Redux Related Components/Library
 import { useDispatch, useSelector } from "react-redux";
-import { getinterests } from "../actions/question2";
+import { getinterests, setinterest } from "../actions/question2";
 
 export function Questionaire2(props) {
   // Redux Store's Interest
@@ -129,6 +129,10 @@ export function Questionaire2(props) {
     dispatch(getinterests());
     console.log("printing interests");
     console.log(interests);
+    if (!interests) {
+      console.log("I'm setting")
+      dispatch(setinterest(localInterests))
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
