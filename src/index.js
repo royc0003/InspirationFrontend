@@ -6,6 +6,7 @@ import { render } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 // Import CSS
 import 'bootstrap/dist/css/bootstrap.css';
+import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 import './sass/App.scss';
 
 // Import Components

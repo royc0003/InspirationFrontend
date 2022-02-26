@@ -14,7 +14,7 @@ export function Landingpage(props) {
   return (
     <div className="overallLanding">
       <div className="overall">
-        <div className="captiontitlefirst" xs={12} md={12} lg={12}>
+        <div className="captiontitlefirst" xs={1} md={6} lg={12}>
           <h3>
             <span className="captionFirst" style={{ fontSize: "20px" }}>
               Boyfriends and Girlfriends Will Come And Go,
