@@ -129,19 +129,12 @@ export function Questionaire2(props) {
     dispatch(getinterests());
     console.log("printing interests");
     console.log(interests);
-
-    if (interests === null) {
-      console.log("Printing local interests");
-      console.log(localInterests);
-    }
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Functions
 
   const _question2Handler = () => {
-    // send the data over
     console.log("it's working");
     nextQuestionHandler();
   }
