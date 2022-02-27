@@ -2,7 +2,8 @@ import React, { useState } from "react";
 
 // Import Pages
 import { Questionaire1 } from "./Questionaire1";
-import { Questionaire2 }from "./Questionaire2";
+import { Questionaire2 } from "./Questionaire2";
+import { Questionaire3 } from "./Questionaire3";
 
 export function Formpage(props) {
   // Set All States
@@ -27,7 +28,7 @@ export function Formpage(props) {
           qnNo === 2 ? (
             <Questionaire2 key={2} nextQuestionHandler={nextQuestionHandler} />
           ) : (
-            <div> hello </div>
+            <Questionaire3 key={3}/>
           ),
         ]
       )}
