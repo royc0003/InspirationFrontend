@@ -15,17 +15,16 @@ export function Slider(props) {
 //   const [_thisinterest, set_Interest] = useState([]);
   // Set States
   const [value, setValue] = useState(1);
-
   const interests = useSelector((state) => state.question2.interests);
 
   // Set Dispatch
   const dispatch = useDispatch();
 
   // destructuring props
-  const { index } = props;
+  const { index, i } = props;
   const handleSubmit = () => {
     console.log("Dispatching to update interest rank");
-    dispatch(updateinterestrank(index, parseInt(value)));
+    dispatch(updateinterestrank(i, parseInt(value)));
   };
   const _interest = interests[index-1]
   return (

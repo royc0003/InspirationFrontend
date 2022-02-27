@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-
+import { useNavigate } from "react-router-dom";
 // Bootstrap related components
-import { Container, Button } from "react-bootstrap";
+import { Container, Button, Row, Col } from "react-bootstrap";
 
 // Import Components
 import { Slider } from "../components/Slider";
@@ -9,6 +9,7 @@ import { Slider } from "../components/Slider";
 // Import Redux Related Components/Library
 import { useDispatch, useSelector } from "react-redux";
 import { setinterestrank } from "../actions/question3";
+import { exportuser } from "../actions/formpage";
 
 export function Questionaire3(props) {
   // set States
@@ -18,6 +19,8 @@ export function Questionaire3(props) {
   console.log(selectedInterests);
   // set dispatch
   const dispatch = useDispatch();
+  // Set router
+  const navigate = useNavigate()
   // componentDidMount()
   useEffect(() => {
     console.log("Using effect");
@@ -28,7 +31,11 @@ export function Questionaire3(props) {
   }, []);
 
   const handleSubmit = () => {
-    console.log();
+      console.log("Exporting user")
+      dispatch(exportuser());
+
+      console.log("Moving to match page");
+      navigate("/protected")
   };
 
   return (
@@ -36,9 +43,13 @@ export function Questionaire3(props) {
       <Container>
         <div className="q3-main">How would you rate your interest?</div>
         {selectedInterests.map((value, i) => (
-          <Slider key={value} index={value} />
+          <Slider key={value} index={value} i={i}/>
         ))}
-        <Button onClick={handleSubmit}>Click to next question</Button>
+        <Row>
+          <Col>
+            <Button onClick={handleSubmit}>Click to next question</Button>
+          </Col>
+        </Row>
       </Container>
     </div>
   );
