@@ -29,7 +29,7 @@ function question3(state = initialState, action) {
         case FLATTEN_INTEREST_RANK:
             return {
                 ...state,
-                interest_rankings: action.payload,
+                interest_rankings: [...state.tmpInterestRanking]
             }
         default:
             return state;

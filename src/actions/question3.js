@@ -25,6 +25,7 @@ export const setinterestrank = () => (dispatch, getState) => {
 
 export const updateinterestrank = (index, value) => (dispatch, getState) => {
   const tmpInterestRanking = getState().question3.tmpInterestRanking;
+  console.log("UpdatingInterestRank")
 
   if (tmpInterestRanking) {
     dispatch({
@@ -35,16 +36,8 @@ export const updateinterestrank = (index, value) => (dispatch, getState) => {
 };
 
 export const flatteninterestrank = () => (dispatch, getState) => {
-  const curInterestRanks = getState().question3.tmpInterestRanking;
-  var tmpArray = [];
-  for (var item of curInterestRanks) {
-    tmpArray = [...tmpArray, item.val];
-  }
-
-  if (tmpArray) {
+    console.log("Flattening Interests")
     dispatch({
-      type: FLATTEN_INTEREST_RANK,
-      payload: tmpArray,
-    });
-  }
+        type: FLATTEN_INTEREST_RANK,
+    })
 };
