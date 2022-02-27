@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
 // Redux-Store Related Imports
 import * as actionCreators from '../actions/actionCreators';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+
+// Import Redux Related Components/Library
+import { useDispatch, useSelector } from "react-redux";
+
+// Import Actions
+import { getmatchedusers, getallusers } from '../actions/photogrid';
 
 // Component Related Imports
 import { Photo } from './Photo';
@@ -13,6 +20,16 @@ import '../sass/components/_PhotoGrid.scss';
 
 // export default class Main extends React.Component
 export function PhotoGrid(props){
+
+  // Set Dispatch
+  const dispatch = useDispatch();
+
+  // Similar to componentDidMount()
+  useEffect(() => {
+    console.log("Attempting to get matched users");
+    dispatch(getmatchedusers());
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
     return (
       <div className="photo-grid">

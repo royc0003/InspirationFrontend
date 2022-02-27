@@ -28,7 +28,7 @@ export const getmatchedusers = () => (dispatch, getState) => {
   }
 
   axios
-    .post(`${url}/match_user/${friendstagram_email}`, config)
+    .get(`${url}/match_user/${friendstagram_email}`, config)
     .then((res) => {
       console.log("Successfully matched user");
       console.log(res);
@@ -77,7 +77,7 @@ export const getallusers = () => (dispatch, getState) => {
   }
 
   axios
-    .post(`${url}/user_information/${friendstagram_email}`, config)
+    .get(`${url}/user_information/${friendstagram_email}`, config)
     .then((res) => {
       console.log("Successfully received all user information");
       console.log(res);
