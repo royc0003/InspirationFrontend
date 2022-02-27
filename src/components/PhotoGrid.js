@@ -12,14 +12,13 @@ import '../sass/components/_PhotoGrid.scss';
 
 
 // export default class Main extends React.Component
-export class PhotoGrid extends React.Component{
-  render() {
+export function PhotoGrid(props){
+
     return (
       <div className="photo-grid">
-          {this.props.posts.map((post, i) => <Photo {...this.props} key={i} i={i} post={post}/>)}
+          {props.posts.map((post, i) => <Photo {...props} key={i} i={i} post={post}/>)}
       </div>
     );
-  }
 };
 
 

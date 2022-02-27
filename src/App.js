@@ -42,7 +42,7 @@ export function App(props) {
           // This is really just inverting the wrapping, but it's a lot
           // more clear which components expect which props.
           <RequireAuth redirectTo="/login" auth={props.auth}>
-            <PhotoGrid/>
+            <PhotoGrid {...props}/>
           </RequireAuth>
         }
       />
