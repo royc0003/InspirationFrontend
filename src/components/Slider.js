@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+
 // Bootstrap related componentes
 // https://github.com/jaywilz/react-bootstrap-range-slider
 import RangeSlider from "react-bootstrap-range-slider";
@@ -16,9 +16,6 @@ export function Slider(props) {
   // Set States
   const [value, setValue] = useState(1);
   const interests = useSelector((state) => state.question2.interests);
-
-  // Set router
-  const navigate = useNavigate()
 
   // Set Dispatch
   const dispatch = useDispatch();
