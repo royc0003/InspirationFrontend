@@ -24,10 +24,10 @@ export const setinterestrank = () => (dispatch, getState) => {
 };
 
 export const updateinterestrank = (index, value) => (dispatch, getState) => {
-  const tmpInterestRanking = getState().question3.tmpInterestRanking;
+  const interest_rankings = getState().question3.interest_rankings;
   console.log("UpdatingInterestRank")
 
-  if (tmpInterestRanking) {
+  if (interest_rankings) {
     dispatch({
       type: UPDATE_INTEREST_RANK,
       payload: {index, value}
