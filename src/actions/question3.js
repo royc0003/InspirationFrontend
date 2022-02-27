@@ -5,7 +5,7 @@ export const setinterestrank = () => (dispatch, getState) => {
   var tmpArray = [];
   // eslint-disable-next-line no-unused-vars
   for (var _ of selectedInterestsIDs) {
-    tmpArray = [...tmpArray, 0];
+    tmpArray = [...tmpArray, 1];
   }
   // check if payload has the val, if not we proceed
   dispatch({
