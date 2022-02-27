@@ -1,12 +1,4 @@
-import axios from "axios";
-
-import {
-  UPDATE_INTEREST_RANK,
-  SET_INTEREST_RANK,
-} from "./types";
-
-// base url
-const url = "https://zhuweiji.pythonanywhere.com";
+import { UPDATE_INTEREST_RANK, SET_INTEREST_RANK } from "./types";
 
 export const setinterestrank = () => (dispatch, getState) => {
   const selectedInterestsIDs = getState().question2.selectedInterests;
@@ -24,13 +16,12 @@ export const setinterestrank = () => (dispatch, getState) => {
 
 export const updateinterestrank = (index, value) => (dispatch, getState) => {
   const interest_rankings = getState().question3.interest_rankings;
-  console.log("UpdatingInterestRank")
+  console.log("UpdatingInterestRank");
 
   if (interest_rankings) {
     dispatch({
       type: UPDATE_INTEREST_RANK,
-      payload: {index, value}
+      payload: { index, value },
     });
   }
 };
-

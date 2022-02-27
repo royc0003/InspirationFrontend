@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 // Bootstrap related componentes
 // https://github.com/jaywilz/react-bootstrap-range-slider
@@ -17,19 +17,6 @@ export function Slider(props) {
   const [value, setValue] = useState(1);
 
   const interests = useSelector((state) => state.question2.interests);
-
-  // componentDidMount()
-//   useEffect(() => {
-//     // find matched data
-//     const _interest = interests.filter(
-//       (_singleInterest) => _singleInterest.id === parseInt(value)
-//     );
-//     console.log("This is the interest I need");
-//     console.log(_interest);
-//     set_Interest((prevState) => [ _interest]);
-//     console.log(_thisinterest);
-//     // eslint-disable-next-line react-hooks/exhaustive-deps
-//   }, []);
 
   // Set Dispatch
   const dispatch = useDispatch();
