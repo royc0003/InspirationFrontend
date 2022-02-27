@@ -7,7 +7,6 @@ import {
 
 const initialState = {
     tmpInterestRanking: null,
-    interest_rankings: null,
 }
 
 function question3(state = initialState, action) {
@@ -25,11 +24,6 @@ function question3(state = initialState, action) {
             return {
                 ...state,
                 tmpInterestRanking: action.payload,
-            }
-        case FLATTEN_INTEREST_RANK:
-            return {
-                ...state,
-                interest_rankings: [...state.tmpInterestRanking]
             }
         default:
             return state;

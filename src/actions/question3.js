@@ -35,9 +35,3 @@ export const updateinterestrank = (index, value) => (dispatch, getState) => {
   }
 };
 
-export const flatteninterestrank = () => (dispatch, getState) => {
-    console.log("Flattening Interests")
-    dispatch({
-        type: FLATTEN_INTEREST_RANK,
-    })
-};
