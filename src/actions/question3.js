@@ -3,7 +3,6 @@ import axios from "axios";
 import {
   UPDATE_INTEREST_RANK,
   SET_INTEREST_RANK,
-  FLATTEN_INTEREST_RANK,
 } from "./types";
 
 // base url

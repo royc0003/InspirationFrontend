@@ -8,7 +8,7 @@ import { Slider } from "../components/Slider";
 
 // Import Redux Related Components/Library
 import { useDispatch, useSelector } from "react-redux";
-import { setinterestrank, flatteninterestrank } from "../actions/question3";
+import { setinterestrank } from "../actions/question3";
 
 export function Questionaire3(props) {
   // set States
@@ -38,7 +38,7 @@ export function Questionaire3(props) {
         {selectedInterests.map((value, i) => (
           <Slider key={value} index={i} />
         ))}
-        <Button onClick={handleSubmit}>Click to qn3</Button>
+        <Button onClick={handleSubmit}>Click to next question</Button>
       </Container>
     </div>
   );

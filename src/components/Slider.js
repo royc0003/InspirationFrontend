@@ -1,43 +1,69 @@
-import React, { useState } from "react";
+/* eslint-disable jsx-a11y/img-redundant-alt */
+import React, { useState, useEffect } from "react";
 
 // Bootstrap related componentes
 // https://github.com/jaywilz/react-bootstrap-range-slider
 import RangeSlider from "react-bootstrap-range-slider";
 import { Row, Col } from "react-bootstrap";
-import Stack from 'react-bootstrap/Stack'
+import Stack from "react-bootstrap/Stack";
 
-// Import Reudx Related Components/Library 
-import { useDispatch } from "react-redux";
-import {
-    updateinterestrank,
-} from '../actions/question3';
+// Import Reudx Related Components/Library
+import { useDispatch, useSelector } from "react-redux";
+import { updateinterestrank } from "../actions/question3";
 
 export function Slider(props) {
+//   const [_thisinterest, set_Interest] = useState([]);
   // Set States
   const [value, setValue] = useState(1);
+
+  const interests = useSelector((state) => state.question2.interests);
+
+  // componentDidMount()
+//   useEffect(() => {
+//     // find matched data
+//     const _interest = interests.filter(
+//       (_singleInterest) => _singleInterest.id === parseInt(value)
+//     );
+//     console.log("This is the interest I need");
+//     console.log(_interest);
+//     set_Interest((prevState) => [ _interest]);
+//     console.log(_thisinterest);
+//     // eslint-disable-next-line react-hooks/exhaustive-deps
+//   }, []);
 
   // Set Dispatch
   const dispatch = useDispatch();
 
   // destructuring props
-  const {index} = props
+  const { index } = props;
   const handleSubmit = () => {
-      console.log("Dispatching to update interest rank");
-      dispatch(updateinterestrank(index, parseInt(value)))
-  }
+    console.log("Dispatching to update interest rank");
+    dispatch(updateinterestrank(index, parseInt(value)));
+  };
+  const _interest = interests[index]
   return (
     <Row>
       <Col sm={12} md={4} lg={2}>
-        <Stack
-        gap={2}
-        >
-            <div className="slider-item-1">item 1</div>
-            <div className="slider-item-2">item 2</div>
+        <Stack gap={2}>
+          <div className="slider-item-1">
+            <img
+              src={
+                require("../assets/" +
+                _interest.interest
+                    .trim()
+                    .replace(/\s+/g, "")
+                    .toLowerCase() +
+                  ".svg").default
+              }
+              alt="No Image Available"
+            />
+          </div>
+          <div className="slider-item-2">{_interest.interest}</div>
         </Stack>
       </Col>
       <Col sm={12} md={8} lg={10}>
         <RangeSlider
-        variant={"primary"}
+          variant={"primary"}
           min={1}
           max={10}
           size={"lg"}
