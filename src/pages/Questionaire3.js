@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-
+import { useNavigate } from "react-router-dom";
 // Bootstrap related components
 import { Container, Button, Row, Col } from "react-bootstrap";
 
@@ -19,6 +19,8 @@ export function Questionaire3(props) {
   console.log(selectedInterests);
   // set dispatch
   const dispatch = useDispatch();
+  // Set router
+  const navigate = useNavigate()
   // componentDidMount()
   useEffect(() => {
     console.log("Using effect");
@@ -31,6 +33,9 @@ export function Questionaire3(props) {
   const handleSubmit = () => {
       console.log("Exporting user")
       dispatch(exportuser());
+
+      console.log("Moving to match page");
+      navigate("/protected")
   };
 
   return (
