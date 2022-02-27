@@ -27,7 +27,7 @@ export function Slider(props) {
     console.log("Dispatching to update interest rank");
     dispatch(updateinterestrank(index, parseInt(value)));
   };
-  const _interest = interests[index]
+  const _interest = interests[index-1]
   return (
     <Row>
       <Col sm={12} md={4} lg={2}>

@@ -36,7 +36,7 @@ export function Questionaire3(props) {
       <Container>
         <div className="q3-main">How would you rate your interest?</div>
         {selectedInterests.map((value, i) => (
-          <Slider key={value} index={i} />
+          <Slider key={value} index={value} />
         ))}
         <Button onClick={handleSubmit}>Click to next question</Button>
       </Container>
