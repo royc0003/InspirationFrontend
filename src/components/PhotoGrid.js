@@ -24,8 +24,8 @@ import "../sass/components/_PhotoGrid.scss";
 // export default class Main extends React.Component
 export function PhotoGrid(props) {
   // Set States Related To Spinner
-  let [loading, setLoading] = useState(true);
-  let [color, setColor] = useState("#212529");
+  let [ loading ] = useState(true);
+  let [color ] = useState("#212529");
 
   // Set Dispatch
   const dispatch = useDispatch();
