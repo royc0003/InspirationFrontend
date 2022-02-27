@@ -1,7 +1,6 @@
 import {
     SET_INTEREST_RANK,
     UPDATE_INTEREST_RANK,
-    FLATTEN_INTEREST_RANK,
 } from '../actions/types';
 
 
