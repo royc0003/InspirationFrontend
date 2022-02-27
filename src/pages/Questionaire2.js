@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
+import { Container, Button, Row, Col } from "react-bootstrap";
 
 // Import Component
 import { SingleInterest } from "../components/SingleInterest";
@@ -130,8 +130,8 @@ export function Questionaire2(props) {
     console.log("printing interests");
     console.log(interests);
     if (!interests) {
-      console.log("I'm setting")
-      dispatch(setinterest(localInterests))
+      console.log("I'm setting");
+      dispatch(setinterest(localInterests));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -141,7 +141,7 @@ export function Questionaire2(props) {
   const _question2Handler = () => {
     console.log("it's working");
     nextQuestionHandler();
-  }
+  };
 
   // Make sure to do error handling.
   // destructuring
@@ -149,15 +149,25 @@ export function Questionaire2(props) {
   return (
     <div>
       This is questionarie 2
-      {// Error Handling: In case API Fails
-      interests === null
-        ? localInterests.map((value, i) => (
-            <SingleInterest key={value.id} _interest={value} />
-          ))
-        : interests.map((value, i) => (
-            <SingleInterest key={value.id} _interest={value} />
-          ))}
-      <Button onClick={_question2Handler}>Click to qn3</Button>
+      <Container fluid>
+        <Row xs={12} md={4} lg={4} className="justify-content-center">
+          {
+            // Error Handling: In case API Fails
+            interests === null
+              ? localInterests.map((value, i) => (
+                  <SingleInterest key={value.id} _interest={value} />
+                ))
+              : interests.map((value, i) => (
+                  <SingleInterest key={value.id} _interest={value} />
+                ))
+          }
+        </Row>
+        <Row xs={4} md={1} lg={1} className="justify-content-md-right justify-content-sm-center justify-content-lg-right">
+          <Col>
+            <Button onClick={_question2Handler}>Click to qn3</Button>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }

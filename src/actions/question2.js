@@ -25,11 +25,11 @@ export const getinterests = () => (dispatch, getState) => {
 
   // If token, add to headers config
   if (token) {
-    config.headers["Authorization"] = `Token ${token}`;
+    config.headers['Authorization'] = `Token ${token}`;
   }
 
   axios
-    .post(`${url}/interests`, config)
+    .post(`${url}/interests/`, config)
     .then((res) => {
       dispatch({
         type: GET_ALL_INTERESTS,

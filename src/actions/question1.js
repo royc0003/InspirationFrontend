@@ -10,21 +10,23 @@ export const gethalls = () => (dispatch, getState) => {
   // Headers
   const config = {
     headers: {
-      "Content-Type": "application/json",
     },
   };
 
   // Get token from state
   const token = getState().auth.token;
-
+  const key = getState().auth.key;
   // If token, add to headers config
   if (token) {
     config.headers["Authorization"] = `Token ${token}`;
   }
+  else if (key) {
+    config.headers["Authorization"] = `Token ${key}`;
+  }
 
 
   axios
-    .post(`${url}/hall_residences`, config)
+    .post(`${url}/hall_residences/`, config)
     .then((res) => {
       dispatch({
         type: IMPORT_HALL,
