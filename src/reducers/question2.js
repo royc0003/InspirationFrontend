@@ -19,7 +19,7 @@ function question2(state = initialState, action) {
         selectedInterests: [
           ...state.selectedInterests,
           action.payload,
-        ]
+        ].sort()
       }
     case REMOVE_INTEREST:
       return {
@@ -27,7 +27,7 @@ function question2(state = initialState, action) {
         selectedInterests: [
           ...state.selectedInterests.slice(0, action.payload), 
           ...state.selectedInterests.slice(action.payload + 1)
-        ]
+        ].sort()
       }
     case SET_INTEREST:
       return {

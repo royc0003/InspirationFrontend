@@ -1,16 +1,44 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-// Bootstrap related componentes
-import { Container } from "react-bootstrap";
+// Bootstrap related components
+import { Container, Button } from "react-bootstrap";
 
 // Import Components
 import { Slider } from "../components/Slider";
 
+// Import Redux Related Components/Library
+import { useDispatch, useSelector } from "react-redux";
+import { setinterestrank, flatteninterestrank } from "../actions/question3";
+
 export function Questionaire3(props) {
+  // set States
+  const selectedInterests = useSelector(
+    (state) => state.question2.selectedInterests
+  );
+  console.log(selectedInterests);
+  // set dispatch
+  const dispatch = useDispatch();
+  // componentDidMount()
+  useEffect(() => {
+    console.log("Using effect");
+    console.log(selectedInterests);
+    console.log("Dispatching setinrerest rank");
+    dispatch(setinterestrank());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleSubmit = () => {
+    console.log();
+  };
+
   return (
     <div className="qn3-overall">
       <Container>
-        <Slider />
+        <div className="q3-main">How would you rate your interest?</div>
+        {selectedInterests.map((value, i) => (
+          <Slider key={value} index={i} />
+        ))}
+        <Button onClick={handleSubmit}>Click to qn3</Button>
       </Container>
     </div>
   );

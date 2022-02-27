@@ -28,7 +28,7 @@ export function Formpage(props) {
           qnNo === 2 ? (
             <Questionaire2 key={2} nextQuestionHandler={nextQuestionHandler} />
           ) : (
-            <Questionaire3/>
+            <Questionaire3 key={3}/>
           ),
         ]
       )}
