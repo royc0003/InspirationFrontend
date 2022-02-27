@@ -29,13 +29,13 @@ export const loadUser = () => (dispatch, getState) => {
   // Headers
   const config = {
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
   };
 
   // If token, add to headers config
   if (token) {
-    config.headers["Authorization"] = `Token ${token}`;
+    config.headers['Authorization'] = `Token ${token}`;
   }
 
   axios
@@ -77,13 +77,14 @@ export const login = (email, password) => (dispatch) => {
     dispatch({
       type: LOGIN_SUCCESS,
       payload: res.data,
-    }).catch((err) => {
-      console.log(err);
-      dispatch({
-        type: LOGIN_FAIL,
-      });
+    })
+  }).catch((err) => {
+    console.log(err);
+    dispatch({
+      type: LOGIN_FAIL,
     });
   });
+  ;
 };
 
 // CHECK TOKEN & Logout

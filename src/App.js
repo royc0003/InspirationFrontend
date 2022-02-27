@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 // Redux-Store Related Imports
 import { bindActionCreators } from 'redux';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { connect, useDispatch } from 'react-redux';
+import { connect, useDispatch, useSelector } from 'react-redux';
 import * as actionCreators from './actions/actionCreators';
 // Component Related Imports
 import Header from './components/Header';
@@ -19,8 +19,12 @@ import { loadUser } from './actions/auth';
 
 export function App(props) {
   const dispatch = useDispatch()
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
   useEffect(() => {
-    dispatch(loadUser());
+    if (!isAuthenticated){
+      dispatch(loadUser());
+    }
+    
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
