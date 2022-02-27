@@ -6,6 +6,7 @@ import auth from './auth';
 import question1 from './question1';
 import question2 from './question2';
 import question3 from './question3';
+import formpage from './formpage';
 
 
 const rootReducer = combineReducers( {
@@ -15,6 +16,7 @@ const rootReducer = combineReducers( {
     question1,
     question2,
     question3,
+    formpage,
 });
 
 export default rootReducer;
