@@ -9,6 +9,7 @@ const initialState = {
   matchedUsers: null,
   allAvailableUsers: null,
   isMatched: false,
+  hasFoundUsers: false
 };
 
 function photogrid(state = initialState, action) {
@@ -23,8 +24,13 @@ function photogrid(state = initialState, action) {
       return {
         ...state,
         allAvailableUsers: action.payload,
+        hasFoundUsers: true
       };
     case GET_MATCHED_USERS_FAIL:
+        return {
+            ...state,
+            hasFoundUsers: false
+        }
     case GET_ALL_USERS_FAIL:
       return {
         ...state,

@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 // Import Redux Related Components/Library
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 // Import Actions
 import { getmatchedusers, getallusers } from '../actions/photogrid';
@@ -28,11 +28,14 @@ export function PhotoGrid(props){
   useEffect(() => {
     console.log("Attempting to get matched users");
     dispatch(getmatchedusers());
+    // Perform get all users here
+    dispatch(getallusers());
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
     return (
       <div className="photo-grid">
+        {/** Include Spinner Class Here, check all matched user + filter users are done */}
           {props.posts.map((post, i) => <Photo {...props} key={i} i={i} post={post}/>)}
       </div>
     );
