@@ -30,7 +30,7 @@ const handleSubmit = () => {
     <Container>
       <Row>
         <Col>
-          <p>Question4</p>
+          <p></p>
         </Col>
       </Row>
 
@@ -41,7 +41,7 @@ const handleSubmit = () => {
               className="mb-3"
               controlId="exampleForm.ControlTextarea1"
             >
-              <Form.Label>How would you describe yourself?</Form.Label>
+              <Form.Label style={{fontSize:"18px"}}>How would you describe yourself?</Form.Label>
               <Form.Control as="textarea"  placeholder="Type here..." rows={3} onChange={(e) => setInput(e.target.value)}/>
             </Form.Group>
           </Form>
