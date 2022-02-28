@@ -119,7 +119,7 @@ export const matchUserToAllUsers = () => (dispatch, getState) => {
         (_singleAvailableUser) =>_singleAvailableUser.email === _email
       ))
       console.log(tmp)
-      _result.push(tmp);
+      _result.push(tmp[0]);
     }
 
     dispatch({

@@ -17,6 +17,8 @@ const initialState = {
 function photogrid(state = initialState, action) {
   switch (action.type) {
     case MATCH_USER_TO_ALL_USERS:
+      console.log("Printing payload")
+      console.log(action.payload)
       return {
         ...state,
         matchToAllUsers: action.payload
