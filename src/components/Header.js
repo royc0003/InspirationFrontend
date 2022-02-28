@@ -21,7 +21,7 @@ export class Header extends React.Component {
     const authLinks = (
       <Nav id={styles.navMenu}>
         <Nav.Link as={Link} to="/login">
-          <Button onClick={handleLogOut}>Logout</Button>
+          <Button className="header-logout" onClick={handleLogOut} style={{fontFamily:"Shadows Into Light" , color:"#fdfdfd", backgroundColor:"#212529", fontSize:"25px", borderColor:"#fdfdfd"}}>Logout</Button>
         </Nav.Link>
       </Nav>
     );
