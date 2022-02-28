@@ -174,7 +174,7 @@ export const getinterests = () => async(dispatch, getState) => {
     });
 };
 
-export const getlistofinterests = () => (dispatch, getState) => {
+export const getlistofinterests = () => async (dispatch, getState) => {
   var interests = getState().photogrid.interests;
   if(! interests) {
     // Get current state
@@ -188,7 +188,7 @@ export const getlistofinterests = () => (dispatch, getState) => {
   console.log("Attempting to get list of interests")
   console.log(_result);
 
-  dispatch({
+  return dispatch({
     type: FLATTEN_ALL_INTERESTS,
     payload: _result
   })
