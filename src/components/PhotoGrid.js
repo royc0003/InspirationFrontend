@@ -88,18 +88,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(actionCreators, dispatch);
 }
 
-const secondFunction = () => async (dispatch) => {
-  await Promise.all(
-    [
-      // Get all matched users
-      dispatch(getmatchedusers()),
-      // Perform get all users here
-      dispatch(getallusers())
-    ]
-  );
-  console.log("Im done")
-  return "done";
-};
-
-
 export default connect(mapStateToProps, mapDispatchToProps)(PhotoGrid);
