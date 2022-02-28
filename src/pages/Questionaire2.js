@@ -178,7 +178,7 @@ export function Questionaire2(props) {
           className="justify-content-md-right justify-content-sm-center justify-content-lg-right"
         >
           <Col xs={{ span: 4, offset: 4}} sm={{ span: 4}} md={{ span: 4, offset:10}} lg={{ span: 4, offset:10}} xl={{ span: 4, offset:10}} xxl={{ span: 4, offset:10}}>
-            <Button style={{fontSize:"20px"}}onClick={_question2Handler}>Click to qn3</Button>
+            <Button style={{fontSize:"20px"}} onClick={_question2Handler}>Click to qn3</Button>
           </Col>
         </Row>
       </Container>
