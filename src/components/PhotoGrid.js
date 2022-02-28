@@ -75,8 +75,8 @@ export function PhotoGrid(props) {
             <Col
               xs={{ span: 6, offset: 5 }}
               md={{ span: 6, offset: 6 }}
-              lg={{ span: 6, offset: 5 }}
-              xl={{ span: 6, offset: 6 }}
+              lg={{ span: 6, offset: 6 }}
+              xl={{ span: 6, offset: 5 }}
             >
               <ClimbingBoxLoader color={color} loading={loading} size={20} />
             </Col>
@@ -91,7 +91,8 @@ export function PhotoGrid(props) {
                 <Col
                   xs={{ span: 6, offset: 5 }}
                   md={{ span: 6, offset: 6 }}
-                  lg={{ span: 6, offset: 5 }}
+                  lg={{ span: 6, offset: 6 }}
+                  xl={{ span: 6, offset: 5 }}
                 >
                   <ClimbingBoxLoader
                     color={color}
@@ -110,8 +111,8 @@ export function PhotoGrid(props) {
             matchToAllUsers.map((user, i) => (
               <div className="photo-grid2">
               <Container fluid>
-                <Row className="justify-content-center">
-                  <Photo {...props} key={i} i={i} post={user} />
+                <Row className="justify-content-center" >
+                  <Photo {...props} key={i} i={i} post={user} xl={5} lg={0} xxl={4} sm={2} md={1} />
                 </Row>
               </Container>
               </div>

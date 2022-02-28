@@ -54,7 +54,11 @@ export function Single(props) {
           </Row>
         </Container>
       ) : (
-        <Photo i={i} post={user} {...props}></Photo>
+        <Container>
+          <Row >
+            <Photo xl={0} lg={0} xxl={0} sm={2} md={1} i={i} post={user} {...props}></Photo>
+          </Row>
+        </Container>
       )}
       {/* <Comments postComments={postComments} {...props} /> */}
     </div>
