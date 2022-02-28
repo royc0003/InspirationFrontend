@@ -88,13 +88,12 @@ export const login = (email, password) => (dispatch) => {
 };
 
 // CHECK TOKEN & Logout
-export const logout = () => (dispatch, getState) => {
+export const logout = () => async (dispatch, getState) => {
   // Get token from state
-  const token = getState().auth.token;
-
+  const token = localStorage.getItem("token");
   // If token, then logout
   if (token) {
-    dispatch({
+    return dispatch({
       type: LOGOUT_SUCCESS,
     });
   }
