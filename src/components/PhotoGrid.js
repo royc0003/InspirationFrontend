@@ -47,14 +47,14 @@ export function PhotoGrid(props) {
   useEffect(() => {
     // Reference https://stackoverflow.com/questions/21518381/proper-way-to-wait-for-one-function-to-finish-before-continuing
     const promiseFunction = async () => {
-        console.log("Attempting to get matched users");
-        await dispatch(getmatchedusers());
-        await dispatch(getallusers());
-        await dispatch(getinterests());
-        // flatten list
-        await dispatch(getlistofinterests());
-        // do something else here after firstFunction completes
-        dispatch(matchUserToAllUsers());
+      console.log("Attempting to get matched users");
+      await dispatch(getmatchedusers());
+      await dispatch(getallusers());
+      await dispatch(getinterests());
+      // flatten list
+      await dispatch(getlistofinterests());
+      // do something else here after firstFunction completes
+      dispatch(matchUserToAllUsers());
     };
     // Perform get all users here
     promiseFunction();
@@ -107,7 +107,13 @@ export function PhotoGrid(props) {
             //  {const hasMatchToAllUsers = useSelector((state) => state.matchToAllUsers.hasMatchToAllUsers);}
 
             matchToAllUsers.map((user, i) => (
-              <Photo {...props} key={i} i={i} post={user} />
+              <div className="photo-grid2">
+              <Container fluid>
+                <Row className="justify-content-center">
+                  <Photo {...props} key={i} i={i} post={user} />
+                </Row>
+              </Container>
+              </div>
             ))
           ),
         ]

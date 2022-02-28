@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 // Redux-Store Related Imports
 import * as actionCreators from "../actions/actionCreators";
 import { bindActionCreators } from "redux";
-import { connect, useSelector, useDispatch } from "react-redux";
+import { connect, useSelector } from "react-redux";
 
 // Routing Related Imports
 import { useParams } from "react-router-dom";
 
 // Component Related Imports
 import { Photo } from "./Photo";
-import Comments from "./Comments";
+// import Comments from "./Comments";
 
 // Bootstrap related components
 import { Container, Row, Col } from "react-bootstrap";
