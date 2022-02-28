@@ -76,6 +76,7 @@ export function PhotoGrid(props) {
               xs={{ span: 6, offset: 5 }}
               md={{ span: 6, offset: 6 }}
               lg={{ span: 6, offset: 5 }}
+              xl={{ span: 6, offset: 6 }}
             >
               <ClimbingBoxLoader color={color} loading={loading} size={20} />
             </Col>
