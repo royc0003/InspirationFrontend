@@ -12,6 +12,7 @@ import "../sass/pages/_Questionaire1.scss";
 export function Questionaire1(props) {
   // Set All States
   const [halls, setHalls] = useState([]);
+  const [hallInput, setHallInput] = useState("");
   // Redux-store storeHalls key -- when calling api
   const storeHalls = useSelector((state) => state.question1.storeHalls);
   const userHall = useSelector(state => state.question1.userHall);
@@ -201,6 +202,8 @@ export function Questionaire1(props) {
     );
     // Save selected hall in store
     console.log("Dispatched to userHall: " + _selectedHall[0].name);
+
+    setHallInput(_selectedHall[0].name);
     dispatch(selecthall(_selectedHall[0].name));
   };
 
@@ -213,7 +216,7 @@ export function Questionaire1(props) {
         as={ButtonGroup}
         size="lg"
         variant="secondary"
-        title="Select Hall"
+        title={hallInput?`${hallInput}`: "Select Hall"}
         style={{ marginTop: "40px" }}
       >
         { // Error Handling: In case API Fails
