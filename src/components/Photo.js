@@ -16,7 +16,21 @@ import "../sass/components/_Photo.scss";
 
 export function Photo(props) {
   const [stringValue, setValue] = useState([]);
-  const { post, comments, i, xl, lg, xxl,sm ,md, xs_span, sm_span, md_span, xl_span, xxl_span} = props;
+  const {
+    post,
+    comments,
+    i,
+    xl,
+    lg,
+    xxl,
+    sm,
+    md,
+    xs_span,
+    sm_span,
+    md_span,
+    xl_span,
+    xxl_span,
+  } = props;
   // xs_span={12} sm_span={10} md_span={9} xl_span={12} xxl_span={12}
   const [inProp, setInProp] = useState(false);
   const listOfInterests = useSelector(
@@ -36,20 +50,30 @@ export function Photo(props) {
     //   setValue("No Interest Stated");
     // }
     if (_tmp) {
-      setValue(oldArray => [...oldArray, _tmp]);
+      setValue((oldArray) => [...oldArray, _tmp]);
     }
-    
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const renderComment = (singleComment, i) => {
     return (
-      <span key={i} className="photo-caption pink-highlight">#{singleComment}</span>
+      <span key={i} className="photo-caption pink-highlight">
+        #{singleComment}
+      </span>
     );
-  }
+  };
 
   return (
-    <Col className="overal-container" xs={xs_span} sm={{span: sm_span, offset: sm}} md={{ span: md_span, offset: md }} lg={lg} xl={{ span: xl_span, offset: xl}} xxl={{ span: xxl_span, offset: xxl}}>
+    <Col
+      className="overal-container"
+      xs={xs_span}
+      sm={{ span: sm_span, offset: sm }}
+      md={{ span: md_span, offset: md }}
+      lg={lg}
+      xl={{ span: xl_span, offset: xl }}
+      xxl={{ span: xxl_span, offset: xxl }}
+    >
       <figure className="grid-figure">
         <div className="grid-photo-wrap">
           <Link to={`/view/${parseInt(post.user)}`}>
@@ -74,22 +98,18 @@ export function Photo(props) {
             timeout={500}
           >
             <div>
-            <span key={post.likes} className="likes-heart">
-              {post.likes}
-            </span>
+              <span key={post.likes} className="likes-heart">
+                {post.likes}
+              </span>
             </div>
           </CSSTransition>
         </div>
 
         <figcaption>
-          {
-            stringValue[0]?
-            stringValue[0].map((v,i)=> (
-              renderComment(v,i)
-            )
-            ) : ""
-          }
-          
+          {stringValue[0]
+            ? stringValue[0].map((v, i) => renderComment(v, i))
+            : ""}
+
           <div className="control-buttons">
             <button onClick={props.increment.bind(null, i)} className="likes">
               &hearts; {post.likes}
