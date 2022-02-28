@@ -1,5 +1,5 @@
 @import '../App.scss';
-
+@import '../abstracts/variables';
 
 .single-photo {
 	flex-basis: calc(33.333% - 4rem);
@@ -34,3 +34,19 @@
 		margin: 0;
 	}
 }
+
+.overall-single-container {
+	display: flex;
+	font-family: $shadow-light-font;
+	font-size: 25px;
+	color: $black;
+	.comments {
+		flex: 1 0 20%;
+		max-width: 50%;
+	}
+	.sub-comments{
+		font-size: 18px;
+	}
+
+}
+

@@ -9,7 +9,7 @@ import { useParams } from "react-router-dom";
 
 // Component Related Imports
 import { Photo } from "./Photo";
-// import Comments from "./Comments";
+import { Comments } from "./Comments";
 
 // Bootstrap related components
 import { Container, Row, Col } from "react-bootstrap";
@@ -54,9 +54,10 @@ export function Single(props) {
           </Row>
         </Container>
       ) : (
-        <Container>
-          <Row >
-            <Photo xl={0} lg={0} xxl={0} sm={2} md={1} i={i} post={user} {...props}></Photo>
+        <Container className="overall-single-container">
+          <Row className="overall2">
+            <Photo xs_span={12} sm_span={10} md_span={9} xl_span={8} xxl_span={10} xl={0} lg={0} xxl={0} sm={2} md={1} i={i} post={user} {...props}></Photo>
+            <Comments post={user} biography={user.biography} hall={user.hall} email={user.email}/>
           </Row>
         </Container>
       )}

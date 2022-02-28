@@ -22,3 +22,62 @@ $shadow-light-font: 'Shadows Into Light';
 
 // Animation Variables
 $offsets: translateX(-50%) translateY(-50%);
+
+// Highlighter CSS Style
+.mark {
+	margin: 0 -0.4em;
+	padding: 0.1em 0.4em;
+	border-radius: 0.8em 0.3em;
+	background: transparent;
+	background-image: linear-gradient(
+		to right,
+		rgba(255, 225, 0, 0.1),
+		rgba(255, 225, 0, 0.7) 4%,
+		rgba(255, 225, 0, 0.3)
+	);
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+	}
+	
+.green-highlight, .pink-highlight, .yellow-highlight {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding-left: 3px;
+ }
+
+.green-highlight {
+    background: #99FFCC; /* Default color, all browsers */
+}
+
+.green-highlight::selection {
+    background: #99CCCC; /* Selection color, WebKit/Blink Browsers */
+}
+
+.green-highlight::-moz-selection {
+    background: #99CCCC; /* Selection color, Gecko Browsers */
+}
+
+.pink-highlight {
+    background: #FFCCFF; /* Default color, all browsers */
+}
+
+.pink-highlight::selection {
+    background: #FF99FF; /* Selection color, WebKit/Blink Browsers */
+}
+
+.pink-highlight::-moz-selection {
+    background: #FF99FF; /* Selection color, Gecko Browsers */
+}
+
+.yellow-highlight {
+    background: #FFFFCC; /* Default color, all browsers */
+}
+
+.yellow-highlight::selection {
+    background: #FFFF66; /* Selection color, WebKit/Blink Browsers */
+}
+
+.yellow-highlight::-moz-selection {
+    background: #FFFF66; /* Selection color, Gecko Browsers */
+}

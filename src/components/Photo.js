@@ -16,7 +16,8 @@ import "../sass/components/_Photo.scss";
 
 export function Photo(props) {
   const [stringValue, setValue] = useState();
-  const { post, comments, i, xl, lg, xxl,sm ,md} = props;
+  const { post, comments, i, xl, lg, xxl,sm ,md, xs_span, sm_span, md_span, xl_span, xxl_span} = props;
+  // xs_span={12} sm_span={10} md_span={9} xl_span={12} xxl_span={12}
   const [inProp, setInProp] = useState(false);
   const listOfInterests = useSelector(
     (state) => state.photogrid.listOfInterests
@@ -38,7 +39,7 @@ export function Photo(props) {
   }, []);
 
   return (
-    <Col xs={12} sm={{span:10, offset: sm}} md={{ span: 9, offset: md }} lg={lg} xl={{ span:12, offset: xl}} xxl={{ span:12, offset: xxl}}>
+    <Col className="overal-container" xs={xs_span} sm={{span: sm_span, offset: sm}} md={{ span: md_span, offset: md }} lg={lg} xl={{ span: xl_span, offset: xl}} xxl={{ span: xxl_span, offset: xxl}}>
       <figure className="grid-figure">
         <div className="grid-photo-wrap">
           <Link to={`/view/${parseInt(post.user)}`}>

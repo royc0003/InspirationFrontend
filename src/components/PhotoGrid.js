@@ -112,7 +112,7 @@ export function PhotoGrid(props) {
               <div className="photo-grid2">
               <Container fluid>
                 <Row className="justify-content-center" >
-                  <Photo {...props} key={i} i={i} post={user} xl={5} lg={0} xxl={4} sm={2} md={1} />
+                  <Photo {...props} key={i} i={i} post={user} xl={5} lg={0} xxl={4} sm={2} md={1} xs_span={12} sm_span={10} md_span={9} xl_span={12} xxl_span={12} />
                 </Row>
               </Container>
               </div>
