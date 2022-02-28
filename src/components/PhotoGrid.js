@@ -5,7 +5,7 @@ import * as actionCreators from "../actions/actionCreators";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
-// Botstrap related components
+// Bootstrap related components
 import { Container, Row, Col } from "react-bootstrap";
 import { ClimbingBoxLoader } from "react-spinners";
 
@@ -39,21 +39,22 @@ export function PhotoGrid(props) {
   // Get photogrid state
   const isMatched = useSelector((state) => state.photogrid.isMatched);
   const hasFoundUsers = useSelector((state) => state.photogrid.hasFoundUsers);
-  const hasMatchToAllUsers = useSelector((state) => state.photogrid.hasMatchToAllUsers);
+  const hasMatchToAllUsers = useSelector(
+    (state) => state.photogrid.hasMatchToAllUsers
+  );
 
   // Similar to componentDidMount()
   useEffect(() => {
     // Reference https://stackoverflow.com/questions/21518381/proper-way-to-wait-for-one-function-to-finish-before-continuing
     const promiseFunction = async () => {
-      console.log("Attempting to get matched users");
-      await dispatch(getmatchedusers());
-      await dispatch(getallusers());
-      await dispatch(getinterests());
-      // flatten list
-      await dispatch(getlistofinterests());
-      // do something else here after firstFunction completes
-      dispatch(matchUserToAllUsers());
-      
+        console.log("Attempting to get matched users");
+        await dispatch(getmatchedusers());
+        await dispatch(getallusers());
+        await dispatch(getinterests());
+        // flatten list
+        await dispatch(getlistofinterests());
+        // do something else here after firstFunction completes
+        dispatch(matchUserToAllUsers());
     };
     // Perform get all users here
     promiseFunction();
@@ -61,7 +62,9 @@ export function PhotoGrid(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const matchToAllUsers = useSelector((state) => state.photogrid.matchToAllUsers);
+  const matchToAllUsers = useSelector(
+    (state) => state.photogrid.matchToAllUsers
+  );
 
   return (
     <div className="photo-grid">
@@ -103,9 +106,9 @@ export function PhotoGrid(props) {
             // ))
             //  {const hasMatchToAllUsers = useSelector((state) => state.matchToAllUsers.hasMatchToAllUsers);}
 
-            matchToAllUsers.map((user, i) =>
+            matchToAllUsers.map((user, i) => (
               <Photo {...props} key={i} i={i} post={user} />
-            )
+            ))
           ),
         ]
       )}

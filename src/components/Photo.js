@@ -35,8 +35,6 @@ export function Photo (props) {
 
     return (
       <figure className="grid-figure">
-        {console.log("writing post user")}
-        {console.log(post.user)}
         <div className="grid-photo-wrap">
           <Link to={`/view/${parseInt(post.user)}`}>
             <img
