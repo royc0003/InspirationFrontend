@@ -43,7 +43,7 @@ function auth(state = initialState, action) {
     case AUTH_ERROR:
     case LOGIN_FAIL:
     case LOGOUT_SUCCESS:
-      localStorage.removeItem("friendstagram-email");
+      localStorage.removeItem("token");
       return {
         ...state,
         token: null,
