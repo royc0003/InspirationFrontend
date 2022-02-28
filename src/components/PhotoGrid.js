@@ -17,6 +17,8 @@ import {
   getmatchedusers,
   getallusers,
   matchUserToAllUsers,
+  getinterests,
+  getlistofinterests
 } from "../actions/photogrid";
 
 // Component Related Imports
@@ -37,6 +39,7 @@ export function PhotoGrid(props) {
   // Get photogrid state
   const isMatched = useSelector((state) => state.photogrid.isMatched);
   const hasFoundUsers = useSelector((state) => state.photogrid.hasFoundUsers);
+  const matchToAllUsers = useSelector(state => state.matchToAllUsers)
 
   // Similar to componentDidMount()
   useEffect(() => {
@@ -45,8 +48,11 @@ export function PhotoGrid(props) {
       console.log("Attempting to get matched users");
       await dispatch(getmatchedusers())
       await dispatch(getallusers())
+      await dispatch(getinterests())
       // do something else here after firstFunction completes
       dispatch(matchUserToAllUsers())
+      // flatten list
+      dispatch(getlistofinterests())
     }
     // Perform get all users here
     promiseFunction()
@@ -72,6 +78,9 @@ export function PhotoGrid(props) {
         props.posts.map((post, i) => (
           <Photo {...props} key={i} i={i} post={post} />
         ))
+        // matchToAllUsers.map((user, i) => (
+        //   <Photo {...props} key={i} i={i} post={user}/>
+        // ))
       )}
     </div>
   );
