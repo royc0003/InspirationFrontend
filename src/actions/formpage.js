@@ -5,7 +5,7 @@ import { UPDATE_USER_INFO } from "./types";
 // base url
 const url = "https://zhuweiji.pythonanywhere.com";
 
-export const exportuser = () => (dispatch, getState) => {
+export const exportuser = (_biography) => (dispatch, getState) => {
   // Retrieve user email from cache
   const friendstagram_email = localStorage.getItem("friendstagram-email");
   // Get token from state
@@ -31,7 +31,18 @@ export const exportuser = () => (dispatch, getState) => {
 
   interests = interests.toString();
   // Request body
-  const body = JSON.stringify({ hall, interests, interest_rankings });
+  var body;
+  // Handle biography
+  if (_biography) {
+    const biography = _biography
+    console.log(biography)
+    body = JSON.stringify({ hall, interests, interest_rankings, biography });
+  }
+  else {
+    body = JSON.stringify({ hall, interests, interest_rankings });
+  }
+  console.log(body)
+
 
   // Header
   const config = {
