@@ -24,6 +24,7 @@ export function Photo(props) {
     lg,
     xxl,
     sm,
+    xs,
     md,
     xs_span,
     sm_span,
@@ -67,7 +68,7 @@ export function Photo(props) {
   return (
     <Col
       className="overal-container"
-      xs={xs_span}
+      xs={{span: xs_span, offset: xs}}
       sm={{ span: sm_span, offset: sm }}
       md={{ span: md_span, offset: md }}
       lg={lg}

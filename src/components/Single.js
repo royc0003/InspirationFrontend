@@ -56,7 +56,7 @@ export function Single(props) {
       ) : (
         <Container className="overall-single-container">
           <Row className="overall2">
-            <Photo xs_span={12} sm_span={10} md_span={9} xl_span={8} xxl_span={10} xl={0} lg={0} xxl={0} sm={2} md={1} i={i} post={user} {...props}></Photo>
+            <Photo xs_span={12} sm_span={10} md_span={8} xl_span={8} xxl_span={9} lg_span={12} xl={0} lg={4} xxl={0} sm={2} md={4} xs={2} i={i} post={user} {...props}></Photo>
             <Comments post={user} biography={user.biography} hall={user.hall} email={user.email}/>
           </Row>
         </Container>
