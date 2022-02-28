@@ -26,6 +26,7 @@ export function Photo(props) {
     sm,
     xs,
     md,
+    lg_span,
     xs_span,
     sm_span,
     md_span,
@@ -71,7 +72,7 @@ export function Photo(props) {
       xs={{span: xs_span, offset: xs}}
       sm={{ span: sm_span, offset: sm }}
       md={{ span: md_span, offset: md }}
-      lg={lg}
+      lg={{span: lg_span, offset: lg}}
       xl={{ span: xl_span, offset: xl }}
       xxl={{ span: xxl_span, offset: xxl }}
     >

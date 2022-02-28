@@ -91,7 +91,7 @@ export const login = (email, password) => (dispatch) => {
 export const logout = () => (dispatch, getState) => {
   // Get token from state
   const token = getState().auth.token;
-
+  console.log("Successfully loggedout")
   // If token, then logout
   if (token) {
     dispatch({
