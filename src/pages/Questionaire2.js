@@ -8,6 +8,9 @@ import { SingleInterest } from "../components/SingleInterest";
 import { useDispatch, useSelector } from "react-redux";
 import { getinterests, setinterest } from "../actions/question2";
 
+// Import CSS
+import "../sass/pages/_Questionaire2.scss";
+
 export function Questionaire2(props) {
   // Redux Store's Interest
   const interests = useSelector((state) => state.question2.interests);
@@ -148,9 +151,15 @@ export function Questionaire2(props) {
   const { nextQuestionHandler } = props;
   return (
     <div>
-      This is questionarie 2
       <Container fluid>
-        <Row xs={12} md={4} lg={4} className="justify-content-center">
+        <Row className="justify-content-center">
+          <Col sm={{span:12, offset:9}}>
+            <div className="interest-style-overall">
+            <span className="interest-style">Select your interest</span>
+            </div>
+          </Col>
+        </Row>
+        <Row className="justify-content-center">
           {
             // Error Handling: In case API Fails
             interests === null
@@ -162,9 +171,14 @@ export function Questionaire2(props) {
                 ))
           }
         </Row>
-        <Row xs={4} md={1} lg={1} className="justify-content-md-right justify-content-sm-center justify-content-lg-right">
-          <Col>
-            <Button onClick={_question2Handler}>Click to qn3</Button>
+        <Row
+          xs={4}
+          md={1}
+          lg={1}
+          className="justify-content-md-right justify-content-sm-center justify-content-lg-right"
+        >
+          <Col xs={{ span: 4, offset: 4}} sm={{ span: 4}} md={{ span: 4, offset:10}} lg={{ span: 4, offset:10}} xl={{ span: 4, offset:10}} xxl={{ span: 4, offset:10}}>
+            <Button style={{fontSize:"20px"}} onClick={_question2Handler}>Click to qn3</Button>
           </Col>
         </Row>
       </Container>

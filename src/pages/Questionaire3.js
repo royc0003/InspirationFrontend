@@ -46,8 +46,8 @@ export function Questionaire3(props) {
           <Slider key={value} index={value} i={i}/>
         ))}
         <Row>
-          <Col>
-            <Button onClick={handleSubmit}>Click to next question</Button>
+          <Col xs={{ span: 4, offset: 4}} sm={{ span: 4}} md={{ span: 4, offset:10}} lg={{ span: 4, offset:10}} xl={{ span: 4, offset:10}} xxl={{ span: 4, offset:10}}>
+            <Button style={{fontSize:"20px"}} onClick={handleSubmit}>Next question</Button>
           </Col>
         </Row>
       </Container>

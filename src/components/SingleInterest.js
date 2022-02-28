@@ -38,7 +38,7 @@ export function SingleInterest(props) {
   };
 
   return (
-    <Col>
+    <Col xs={12} sm={{span: 12, offset: 2}} md={{span:4, offset:0}} lg={{span:4, offset:0}}>
         <button
           onClick={() => {
             interestHandler(interest);
