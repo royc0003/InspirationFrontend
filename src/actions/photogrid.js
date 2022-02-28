@@ -1,11 +1,11 @@
 import axios from "axios";
 
-import { GET_ALL_USERS, GET_MATCHED_USERS, GET_ALL_USERS_FAIL, GET_MATCHED_USERS_FAIL } from "./types";
+import { GET_ALL_USERS, GET_MATCHED_USERS, GET_ALL_USERS_FAIL, GET_MATCHED_USERS_FAIL, MATCH_USER_TO_ALL_USERS } from "./types";
 
 // base url
 const url = "https://zhuweiji.pythonanywhere.com";
 
-export const getmatchedusers = () => (dispatch, getState) => {
+export const getmatchedusers = () => async(dispatch, getState) => {
   console.log("Get matched users");
   // Retrieve user email from cache
   const friendstagram_email = localStorage.getItem("friendstagram-email");
@@ -27,11 +27,11 @@ export const getmatchedusers = () => (dispatch, getState) => {
     config.headers["Authorization"] = `Token ${key}`;
   }
 
-  axios
+  await axios
     .get(`${url}/match_user/${friendstagram_email}`, config)
     .then((res) => {
       console.log("Successfully matched user");
-      dispatch({
+      return dispatch({
         type: GET_MATCHED_USERS,
         payload: res.data['matched users'],
       });
@@ -53,7 +53,7 @@ export const getmatchedusers = () => (dispatch, getState) => {
     });
 };
 
-export const getallusers = () => (dispatch, getState) => {
+export const getallusers = () => async(dispatch, getState) => {
   console.log("get all users");
   // Get token from state
   const token = getState().auth.token;
@@ -72,13 +72,13 @@ export const getallusers = () => (dispatch, getState) => {
   } else if (key) {
     config.headers["Authorization"] = `Token ${key}`;
   }
-
-  axios
+  
+  await axios
     .get(`${url}/user_information/`, config)
     .then((res) => {
       console.log("Successfully received all user information");
       console.log(res);
-      dispatch({
+      return dispatch({
         type: GET_ALL_USERS,
         payload: res.data,
       });
@@ -98,4 +98,32 @@ export const getallusers = () => (dispatch, getState) => {
     })
       console.log(err.config);
     });
+};
+
+
+
+export const matchUserToAllUsers = () => (dispatch, getState) => {
+  console.log("Match user to all users");
+  // Get existing states
+  const matchedUsers = getState().photogrid.matchedUsers;
+  const allAvailableUsers = getState().photogrid.allAvailableUsers;
+  
+
+  if ( matchedUsers && allAvailableUsers ) {
+    var _result = []
+    console.log("Matching user to all users now...")
+    
+    for( var _email of matchedUsers ) {
+      var tmp = (allAvailableUsers.filter(
+        // eslint-disable-next-line no-loop-func
+        (_singleAvailableUser) => toString(_singleAvailableUser.email) === toString(_email)
+      ))
+      _result.push(tmp);
+    }
+
+    dispatch({
+      type: MATCH_USER_TO_ALL_USERS,
+      payload: _result
+    })
+  }
 };

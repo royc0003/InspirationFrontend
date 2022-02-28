@@ -13,7 +13,11 @@ import { ClimbingBoxLoader } from "react-spinners";
 import { useDispatch, useSelector } from "react-redux";
 
 // Import Actions
-import { getmatchedusers, getallusers } from "../actions/photogrid";
+import {
+  getmatchedusers,
+  getallusers,
+  matchUserToAllUsers,
+} from "../actions/photogrid";
 
 // Component Related Imports
 import { Photo } from "./Photo";
@@ -24,8 +28,8 @@ import "../sass/components/_PhotoGrid.scss";
 // export default class Main extends React.Component
 export function PhotoGrid(props) {
   // Set States Related To Spinner
-  let [ loading ] = useState(true);
-  let [color ] = useState("#212529");
+  let [loading] = useState(true);
+  let [color] = useState("#212529");
 
   // Set Dispatch
   const dispatch = useDispatch();
@@ -36,16 +40,19 @@ export function PhotoGrid(props) {
 
   // Similar to componentDidMount()
   useEffect(() => {
-    console.log("Attempting to get matched users");
-    dispatch(getmatchedusers());
+    // Reference https://stackoverflow.com/questions/21518381/proper-way-to-wait-for-one-function-to-finish-before-continuing
+    const promiseFunction = async () => {
+      console.log("Attempting to get matched users");
+      await dispatch(getmatchedusers())
+      await dispatch(getallusers())
+      // do something else here after firstFunction completes
+      dispatch(matchUserToAllUsers())
+    }
     // Perform get all users here
-    dispatch(getallusers());
+    promiseFunction()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleMapping = () => {
-    console.log("Mapping")
-  }
   return (
     <div className="photo-grid">
       {/** Include Spinner Class Here, check all matched user + filter users are done */}
@@ -80,5 +87,19 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(actionCreators, dispatch);
 }
+
+const secondFunction = () => async (dispatch) => {
+  await Promise.all(
+    [
+      // Get all matched users
+      dispatch(getmatchedusers()),
+      // Perform get all users here
+      dispatch(getallusers())
+    ]
+  );
+  console.log("Im done")
+  return "done";
+};
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(PhotoGrid);
