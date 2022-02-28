@@ -103,7 +103,7 @@ export const getallusers = () => async(dispatch, getState) => {
 
 
 
-export const matchUserToAllUsers = () => (dispatch, getState) => {
+export const matchUserToAllUsers = () => async(dispatch, getState) => {
   console.log("Match user to all users");
   // Get existing states
   const matchedUsers = getState().photogrid.matchedUsers;
@@ -123,7 +123,7 @@ export const matchUserToAllUsers = () => (dispatch, getState) => {
       _result.push(tmp[0]);
     }
 
-    dispatch({
+    return dispatch({
       type: MATCH_USER_TO_ALL_USERS,
       payload: _result
     })

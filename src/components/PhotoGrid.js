@@ -18,7 +18,7 @@ import {
   getallusers,
   matchUserToAllUsers,
   getinterests,
-  getlistofinterests
+  getlistofinterests,
 } from "../actions/photogrid";
 
 // Component Related Imports
@@ -39,25 +39,28 @@ export function PhotoGrid(props) {
   // Get photogrid state
   const isMatched = useSelector((state) => state.photogrid.isMatched);
   const hasFoundUsers = useSelector((state) => state.photogrid.hasFoundUsers);
-  const matchToAllUsers = useSelector(state => state.matchToAllUsers)
+  const hasMatchToAllUsers = useSelector((state) => state.photogrid.hasMatchToAllUsers);
 
   // Similar to componentDidMount()
   useEffect(() => {
     // Reference https://stackoverflow.com/questions/21518381/proper-way-to-wait-for-one-function-to-finish-before-continuing
     const promiseFunction = async () => {
       console.log("Attempting to get matched users");
-      await dispatch(getmatchedusers())
-      await dispatch(getallusers())
-      await dispatch(getinterests())
+      await dispatch(getmatchedusers());
+      await dispatch(getallusers());
+      await dispatch(getinterests());
       // do something else here after firstFunction completes
-      dispatch(matchUserToAllUsers())
+      dispatch(matchUserToAllUsers());
       // flatten list
-      dispatch(getlistofinterests())
-    }
+      dispatch(getlistofinterests());
+    };
     // Perform get all users here
-    promiseFunction()
+    promiseFunction();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const matchToAllUsers = useSelector((state) => state.photogrid.matchToAllUsers);
 
   return (
     <div className="photo-grid">
@@ -75,12 +78,36 @@ export function PhotoGrid(props) {
           </Row>
         </Container>
       ) : (
-        props.posts.map((post, i) => (
-          <Photo {...props} key={i} i={i} post={post} />
-        ))
-        // matchToAllUsers.map((user, i) => (
-        //   <Photo {...props} key={i} i={i} post={user}/>
-        // ))
+        [
+          !hasMatchToAllUsers ? (
+            <Container className="spinner-class">
+              {console.log("I'm waiting for matchtoallusers")}
+              <Row className="justify-content-xs-center">
+                <Col
+                  xs={{ span: 6, offset: 5 }}
+                  md={{ span: 6, offset: 6 }}
+                  lg={{ span: 6, offset: 5 }}
+                >
+                  <ClimbingBoxLoader
+                    color={color}
+                    loading={loading}
+                    size={20}
+                  />
+                </Col>
+              </Row>
+            </Container>
+          ) : (
+            // props.posts.map((post, i) => (
+            //   <Photo {...props} key={i} i={i} post={post} />
+            // ))
+            //  {const hasMatchToAllUsers = useSelector((state) => state.matchToAllUsers.hasMatchToAllUsers);}
+
+            matchToAllUsers.map((user, i) =>
+              // <Photo {...props} key={i} i={i} post={user}/>
+              console.log("helo")
+            )
+          ),
+        ]
       )}
     </div>
   );

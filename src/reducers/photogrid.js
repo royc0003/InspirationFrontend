@@ -15,6 +15,7 @@ const initialState = {
   isMatched: false,
   hasFoundUsers: false,
   matchToAllUsers: null,
+  hasMatchToAllUsers: false,
   interests: null,
   listOfInterests: null,
   tmpInterests: [
@@ -149,7 +150,8 @@ function photogrid(state = initialState, action) {
       console.log(action.payload)
       return {
         ...state,
-        matchToAllUsers: action.payload
+        matchToAllUsers: action.payload,
+        hasMatchToAllUsers: true
       }
     case GET_MATCHED_USERS:
       return {
