@@ -31,10 +31,9 @@ export const getmatchedusers = () => (dispatch, getState) => {
     .get(`${url}/match_user/${friendstagram_email}`, config)
     .then((res) => {
       console.log("Successfully matched user");
-      console.log(res);
       dispatch({
         type: GET_MATCHED_USERS,
-        payload: res.data,
+        payload: res.data['matched users'],
       });
     })
     .catch((err) => {
@@ -56,8 +55,6 @@ export const getmatchedusers = () => (dispatch, getState) => {
 
 export const getallusers = () => (dispatch, getState) => {
   console.log("get all users");
-  // Retrieve user email from cache
-  const friendstagram_email = localStorage.getItem("friendstagram-email");
   // Get token from state
   const token = getState().auth.token;
   const key = getState().auth.key;
@@ -77,7 +74,7 @@ export const getallusers = () => (dispatch, getState) => {
   }
 
   axios
-    .get(`${url}/user_information/${friendstagram_email}`, config)
+    .get(`${url}/user_information/`, config)
     .then((res) => {
       console.log("Successfully received all user information");
       console.log(res);

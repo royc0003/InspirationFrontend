@@ -43,6 +43,9 @@ export function PhotoGrid(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const handleMapping = () => {
+    console.log("Mapping")
+  }
   return (
     <div className="photo-grid">
       {/** Include Spinner Class Here, check all matched user + filter users are done */}
