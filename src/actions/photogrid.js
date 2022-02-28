@@ -116,8 +116,9 @@ export const matchUserToAllUsers = () => (dispatch, getState) => {
     for( var _email of matchedUsers ) {
       var tmp = (allAvailableUsers.filter(
         // eslint-disable-next-line no-loop-func
-        (_singleAvailableUser) => toString(_singleAvailableUser.email) === toString(_email)
+        (_singleAvailableUser) =>_singleAvailableUser.email === _email
       ))
+      console.log(tmp)
       _result.push(tmp);
     }
 
