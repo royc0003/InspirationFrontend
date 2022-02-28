@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 // Bootstrap related components
 import { Container, Button, Row, Col } from "react-bootstrap";
 
@@ -9,7 +9,7 @@ import { Slider } from "../components/Slider";
 // Import Redux Related Components/Library
 import { useDispatch, useSelector } from "react-redux";
 import { setinterestrank } from "../actions/question3";
-import { exportuser } from "../actions/formpage";
+// import { exportuser } from "../actions/formpage";
 
 export function Questionaire3(props) {
   // set States
@@ -19,8 +19,8 @@ export function Questionaire3(props) {
   console.log(selectedInterests);
   // set dispatch
   const dispatch = useDispatch();
-  // Set router
-  const navigate = useNavigate()
+  // // Set router
+  // const navigate = useNavigate()
   // componentDidMount()
   useEffect(() => {
     console.log("Using effect");
@@ -30,14 +30,16 @@ export function Questionaire3(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleSubmit = () => {
-      console.log("Exporting user")
-      dispatch(exportuser());
+  // const handleSubmit = () => {
+  //     console.log("Exporting user")
+  //     dispatch(exportuser());
 
-      console.log("Moving to match page");
-      navigate("/protected")
-  };
-
+  //     console.log("Moving to match page");
+  //     navigate("/protected")
+  // };
+  
+  // Destructuring
+  const { nextQuestionHandler } = props;
   return (
     <div className="qn3-overall">
       <Container>
@@ -47,7 +49,7 @@ export function Questionaire3(props) {
         ))}
         <Row>
           <Col xs={{ span: 4, offset: 4}} sm={{ span: 4}} md={{ span: 4, offset:10}} lg={{ span: 4, offset:10}} xl={{ span: 4, offset:10}} xxl={{ span: 4, offset:10}}>
-            <Button style={{fontSize:"20px"}} onClick={handleSubmit}>Next question</Button>
+            <Button style={{fontSize:"20px"}} onClick={nextQuestionHandler}>Next question</Button>
           </Col>
         </Row>
       </Container>

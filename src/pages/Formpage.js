@@ -4,20 +4,20 @@ import React, { useState } from "react";
 import { Questionaire1 } from "./Questionaire1";
 import { Questionaire2 } from "./Questionaire2";
 import { Questionaire3 } from "./Questionaire3";
+import { Questionaire4 } from "./Questionaire4";
 
 export function Formpage(props) {
   // Set All States
-  const [ qnNo, setQnNo ] = useState(1); // sets qnNo = 0
+  const [qnNo, setQnNo] = useState(1); // sets qnNo = 0
 
   // All Functions
   const nextQuestionHandler = () => {
     // setQnNo(prevState => ({...prevState, qnNo: prevState.qnNo + 1}));
-    console.log ("Updating qnNo");
+    console.log("Updating qnNo");
     // Scrol Top
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
     setQnNo(qnNo + 1);
-  }
-  
+  };
 
   return (
     <div className="formpageoverall">
@@ -27,8 +27,10 @@ export function Formpage(props) {
         [
           qnNo === 2 ? (
             <Questionaire2 key={2} nextQuestionHandler={nextQuestionHandler} />
+          ) : qnNo === 3 ? (
+            <Questionaire3 key={3} nextQuestionHandler={nextQuestionHandler} />
           ) : (
-            <Questionaire3 key={3}/>
+            <Questionaire4 key={4} />
           ),
         ]
       )}
