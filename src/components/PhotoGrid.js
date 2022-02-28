@@ -49,10 +49,11 @@ export function PhotoGrid(props) {
       await dispatch(getmatchedusers());
       await dispatch(getallusers());
       await dispatch(getinterests());
+      // flatten list
+      await dispatch(getlistofinterests());
       // do something else here after firstFunction completes
       dispatch(matchUserToAllUsers());
-      // flatten list
-      dispatch(getlistofinterests());
+      
     };
     // Perform get all users here
     promiseFunction();
@@ -103,8 +104,7 @@ export function PhotoGrid(props) {
             //  {const hasMatchToAllUsers = useSelector((state) => state.matchToAllUsers.hasMatchToAllUsers);}
 
             matchToAllUsers.map((user, i) =>
-              // <Photo {...props} key={i} i={i} post={user}/>
-              console.log("helo")
+              <Photo {...props} key={i} i={i} post={user} />
             )
           ),
         ]
