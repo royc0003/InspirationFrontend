@@ -15,8 +15,24 @@ import { Col } from "react-bootstrap";
 import "../sass/components/_Photo.scss";
 
 export function Photo(props) {
-  const [stringValue, setValue] = useState();
-  const { post, comments, i, xl, lg, xxl,sm ,md} = props;
+  const [stringValue, setValue] = useState([]);
+  const {
+    post,
+    comments,
+    i,
+    xl,
+    lg,
+    xxl,
+    sm,
+    xs,
+    md,
+    xs_span,
+    sm_span,
+    md_span,
+    xl_span,
+    xxl_span,
+  } = props;
+  // xs_span={12} sm_span={10} md_span={9} xl_span={12} xxl_span={12}
   const [inProp, setInProp] = useState(false);
   const listOfInterests = useSelector(
     (state) => state.photogrid.listOfInterests
@@ -29,16 +45,36 @@ export function Photo(props) {
     for (var _singleInterest of post.interests) {
       _tmp.push(listOfInterests[parseInt(_singleInterest) - 1]);
     }
-    if (_tmp.length >= 1) {
-      setValue("#" + _tmp.join(" #").trim());
-    } else {
-      setValue("No Interest Stated");
+    // if (_tmp.length >= 1) {
+    //   setValue("#" + _tmp.join(" #").trim());
+    // } else {
+    //   setValue("No Interest Stated");
+    // }
+    if (_tmp) {
+      setValue((oldArray) => [...oldArray, _tmp]);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const renderComment = (singleComment, i) => {
+    return (
+      <span key={i} className="photo-caption pink-highlight">
+        #{singleComment}
+      </span>
+    );
+  };
+
   return (
-    <Col xs={12} sm={{span:10, offset: sm}} md={{ span: 9, offset: md }} lg={lg} xl={{ span:12, offset: xl}} xxl={{ span:12, offset: xxl}}>
+    <Col
+      className="overal-container"
+      xs={{span: xs_span, offset: xs}}
+      sm={{ span: sm_span, offset: sm }}
+      md={{ span: md_span, offset: md }}
+      lg={lg}
+      xl={{ span: xl_span, offset: xl }}
+      xxl={{ span: xxl_span, offset: xxl }}
+    >
       <figure className="grid-figure">
         <div className="grid-photo-wrap">
           <Link to={`/view/${parseInt(post.user)}`}>
@@ -62,14 +98,19 @@ export function Photo(props) {
             classNames="like"
             timeout={500}
           >
-            <span key={post.likes} className="likes-heart">
-              {post.likes}
-            </span>
+            <div>
+              <span key={post.likes} className="likes-heart">
+                {post.likes}
+              </span>
+            </div>
           </CSSTransition>
         </div>
 
         <figcaption>
-          <p>{stringValue}</p>
+          {stringValue[0]
+            ? stringValue[0].map((v, i) => renderComment(v, i))
+            : ""}
+
           <div className="control-buttons">
             <button onClick={props.increment.bind(null, i)} className="likes">
               &hearts; {post.likes}
