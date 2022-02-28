@@ -37,7 +37,9 @@ export function Questionaire3(props) {
       console.log("Moving to match page");
       navigate("/protected")
   };
-
+  
+  // Destructuring
+  const { nextQuestionHandler } = props;
   return (
     <div className="qn3-overall">
       <Container>
@@ -47,7 +49,7 @@ export function Questionaire3(props) {
         ))}
         <Row>
           <Col xs={{ span: 4, offset: 4}} sm={{ span: 4}} md={{ span: 4, offset:10}} lg={{ span: 4, offset:10}} xl={{ span: 4, offset:10}} xxl={{ span: 4, offset:10}}>
-            <Button style={{fontSize:"20px"}} onClick={handleSubmit}>Next question</Button>
+            <Button style={{fontSize:"20px"}} onClick={nextQuestionHandler}>Next question</Button>
           </Col>
         </Row>
       </Container>
