@@ -1,32 +1,52 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "react-bootstrap";
 
 // Redux related
 import { useDispatch } from "react-redux";
-import { getallusers, getmatchedhistory, getuserinfo, flattenmatchedusers, getinterests, flattenuserinterests } from "../actions/profilepage";
-
-
+import {
+  getallusers,
+  getmatchedhistory,
+  getuserinfo,
+  flattenmatchedusers,
+  getinterests,
+  flattenuserinterests,
+} from "../actions/profilepage";
 
 export function Profilepage(props) {
+  // set dispatch
+  const dispatch = useDispatch();
 
-    // set dispatch
-    const dispatch = useDispatch();
+  // Similar to React's Component Did Mount
+  useEffect(() => {
+    const retrieveAllDataPromise = async () => {
+      console.log("This is working");
+      await dispatch(getallusers());
+      await dispatch(getmatchedhistory());
+      await dispatch(getinterests());
+      await dispatch(getuserinfo());
+      await dispatch(flattenmatchedusers());
+      await dispatch(flattenuserinterests());
+    };
+    // Retrieves all data necessary for rendering profile page
+    retrieveAllDataPromise();
 
-    const handleHistory = async () => {
-        console.log("This is working")
-        await dispatch(getallusers());
-        await dispatch(getmatchedhistory());
-        await dispatch(getinterests());
-        await dispatch(getuserinfo());
-        await dispatch(flattenmatchedusers());
-        await dispatch(flattenuserinterests());
-    }
-    return (
-        <div>
-            This is profile page
-            <Button onClick={handleHistory}>
-                click here to render
-            </Button>
-        </div>
-    )
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // only used for testing
+  // const handleHistory = async () => {
+  //     console.log("This is working")
+  //     await dispatch(getallusers());
+  //     await dispatch(getmatchedhistory());
+  //     await dispatch(getinterests());
+  //     await dispatch(getuserinfo());
+  //     await dispatch(flattenmatchedusers());
+  //     await dispatch(flattenuserinterests());
+  // }
+  return (
+    <div>
+      This is profile page
+      {/* <Button onClick={handleHistory}>click here to render</Button> */}
+    </div>
+  );
 }
