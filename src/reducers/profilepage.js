@@ -1,6 +1,6 @@
 import {
   GET_USER_INFO,
-  GET_ALL_USERS,
+  GET_ALL_USERS_PROFILE,
   GET_MATCHED_HISTORY,
 } from "../actions/types";
 
@@ -18,7 +18,7 @@ function profilepage(state = initialState, action) {
                 ...state,
                 matched_history: action.payload
             }
-        case GET_ALL_USERS:
+        case GET_ALL_USERS_PROFILE:
             return {
                 ...state,
                 all_users: action.payload
