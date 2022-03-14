@@ -14,6 +14,7 @@ const initialState = {
   flatten_matched_users: null,
   flatten_user_interests: null,
   all_interests: null,
+  isComplete: false,
 };
 
 
@@ -27,12 +28,13 @@ function profilepage(state = initialState, action) {
         case GET_ALL_USERS_PROFILE:
             return {
                 ...state,
-                all_users: action.payload
+                all_users: action.payload,
+                isComplete: false
             }
         case GET_USER_INFO:
             return {
                 ...state,
-                user_info: action.payload
+                user_info: action.payload,
             }
         case FLATTEN_MATCHED_USERS:
             return {
@@ -42,7 +44,8 @@ function profilepage(state = initialState, action) {
         case FLATTEN_USER_INTERESTS:
             return {
                 ...state,
-                flatten_user_interests: action.payload
+                flatten_user_interests: action.payload,
+                isComplete: true
             }
         case GET_ALL_INTERESTS_PROFILE:
             return {
