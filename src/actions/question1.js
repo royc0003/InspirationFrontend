@@ -26,7 +26,7 @@ export const gethalls = () => (dispatch, getState) => {
 
 
   axios
-    .post(`${url}/hall_residences/`, config)
+    .get(`${url}/hall_residences/`, config)
     .then((res) => {
       dispatch({
         type: IMPORT_HALL,

@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 
 // import actions
-import { signup, clearError } from "../actions/auth";
+import { signup, clearError, setpicurl } from "../actions/auth";
 
 export function Signup(props) {
   const [rerender, setRerender] = useState(false);
@@ -35,12 +35,13 @@ export function Signup(props) {
     setValue(event.target.name, event.target.value);
   };
 
-  const handleOnSubmit = (data, e) => {
+  const handleOnSubmit = async (data, e) => {
     // event.preventDefault();
     console.log(data);
     console.log(errors);
     e.preventDefault();
-    dispatch(signup(data.email, data.password, data.passwordConfirm));
+    await dispatch(signup(data.email, data.password, data.passwordConfirm));
+    await dispatch(setpicurl(data.email));
 	e.target.reset();
 	// re-render
 	setRerender(!rerender)
