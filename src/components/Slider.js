@@ -51,7 +51,7 @@ export function Slider(props) {
         <RangeSlider
           variant={"primary"}
           min={1}
-          max={10}
+          max={5}
           size={"lg"}
           value={value}
           onChange={(changeEvent) => setValue(changeEvent.target.value)}
