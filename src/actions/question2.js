@@ -20,13 +20,17 @@ export const getinterests = () => (dispatch, getState) => {
     },
   };
 
-  // Get token from state
-  const token = getState().auth.token;
+  // Get token from local cache
+  const token = localStorage.getItem("token");
+  const key = getState().auth.key;
 
-  // If token, add to headers config
-  if (token) {
-    config.headers['Authorization'] = `Token ${token}`;
-  }
+
+  // If token, add to header config
+    if (token) {
+      config.headers["Authorization"] = `Token ${token}`;
+    } else if (key) {
+      config.headers["Authorization"] = `Token ${key}`;
+    }
 
   axios
     .get(`${url}/interests/`, config)
