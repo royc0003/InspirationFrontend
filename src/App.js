@@ -13,6 +13,7 @@ import { Landingpage } from './pages/Landingpage';
 import { Login } from './pages/Login';
 import { Signup } from './pages/Signup';
 import { Formpage } from './pages/Formpage';
+import { Profilepage } from './pages/Profilepage';
 
 // Import action
 import { loadUser } from './actions/auth';
@@ -35,6 +36,7 @@ export function App(props) {
         <Route path="/view/:postId" element={<Single/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<Signup/>}/>
+        <Route path="/profilepage" element={<Profilepage/>}/>
         <Route
         path="/protected"
         element={
