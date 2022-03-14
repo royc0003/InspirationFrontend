@@ -13,8 +13,8 @@ const url = "https://zhuweiji.pythonanywhere.com";
 
 export const getallusers = () => async(dispatch, getState) => {
     console.log("get all users");
-    // Get token from state
-    const token = getState().auth.token;
+    // Get token from local cache
+    const token = localStorage.getItem("token");
     const key = getState().auth.key;
   
     // Header
@@ -44,6 +44,55 @@ export const getallusers = () => async(dispatch, getState) => {
       .catch((err) => {
         if (err.response) {
           console.log("respone");
+          console.log(err.response.data);
+          // to insert a alert block here
+        } else if (err.request) {
+          console.log(err.request);
+        } else {
+          console.log(err.message);
+        }
+        console.log(err.config);
+      });
+  };
+
+
+  // Get matched history of single user
+export const getmatchedhistory = () => async(dispatch, getState) => {
+    console.log("Get all matched history");
+    // Get token from local cache
+    const token = localStorage.getItem("token");
+    const key = getState().auth.key;
+
+    // Get email from local cache
+    const email = localStorage.getItem("friendstagram-email");
+  
+    // Header
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+  
+    // If token, add to header config
+    if (token) {
+      config.headers["Authorization"] = `Token ${token}`;
+    } else if (key) {
+      config.headers["Authorization"] = `Token ${key}`;
+    }
+    
+    await axios
+      .get(`${url}/match_history/${email}`, config)
+      .then((res) => {
+        console.log("Successfully found all matched users");
+        console.log(res);
+        return dispatch({
+          type: GET_MATCHED_HISTORY,
+          payload: res.data,
+        });
+      })
+      .catch((err) => {
+        if (err.response) {
+          console.log("error response");
           console.log(err.response.data);
           // to insert a alert block here
         } else if (err.request) {
