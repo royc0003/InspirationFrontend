@@ -8,6 +8,7 @@ import question2 from './question2';
 import question3 from './question3';
 import formpage from './formpage';
 import photogrid from './photogrid';
+import profilepage from './profilepage';
 
 
 const rootReducer = combineReducers( {
@@ -19,6 +20,7 @@ const rootReducer = combineReducers( {
     question3,
     formpage,
     photogrid,
+    profilepage,
 });
 
 export default rootReducer;
