@@ -9,7 +9,8 @@ import {
   LOGOUT_SUCCESS,
   SIGNUP_SUCCESS,
   SIGNUP_FAIL,
-  CLEAR_ERROR 
+  CLEAR_ERROR,
+  SET_PIC_URL,
 } from "./types";
 
 // base url
@@ -100,7 +101,7 @@ export const logout = () => async (dispatch, getState) => {
 };
 
 // Signup
-export const signup = (email, password1, password2) => (dispatch) => {
+export const signup = (email, password1, password2) => async(dispatch) => {
   // Headers
   const config = {
     headers: {
@@ -116,7 +117,7 @@ export const signup = (email, password1, password2) => (dispatch) => {
   const body = JSON.stringify({ email, password1, password2, pic_url });
   console.log(body);
 
-  axios.post(`${url}/rest-auth/registration/`, body, config).then((res) => {
+  await axios.post(`${url}/rest-auth/registration/`, body, config).then((res) => {
     console.log("success signup");
     // Cache email into local storage
     localStorage.setItem("friendstagram-email", email);
@@ -151,3 +152,56 @@ export const signup = (email, password1, password2) => (dispatch) => {
       type: CLEAR_ERROR,
     })
   }
+
+  // SET PIC URL
+export const setpicurl = (email) => async(dispatch, getState) => {
+  console.log("calling setpicurl")
+  // Headers
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  // Get token from state
+  const token = getState().auth.token;
+  const key = getState().auth.key;
+  // If token, add to headers config
+  if (token) {
+    config.headers["Authorization"] = `Token ${token}`;
+  }
+  else if (key) {
+    config.headers["Authorization"] = `Token ${key}`;
+  }
+
+
+  const pic_url = `https://picsum.photos/400/400/?image=${Math.floor(
+    Math.random() * 85
+  )}`;
+
+  // Request body
+  const body = JSON.stringify({ pic_url });
+  console.log(body);
+
+  await axios.post(`${url}/user_information/${email}`, body, config).then((res) => {
+    console.log("Set pic url success");
+    dispatch({
+      type: SET_PIC_URL,
+      payload: res.data,
+    })
+  })
+  .catch((err) => {
+      if (err.response) {
+        console.log("response")
+        console.log(err.response.data.password1)
+        // to insert a alert block here
+      }
+      else if (err.request) {
+        console.log(err.request);
+      }
+      else {
+        console.log(err.message);
+      }
+      console.log(err.config);
+    });
+  };

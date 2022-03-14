@@ -29,7 +29,7 @@ export const getinterests = () => (dispatch, getState) => {
   }
 
   axios
-    .post(`${url}/interests/`, config)
+    .get(`${url}/interests/`, config)
     .then((res) => {
       dispatch({
         type: GET_ALL_INTERESTS,

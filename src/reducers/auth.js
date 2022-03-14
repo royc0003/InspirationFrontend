@@ -8,6 +8,7 @@ import {
   SIGNUP_SUCCESS,
   SIGNUP_FAIL,
   CLEAR_ERROR,
+  SET_PIC_URL,
 } from "../actions/types";
 
 const initialState = {
@@ -63,6 +64,11 @@ function auth(state = initialState, action) {
         const prev = {...state}
         delete prev["password1"]
         return prev
+    case SET_PIC_URL:
+      return {
+        ...state,
+        ...action.payload
+      }
     default:
       return state;
   }
