@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 
 // Redux related
 import { useDispatch } from "react-redux";
-import { getallusers, getmatchedhistory } from "../actions/profilepage";
+import { getallusers, getmatchedhistory, getuserinfo } from "../actions/profilepage";
 
 
 
@@ -16,6 +16,7 @@ export function Profilepage(props) {
         console.log("This is working")
         await dispatch(getallusers());
         await dispatch(getmatchedhistory());
+        await dispatch(getuserinfo());
     }
     return (
         <div>
