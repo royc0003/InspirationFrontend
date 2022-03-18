@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 // import { useNavigate } from "react-router-dom";
 // Bootstrap related components
-import { Container, Button, Row, Col } from "react-bootstrap";
-
-// Import Components
-import { Slider } from "../components/Slider";
-
+import { Button, Col, Container, Row } from "react-bootstrap";
 // Import Redux Related Components/Library
 import { useDispatch, useSelector } from "react-redux";
 import { setinterestrank } from "../actions/question3";
+// Import Components
+import { Slider } from "../components/Slider";
+import styles from '../sass/pages/_Questionaire3.module.scss';
+
 // import { exportuser } from "../actions/formpage";
 
 export function Questionaire3(props) {
@@ -43,13 +43,13 @@ export function Questionaire3(props) {
   return (
     <div className="qn3-overall">
       <Container>
-        <div className="q3-main">How would you rate your interest?</div>
+        <h1 id={styles.interestsHeader}>How would you rate your interest?</h1>
         {selectedInterests.map((value, i) => (
           <Slider key={value} index={value} i={i}/>
         ))}
         <Row>
           <Col xs={{ span: 4, offset: 4}} sm={{ span: 4}} md={{ span: 4, offset:10}} lg={{ span: 4, offset:10}} xl={{ span: 4, offset:10}} xxl={{ span: 4, offset:10}}>
-            <Button style={{fontSize:"20px"}} onClick={nextQuestionHandler}>Next question</Button>
+            <Button style={{fontSize:"20px"}} onClick={nextQuestionHandler}>Continue to Next Question</Button>
           </Col>
         </Row>
       </Container>

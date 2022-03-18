@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
-
+import React, { useEffect, useState } from "react";
 // React Bootstrap Related Components
-import { Button, ButtonGroup, DropdownButton, Dropdown } from "react-bootstrap";
-
+import { Button, ButtonGroup, Dropdown, DropdownButton } from "react-bootstrap";
 // Import Redux Related Components/Library
 import { useDispatch, useSelector } from "react-redux";
 import { gethalls, selecthall } from "../actions/question1";
-
 //Import sass
 import "../sass/pages/_Questionaire1.scss";
+
+
+
 export function Questionaire1(props) {
   // Set All States
   const [halls, setHalls] = useState([]);
@@ -210,12 +210,12 @@ export function Questionaire1(props) {
 
   return (
     <div className="questionaire1overall">
-      <span style={{ marginTop: "20px" }}> Which hall do you stay in?</span>
+      <h1 style={{ marginTop: "40px" }}> Which hall do you stay in?</h1>
       <DropdownButton
         onSelect={handleSelect}
         as={ButtonGroup}
         size="lg"
-        variant="secondary"
+        variant="success"
         title={hallInput?`${hallInput}`: "Select Hall"}
         style={{ marginTop: "40px" }}
       >
@@ -235,8 +235,8 @@ export function Questionaire1(props) {
             ))}
       </DropdownButton>
       <div className="HallSelection"></div>
-      <Button style={{ marginTop: "20%" }} disabled={userHall === null ? true : false} onClick={nextQuestionHandler}>
-        Click to qn2
+      <Button color="green" style={{ marginTop: "20%" }} disabled={userHall === null ? true : false} onClick={nextQuestionHandler}>
+        Continue to next question
       </Button>
     </div>
   );
