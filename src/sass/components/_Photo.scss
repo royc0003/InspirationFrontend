@@ -11,6 +11,8 @@
 	background: $white;
 	box-shadow: 0 0 0 5px rgba(0,0,0,0.03);
 	position: relative;
+	height: 580px;
+	width: 300px;
 }
 
 
@@ -19,7 +21,9 @@
 }
 
 .grid-photo {
-	width: calc(100% + 4rem);
+	width: 300px;
+	height: 300px;
+	object-fit: cover;
 	margin-left: -2rem;
 	margin-top: -2rem;
 	max-width: none;
@@ -66,4 +70,13 @@
 .photo-caption {
 	font-family: $shadow-light-font;
 	font-size: 18px;
+}
+
+.figCaptionHeader{
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+.biography{
+	margin-top: 20px;
 }

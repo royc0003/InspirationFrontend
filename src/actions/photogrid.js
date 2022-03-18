@@ -1,6 +1,6 @@
 import axios from "axios";
+import { FLATTEN_ALL_INTERESTS, GET_ALL_INTERESTS_PHOTO, GET_ALL_INTERESTS_PHOTO_FAIL, GET_ALL_USERS, GET_ALL_USERS_FAIL, GET_MATCHED_USERS, GET_MATCHED_USERS_FAIL, MATCH_USER_TO_ALL_USERS } from "./types";
 
-import { GET_ALL_USERS, GET_MATCHED_USERS, GET_ALL_USERS_FAIL, GET_MATCHED_USERS_FAIL, MATCH_USER_TO_ALL_USERS, GET_ALL_INTERESTS_PHOTO, GET_ALL_INTERESTS_PHOTO_FAIL, FLATTEN_ALL_INTERESTS } from "./types";
 
 // base url
 const url = "https://zhuweiji.pythonanywhere.com";
@@ -126,7 +126,7 @@ export const matchUserToAllUsers = () => async(dispatch, getState) => {
     return dispatch({
       type: MATCH_USER_TO_ALL_USERS,
       payload: _result
-    })
+    });
   }
 };
 
