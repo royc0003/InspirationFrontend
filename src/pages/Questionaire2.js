@@ -119,70 +119,68 @@ export const LOCAL_INTERESTS = [{
 }]
 
 export function Questionaire2(props) {
-  // Redux Store's Interest
-  const interests = useSelector((state) => state.question2.interests);
-  const selectedInterests = useSelector((state) => state.question2.selectedInterests);
-  // Set All States
-  const [localInterests] = useState([LOCAL_INTERESTS]); // to store localInterests for Error Handling
+	// Redux Store's Interest
+	const interests = useSelector((state) => state.question2.interests);
+	const selectedInterests = useSelector((state) => state.question2.selectedInterests);
+	// Set All States
+	const [localInterests] = useState(LOCAL_INTERESTS); // to store localInterests for Error Handling
 
-  // Set Dispatch
-  const dispatch = useDispatch();
+	// Set Dispatch
+	const dispatch = useDispatch();
 
-  // componentDidMount() -> Retrieve all interests.
-  useEffect(() => {
-    dispatch(getinterests());
-    console.log("printing interests");
-    console.log(interests);
-    if (!interests) {
-      console.log("I'm setting");
-      dispatch(setinterest(localInterests));
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+	// componentDidMount() -> Retrieve all interests.
+	useEffect(() => {
+		dispatch(getinterests());
+		console.log("printing interests");
+		console.log(interests);
+		if (!interests) {
+			console.log("I'm setting");
+			dispatch(setinterest(localInterests));
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
-  // Functions
+	// Functions
 
-  const _question2Handler = () => {
-    console.log("it's working");
-    nextQuestionHandler();
-  };
+	const _question2Handler = () => {
+		console.log("it's working");
+		nextQuestionHandler();
+	};
 
-  // Make sure to do error handling.
-  // destructuring
-  const { nextQuestionHandler } = props;
-  return (
-    <div>
-      <Container fluid>
-        <Row className="justify-content-center">
-          <Col sm={{span:12, offset:9}}>
-            <div className="interest-style-overall">
-            <span className="interest-style">Select your interest</span>
-            </div>
-          </Col>
-        </Row>
-        <Row className="justify-content-center">
-          {
-            // Error Handling: In case API Fails
-            interests === null
-              ? localInterests.map((value, i) => (
-                  <SingleInterest key={value.id} _interest={value} />
-                ))
-              : interests.map((value, i) => (
-                  <SingleInterest key={value.id} _interest={value} />
-                ))
-          }
-        </Row>
-        <Row
-          xs={4}
-          md={1}
-          lg={1}
-          className="justify-content-md-right justify-content-sm-center justify-content-lg-right"
-        >
-          <Col xs={{ span: 4, offset: 4}} sm={{ span: 4}} md={{ span: 4, offset:10}} lg={{ span: 4, offset:10}} xl={{ span: 4, offset:10}} xxl={{ span: 4, offset:10}}>
-            <Button style={{fontSize:"20px"}} onClick={_question2Handler} disabled={selectedInterests.length>=1?false: true}>Click to qn3</Button>
-          </Col>
-        </Row>
-      </Container>
-    </div>
-  );
+	// Make sure to do error handling.
+	// destructuring
+	const { nextQuestionHandler } = props;
+	return (
+			<Container id="questionaire2" className="justify-content-center">
+				<Row>
+					{/* <Col sm={{span:12, offset:9}}> */}
+					{/* <div className="interest-style-overall"> */}
+					<h1 id="interestHeader">Select your interest</h1>
+					{/* </div> */}
+					{/* </Col> */}
+				</Row>
+				<Row>
+					{
+						// Error Handling: In case API Fails
+						interests === null
+							? localInterests.map((value, i) => (
+								<SingleInterest key={value.id} _interest={value} />
+							))
+							: interests.map((value, i) => (
+								<SingleInterest key={value.id} _interest={value} />
+							))
+					}
+				</Row>
+				<Row
+					xs={4}
+					md={1}
+					lg={1}
+					className="justify-content-md-right justify-content-sm-center justify-content-lg-right"
+				>
+					<Col xs={{ span: 4, offset: 4 }} sm={{ span: 4 }} md={{ span: 4, offset: 10 }} lg={{ span: 4, offset: 10 }} xl={{ span: 4, offset: 10 }} xxl={{ span: 4, offset: 10 }}>
+						<Button style={{ fontSize: "20px" }} onClick={_question2Handler} disabled={selectedInterests.length >= 1 ? false : true}>Continue to Next Question</Button>
+					</Col>
+				</Row>
+			</Container>
+	);
 }

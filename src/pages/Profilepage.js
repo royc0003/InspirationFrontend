@@ -24,8 +24,6 @@ export function Profilepage(props) {
 	const isComplete = useSelector((state) => state.profilepage.isComplete);
 	const { user_info, flatten_matched_users, all_interests, flatten_user_interests } = useSelector((state) => state.profilepage)
 
-	const debug = false;
-
 	// Similar to React's Component Did Mount
 	useEffect(() => {
 		const retrieveAllDataPromise = async () => {

@@ -1,12 +1,12 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useState } from "react";
-
-// Import Redux Related Components/Library
-import { useSelector, useDispatch } from "react-redux";
-import { removeinterest, addinterest } from "../actions/question2";
-
 // Bootstrap related components
-import { Col } from "react-bootstrap";
+import { Col, Image } from "react-bootstrap";
+// Import Redux Related Components/Library
+import { useDispatch, useSelector } from "react-redux";
+import { addinterest, removeinterest } from "../actions/question2";
+import styles from '../sass/components/_singleInterest.module.scss';
+
 
 export function SingleInterest(props) {
   // set Dispatch
@@ -38,7 +38,7 @@ export function SingleInterest(props) {
   };
 
   return (
-    <Col xs={12} sm={{span: 12, offset: 2}} md={{span:4, offset:0}} lg={{span:4, offset:0}}>
+    <Col xs={12} sm={{span: 12}} md={{span:4, offset:0}} lg={{span:3}}>
         <button
           onClick={() => {
             interestHandler(interest);
@@ -47,14 +47,14 @@ export function SingleInterest(props) {
           style={{ backgroundColor: buttonColour }}
         >
           <div className="brandsInternal">
-            <img
+            <Image
+              alt="No image available"
+							className={`${styles.image}`}
               src={
-                require("../assets/" +
+                require("../assets/new_svgs/" +
                   interest.trim().replace(/\s+/g, "").toLowerCase() +
                   ".svg").default
               }
-              className="img-fluid"
-              alt="No image available"
             />
 
             <p style={{ marginTop: "8px" }}> {interest} </p>
