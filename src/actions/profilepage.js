@@ -1,13 +1,11 @@
 import axios from "axios";
-
 import {
-  GET_USER_INFO,
-  GET_ALL_USERS_PROFILE,
-  GET_MATCHED_HISTORY,
-  FLATTEN_MATCHED_USERS,
-  FLATTEN_USER_INTERESTS,
-  GET_ALL_INTERESTS_PROFILE,
+	FLATTEN_MATCHED_USERS,
+	FLATTEN_USER_INTERESTS,
+	GET_ALL_INTERESTS_PROFILE, GET_ALL_USERS_PROFILE,
+	GET_MATCHED_HISTORY, GET_USER_INFO
 } from "../actions/types";
+
 
 
 // base url
@@ -159,8 +157,11 @@ export const getuserinfo = () => async(dispatch, getState) => {
   export const flattenmatchedusers  = () => async(dispatch, getState) => {
       // Gets all matched history from state
       const _matched_history = getState().profilepage.matched_history;
+			console.log("[DEBUG] flattenmatchedusers");
+			console.log(_matched_history);
       // Gets all users from existing state
       const _all_users = getState().profilepage.all_users;
+			console.log(_all_users);
       // variables that will be used
       const _matched_users = _matched_history[_matched_history.length - 1].matched_users;
 
@@ -172,9 +173,9 @@ export const getuserinfo = () => async(dispatch, getState) => {
             // eslint-disable-next-line no-loop-func
             (_singleuser) => parseInt(_singleuser.id) === parseInt(_matchedID)
         ));
-        _flatten_matched_users.push(tmp[0].email);
+        _flatten_matched_users.push(tmp[0]);
     }
-    console.log("Flattened matched users")
+    console.log("Flattened matched users");
     console.log(_flatten_matched_users);
 
     await dispatch({

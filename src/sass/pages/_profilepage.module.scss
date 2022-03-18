@@ -1,0 +1,25 @@
+
+.figureCaption{
+	font-size: 95%;
+}
+
+.rowSection{
+	margin-top: 36px;
+}
+
+.profileInfo{
+	margin-top: 12px;
+
+	>span{
+		font-size: 110%;
+	}
+}
+
+#profileImage{
+	margin-top: 16px;
+	height: 200px;
+	width: 200px;
+	border: 3px solid #888;
+	border-radius: 120px;
+	padding: 0px;
+}
