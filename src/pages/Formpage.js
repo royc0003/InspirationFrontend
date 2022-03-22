@@ -8,7 +8,7 @@ import { Questionaire4 } from "./Questionaire4";
 
 export function Formpage(props) {
   // Set All States
-  const [qnNo, setQnNo] = useState(2); // sets qnNo = 0
+  const [qnNo, setQnNo] = useState(1); // sets qnNo = 0
 
   // All Functions
   const nextQuestionHandler = () => {

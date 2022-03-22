@@ -11,8 +11,6 @@ export function Photo(props) {
 	const [interestIDs, setValue] = useState([]);
 	const {
 		user,
-		comments,
-		i,
 		xl,
 		lg,
 		xxl,
@@ -27,7 +25,6 @@ export function Photo(props) {
 		xxl_span,
 	} = props;
 	// xs_span={12} sm_span={10} md_span={9} xl_span={12} xxl_span={12}
-	const [inProp, setInProp] = useState(false);
 	const listOfInterests = useSelector(
 		(state) => state.photogrid.listOfInterests
 	);

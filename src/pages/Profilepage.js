@@ -22,7 +22,11 @@ export function Profilepage(props) {
 
 	// Get current isComplete state from profilepage store to render Spinner
 	const isComplete = useSelector((state) => state.profilepage.isComplete);
-	const { user_info, flatten_matched_users, all_interests, flatten_user_interests } = useSelector((state) => state.profilepage)
+
+	// TODO don't understand the conflicting user_interests IDs
+	// flatten_user_interests don't seem to be populated
+	// const { user_info, flatten_matched_users, all_interests, flatten_user_interests } = useSelector((state) => state.profilepage)
+	const { user_info, flatten_matched_users  } = useSelector((state) => state.profilepage)
 
 	// Similar to React's Component Did Mount
 	useEffect(() => {
@@ -37,7 +41,6 @@ export function Profilepage(props) {
 		};
 		// Retrieves all data necessary for rendering profile page
 		retrieveAllDataPromise();
-
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
@@ -67,7 +70,7 @@ export function Profilepage(props) {
 							<Row className="d-flex justify-content-center">
 								<Image
 									id={styles.profileImage}
-									src={user_info.pic_url}></Image>
+									src={user_info.pic_url} />
 
 							</Row>
 							<Row>
