@@ -1,15 +1,13 @@
 import React from "react";
 // Import Bootstrap
-import { Container, Nav, Navbar, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Button, Container, Nav, Navbar } from "react-bootstrap";
+import { connect, useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { logout } from "../actions/auth";
 import styles from "../sass/components/_Header.module.scss";
 //Import CSS
 import "../sass/components/_Header.scss";
-import Logo  from "./Logo";
-import { connect } from "react-redux";
-import { logout } from "../actions/auth";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from 'react-redux';
+import Logo from "./Logo";
 
 
 
@@ -27,6 +25,9 @@ export function Header(props) {
 
     const authLinks = (
       <Nav id={styles.navMenu}>
+        <Nav.Link id={styles.profileLink} as={Link} to="/profilepage">
+          My Profile
+        </Nav.Link>
         <Button
           className="header-logout"
           onClick={handleLogOut}
