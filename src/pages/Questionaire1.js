@@ -7,7 +7,148 @@ import { gethalls, selecthall } from "../actions/question1";
 //Import sass
 import "../sass/pages/_Questionaire1.scss";
 
-
+export const namedHalls = [
+	{
+		id: 16,
+		created_on: "2022-02-07",
+		name: "Hall 1",
+		pic_url: null,
+		polymorphic_ctype: 2,
+	},
+	{
+		id: 17,
+		created_on: "2022-02-07",
+		name: "Hall 2",
+		pic_url: null,
+		polymorphic_ctype: 2,
+	},
+	{
+		id: 18,
+		created_on: "2022-02-07",
+		name: "Hall 3",
+		pic_url: null,
+		polymorphic_ctype: 2,
+	},
+	{
+		id: 19,
+		created_on: "2022-02-07",
+		name: "Hall 4",
+		pic_url: null,
+		polymorphic_ctype: 2,
+	},
+	{
+		id: 20,
+		created_on: "2022-02-07",
+		name: "Hall 5",
+		pic_url: null,
+		polymorphic_ctype: 2,
+	},
+	{
+		id: 21,
+		created_on: "2022-02-07",
+		name: "Hall 6",
+		pic_url: null,
+		polymorphic_ctype: 2,
+	},
+	{
+		id: 22,
+		created_on: "2022-02-07",
+		name: "Hall 7",
+		pic_url: null,
+		polymorphic_ctype: 2,
+	},
+	{
+		id: 23,
+		created_on: "2022-02-07",
+		name: "Hall 8",
+		pic_url: null,
+		polymorphic_ctype: 2,
+	},
+	{
+		id: 24,
+		created_on: "2022-02-07",
+		name: "Hall 9",
+		pic_url: null,
+		polymorphic_ctype: 2,
+	},
+	{
+		id: 25,
+		created_on: "2022-02-07",
+		name: "Hall 10",
+		pic_url: null,
+		polymorphic_ctype: 2,
+	},
+	{
+		id: 26,
+		created_on: "2022-02-07",
+		name: "Hall 11",
+		pic_url: null,
+		polymorphic_ctype: 2,
+	},
+	{
+		id: 27,
+		created_on: "2022-02-07",
+		name: "Hall 12",
+		pic_url: null,
+		polymorphic_ctype: 2,
+	},
+	{
+		id: 28,
+		created_on: "2022-02-07",
+		name: "Hall 13",
+		pic_url: null,
+		polymorphic_ctype: 2,
+	},
+	{
+		id: 29,
+		created_on: "2022-02-07",
+		name: "Hall 14",
+		pic_url: null,
+		polymorphic_ctype: 2,
+	},
+	{
+		id: 30,
+		created_on: "2022-02-07",
+		name: "Hall 15",
+		pic_url: null,
+		polymorphic_ctype: 2,
+	},
+	{
+		id: 31,
+		created_on: "2022-02-07",
+		name: "Tanjong Hall",
+		pic_url: null,
+		polymorphic_ctype: 2,
+	},
+	{
+		id: 32,
+		created_on: "2022-02-07",
+		name: "Binjai Hall",
+		pic_url: null,
+		polymorphic_ctype: 2,
+	},
+	{
+		id: 33,
+		created_on: "2022-02-07",
+		name: "Saraca Hall",
+		pic_url: null,
+		polymorphic_ctype: 2,
+	},
+	{
+		id: 34,
+		created_on: "2022-02-07",
+		name: "Banyan Hall",
+		pic_url: null,
+		polymorphic_ctype: 2,
+	},
+	{
+		id: 35,
+		created_on: "2022-02-07",
+		name: "Hall 25",
+		pic_url: null,
+		polymorphic_ctype: 2,
+	},
+];
 
 export function Questionaire1(props) {
   // Set All States
@@ -25,7 +166,7 @@ export function Questionaire1(props) {
   // Similar to componentDidMount()
   useEffect(() => {
     // Load Halls From API
-    dispatch(gethalls());
+    dispatch(gethalls()); 
 
     if (storeHalls === null) {
       // ERROR HANDLING: If API Doesn't Load Any Hall
@@ -36,148 +177,6 @@ export function Questionaire1(props) {
       //   for (var i = 0; i < n; i++) {
       //     numericalHalls.push((i + 1).toString());
       //   }
-      var namedHalls = [
-        {
-          id: 16,
-          created_on: "2022-02-07",
-          name: "Hall 1",
-          pic_url: null,
-          polymorphic_ctype: 2,
-        },
-        {
-          id: 17,
-          created_on: "2022-02-07",
-          name: "Hall 2",
-          pic_url: null,
-          polymorphic_ctype: 2,
-        },
-        {
-          id: 18,
-          created_on: "2022-02-07",
-          name: "Hall 3",
-          pic_url: null,
-          polymorphic_ctype: 2,
-        },
-        {
-          id: 19,
-          created_on: "2022-02-07",
-          name: "Hall 4",
-          pic_url: null,
-          polymorphic_ctype: 2,
-        },
-        {
-          id: 20,
-          created_on: "2022-02-07",
-          name: "Hall 5",
-          pic_url: null,
-          polymorphic_ctype: 2,
-        },
-        {
-          id: 21,
-          created_on: "2022-02-07",
-          name: "Hall 6",
-          pic_url: null,
-          polymorphic_ctype: 2,
-        },
-        {
-          id: 22,
-          created_on: "2022-02-07",
-          name: "Hall 7",
-          pic_url: null,
-          polymorphic_ctype: 2,
-        },
-        {
-          id: 23,
-          created_on: "2022-02-07",
-          name: "Hall 8",
-          pic_url: null,
-          polymorphic_ctype: 2,
-        },
-        {
-          id: 24,
-          created_on: "2022-02-07",
-          name: "Hall 9",
-          pic_url: null,
-          polymorphic_ctype: 2,
-        },
-        {
-          id: 25,
-          created_on: "2022-02-07",
-          name: "Hall 10",
-          pic_url: null,
-          polymorphic_ctype: 2,
-        },
-        {
-          id: 26,
-          created_on: "2022-02-07",
-          name: "Hall 11",
-          pic_url: null,
-          polymorphic_ctype: 2,
-        },
-        {
-          id: 27,
-          created_on: "2022-02-07",
-          name: "Hall 12",
-          pic_url: null,
-          polymorphic_ctype: 2,
-        },
-        {
-          id: 28,
-          created_on: "2022-02-07",
-          name: "Hall 13",
-          pic_url: null,
-          polymorphic_ctype: 2,
-        },
-        {
-          id: 29,
-          created_on: "2022-02-07",
-          name: "Hall 14",
-          pic_url: null,
-          polymorphic_ctype: 2,
-        },
-        {
-          id: 30,
-          created_on: "2022-02-07",
-          name: "Hall 15",
-          pic_url: null,
-          polymorphic_ctype: 2,
-        },
-        {
-          id: 31,
-          created_on: "2022-02-07",
-          name: "Tanjong Hall",
-          pic_url: null,
-          polymorphic_ctype: 2,
-        },
-        {
-          id: 32,
-          created_on: "2022-02-07",
-          name: "Binjai Hall",
-          pic_url: null,
-          polymorphic_ctype: 2,
-        },
-        {
-          id: 33,
-          created_on: "2022-02-07",
-          name: "Saraca Hall",
-          pic_url: null,
-          polymorphic_ctype: 2,
-        },
-        {
-          id: 34,
-          created_on: "2022-02-07",
-          name: "Banyan Hall",
-          pic_url: null,
-          polymorphic_ctype: 2,
-        },
-        {
-          id: 35,
-          created_on: "2022-02-07",
-          name: "Hall 25",
-          pic_url: null,
-          polymorphic_ctype: 2,
-        },
-      ];
       setHalls((prevArray) => [...prevArray, ...namedHalls]);
     }
 

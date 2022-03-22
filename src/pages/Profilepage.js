@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
-import { Button, Card, Col, Container, Figure, Image, Row } from "react-bootstrap";
+import { Button, ButtonGroup, Card, Col, Container, Dropdown, DropdownButton, Figure, Form, Image, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { ClimbingBoxLoader } from "react-spinners";
 import {
 	flattenmatchedusers, flattenuserinterests, getallusers, getinterests, getmatchedhistory,
 	getuserinfo
 } from "../actions/profilepage";
+import { selecthall } from "../actions/question1";
 import styles from '../sass/pages/_profilepage.module.scss';
+import { namedHalls } from "./Questionaire1";
 import { LOCAL_INTERESTS } from "./Questionaire2";
-
 
 export function Profilepage(props) {
 
@@ -17,6 +18,12 @@ export function Profilepage(props) {
 	// Set states Related to Spinner
 	let [loading] = useState(true);
 	let [color] = useState("#212529");
+	//Editmode
+	const [isInEditMode, setIsInEditMode] = useState(false);
+	const [hallInput, setHallInput] = useState("");
+	const [halls, setHalls] = useState([]);
+	const storeHalls = useSelector((state) => state.question1.storeHalls);
+
 	// set dispatch
 	const dispatch = useDispatch();
 
@@ -26,7 +33,34 @@ export function Profilepage(props) {
 	// TODO don't understand the conflicting user_interests IDs
 	// flatten_user_interests don't seem to be populated
 	// const { user_info, flatten_matched_users, all_interests, flatten_user_interests } = useSelector((state) => state.profilepage)
-	const { user_info, flatten_matched_users  } = useSelector((state) => state.profilepage)
+	const { user_info, flatten_matched_users } = useSelector((state) => state.profilepage)
+
+	const handleSaveClick = (e) => {
+		setIsInEditMode(!isInEditMode);
+	};
+
+	const handleEditClick = (e) => {
+		console.log(e);
+		setIsInEditMode(!isInEditMode);
+	};
+
+	const handleSelect = (evt) => {
+		var _selectedID = parseInt(evt);
+		// filter array of objects
+		var tmpArray = [...halls];
+		if (storeHalls) {
+			// change to api's storedHalls if data is present
+			tmpArray = [...storeHalls];
+		}
+		var _selectedHall = tmpArray.filter(
+			(_singleHall) => parseInt(_singleHall.id) === _selectedID
+		);
+		// Save selected hall in store
+		console.log("Dispatched to userHall: " + _selectedHall[0].name);
+
+		setHallInput(_selectedHall[0].name);
+		dispatch(selecthall(_selectedHall[0].name));
+	};
 
 	// Similar to React's Component Did Mount
 	useEffect(() => {
@@ -41,6 +75,8 @@ export function Profilepage(props) {
 		};
 		// Retrieves all data necessary for rendering profile page
 		retrieveAllDataPromise();
+
+		setHalls((prevArray) => [...prevArray, ...namedHalls]);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
@@ -75,20 +111,77 @@ export function Profilepage(props) {
 							</Row>
 							<Row>
 								<div className="d-flex justify-content-center mt-5">
-									<div className="d-flex flex-column">
+									<div id={styles.profileInfoSection} className="d-flex flex-column">
 										<div className={styles.profileInfo}>
 											<span className="mark"><strong>Email:</strong></span>
+											{
+												!isInEditMode
+													?
+													<Button
+														className="float-end"
+														variant="outline-secondary"
+														onClick={handleEditClick}
+													>
+														Edit
+													</Button>
+													:
+													<Button
+														className="float-end"
+														variant="success"
+														onClick={handleSaveClick}
+													>
+														Save
+													</Button>
+											}
 											<div className="sub-comments">{user_info.email}</div>
 										</div>
 										<div className={styles.profileInfo}>
 											<span className="mark"><strong>Bio:</strong></span>
-											<div className="sub-comments">{user_info.biography ? user_info.biography : "User does not have a bio"}</div>
+											{
+												!isInEditMode
+													?
+													<div className="sub-comments">{user_info.biography ? user_info.biography : "User does not have a bio"}</div>
+													:
+													<Form.Control
+														as="textarea"
+														rows={3}
+														defaultValue={user_info.biography}
+													/>
+											}
 										</div>
 										<div className={styles.profileInfo}>
 											<span className="mark"><strong>Hall:</strong></span>
-											<div className="sub-comments">
-												{user_info.hall ? user_info.hall : "User does not have hall"}
-											</div>
+											{
+												!isInEditMode
+													?
+													<div className="sub-comments">
+														{user_info.hall ? user_info.hall : "User does not have hall"}
+													</div>
+													:
+													<DropdownButton
+														onSelect={handleSelect}
+														as={ButtonGroup}
+														size="md"
+														variant="primary"
+														title={hallInput ? `${hallInput}` : "Select Hall"}
+														style={{ marginLeft: "30px" }}
+													>
+														{ // Error Handling: In case API Fails
+															storeHalls === null
+																? halls.map((value, i) => (
+																	<Dropdown.Item
+																		eventKey={`${value.id}`}
+																		key={i}
+																	>{`${value.name}`}</Dropdown.Item>
+																))
+																: storeHalls.map((value, i) => (
+																	<Dropdown.Item
+																		eventKey={`${value.id}`}
+																		key={i}
+																	>{`${value.name}`}</Dropdown.Item>
+																))}
+													</DropdownButton>
+											}
 										</div>
 									</div>
 								</div>
@@ -96,7 +189,7 @@ export function Profilepage(props) {
 
 							{/* Selected Interests */}
 							<Row className={styles.rowSection}>
-								<h2>Selected Interests</h2>
+								<h2 className="mb-4">Selected Interests</h2>
 								{
 									mock_interests.map((v, i) => {
 										return (
@@ -121,7 +214,7 @@ export function Profilepage(props) {
 							{/* Matched History */}
 							<Row className={styles.rowSection}>
 								<h2>Matched History</h2>
-								<Row className="g-4" xs={3}>
+								<Row className="g-4 mt-1" xs={3}>
 									{
 										flatten_matched_users.map((matched_user) => {
 											return (
