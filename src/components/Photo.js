@@ -95,8 +95,10 @@ export function Photo(props) {
 							: ""
 					}
 					<p className="biography">{user.biography}</p>
-
-					<Button variant="secondary" className="cardBtn" onClick={() => navigate(`/view/${user.id}`)}>View Profile</Button>
+					{
+						window.location.pathname === '/protected' &&
+							<Button variant="secondary" className="cardBtn" onClick={() => navigate(`/view/${user.id}`)}>View Profile</Button>
+					}
 				</figcaption>
 			</figure>
 		</Col>

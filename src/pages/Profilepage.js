@@ -10,11 +10,8 @@ import {
 import { selecthall } from "../actions/question1";
 import styles from '../sass/pages/_profilepage.module.scss';
 import { namedHalls } from "./Questionaire1";
-import { LOCAL_INTERESTS } from "./Questionaire2";
 
 export function Profilepage(props) {
-
-	const mock_interests = LOCAL_INTERESTS;
 
 	// Set states Related to Spinner
 	let [loading] = useState(true);
@@ -34,7 +31,7 @@ export function Profilepage(props) {
 
 	// TODO don't understand the conflicting user_interests IDs
 	// flatten_user_interests don't seem to be populated
-	const { user_info, flatten_matched_users, all_interests, flatten_user_interests } = useSelector((state) => state.profilepage)
+	const { user_info, flatten_matched_users, flatten_user_interests } = useSelector((state) => state.profilepage)
 
 	const handleSaveClick = (e) => {
 		setIsInEditMode(!isInEditMode);
