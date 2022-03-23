@@ -1,131 +1,109 @@
-import React, { useState, useEffect } from "react";
-
-// Router Related Imports
-import { Link } from "react-router-dom";
-
-// Transition/Effects Related Imports
-import { CSSTransition } from "react-transition-group";
-
-import { useSelector } from "react-redux";
-
+import React, { useEffect, useState } from "react";
 // Bootstrap related components
-import { Col } from "react-bootstrap";
-
+import { Button, Col, Image } from "react-bootstrap";
+import { useSelector } from "react-redux";
+// Router Related Imports
+import { Link, useNavigate } from "react-router-dom";
 // Import CSS
 import "../sass/components/_Photo.scss";
 
 export function Photo(props) {
-  const [stringValue, setValue] = useState([]);
-  const {
-    post,
-    comments,
-    i,
-    xl,
-    lg,
-    xxl,
-    sm,
-    xs,
-    md,
-    lg_span,
-    xs_span,
-    sm_span,
-    md_span,
-    xl_span,
-    xxl_span,
-  } = props;
-  // xs_span={12} sm_span={10} md_span={9} xl_span={12} xxl_span={12}
-  const [inProp, setInProp] = useState(false);
-  const listOfInterests = useSelector(
-    (state) => state.photogrid.listOfInterests
-  );
-  // Similar to componentDidMount()
-  useEffect(() => {
-    console.log("processing string");
-    // Process interest string
-    var _tmp = [];
-    for (var _singleInterest of post.interests) {
-      _tmp.push(listOfInterests[parseInt(_singleInterest) - 1]);
-    }
-    // if (_tmp.length >= 1) {
-    //   setValue("#" + _tmp.join(" #").trim());
-    // } else {
-    //   setValue("No Interest Stated");
-    // }
-    if (_tmp) {
-      setValue((oldArray) => [...oldArray, _tmp]);
-    }
+	const [interestIDs, setValue] = useState([]);
+	const {
+		user,
+		xl,
+		lg,
+		xxl,
+		sm,
+		xs,
+		md,
+		lg_span,
+		xs_span,
+		sm_span,
+		md_span,
+		xl_span,
+		xxl_span,
+	} = props;
+	// xs_span={12} sm_span={10} md_span={9} xl_span={12} xxl_span={12}
+	const listOfInterests = useSelector(
+		(state) => state.photogrid.listOfInterests
+	);
+	const navigate = useNavigate();
+	// Similar to componentDidMount()
+	useEffect(() => {
+		console.log("processing string");
+		console.log(user);
+		// Process interest string
+		var _tmp = [];
+		for (var _singleInterest of user.interests) {
+			console.log(_singleInterest)
+			_tmp.push(listOfInterests[parseInt(_singleInterest.interest.id) - 1]);
+		}
+		// if (_tmp.length >= 1) {
+		//   setValue("#" + _tmp.join(" #").trim());
+		// } else {
+		//   setValue("No Interest Stated");
+		// }
+		if (_tmp) {
+			setValue((oldArray) => [...oldArray, _tmp]);
+		}
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
-  const renderComment = (singleComment, i) => {
-    return (
-      <span key={i} className="photo-caption pink-highlight">
-        #{singleComment}
-      </span>
-    );
-  };
+	const renderInterests = (interest, i) => {
+		return (
+			<span key={interest} className="photo-caption pink-highlight">
+				&nbsp;#{interest}&nbsp;
+			</span>
+		);
+	};
 
-  return (
-    <Col
-      className="overal-container"
-      xs={{span: xs_span, offset: xs}}
-      sm={{ span: sm_span, offset: sm }}
-      md={{ span: md_span, offset: md }}
-      lg={{span: lg_span, offset: lg}}
-      xl={{ span: xl_span, offset: xl }}
-      xxl={{ span: xxl_span, offset: xxl }}
-    >
-      <figure className="grid-figure">
-        <div className="grid-photo-wrap">
-          <Link to={`/view/${parseInt(post.user)}`}>
-            <img
-              src={
-                post.pic_url
-                  ? post.pic_url
-                  : `https://picsum.photos/400/400/?image=${Math.floor(
-                      Math.random() * 85
-                    )}`
-              }
-              alt="null"
-              className="grid-photo"
-            />
-          </Link>
+	return (
+		<Col
+			xs={{ span: xs_span, offset: xs }}
+			sm={{ span: sm_span, offset: sm }}
+			md={{ span: md_span, offset: md }}
+			lg={{ span: lg_span, offset: lg }}
+			xl={{ span: xl_span, offset: xl }}
+			xxl={{ span: xxl_span, offset: xxl }}
+		>
 
-          <CSSTransition
-            in={inProp}
-            onEnter={() => setInProp(true)}
-            onExit={() => setInProp(false)}
-            classNames="like"
-            timeout={500}
-          >
-            <div>
-              <span key={post.likes} className="likes-heart">
-                {post.likes}
-              </span>
-            </div>
-          </CSSTransition>
-        </div>
+			<figure className="grid-figure">
+				<div className="grid-photo-wrap">
+					<Link to={`/view/${parseInt(user.id)}`}>
+						<Image
+							src={
+								user.pic_url
+									? user.pic_url
+									: `https://picsum.photos/400/400/?image=${Math.floor(
+										Math.random() * 85
+									)}`
+							}
+							alt="null"
+							className="grid-photo"
+						/>
+					</Link>
 
-        <figcaption>
-          {stringValue[0]
-            ? stringValue[0].map((v, i) => renderComment(v, i))
-            : ""}
+				</div>
 
-          <div className="control-buttons">
-            <button onClick={props.increment.bind(null, i)} className="likes">
-              &hearts; {post.likes}
-            </button>
-            <Link className="button" to={`/view/${parseInt(post.user)}`}>
-              <span className="comment-count">
-                <span className="speech-bubble"></span>
-                <span className="speech-after"> </span>
-                {comments[post.code] ? comments[post.code].length : 0}
-              </span>
-            </Link>
-          </div>
-        </figcaption>
-      </figure>
-    </Col>
-  );
+				<figcaption>
+					<h4 className="figCaptionHeader">{user.email.substring(0, user.email.indexOf('@'))}</h4>
+					{
+						interestIDs[0]
+							? interestIDs[0].map((v, i) => renderInterests(v, i))
+							: ""
+					}
+
+					{
+						window.location.pathname === '/protected' &&
+						<div>
+							<p className="biography">{user.biography}</p>
+							<Button variant="secondary" className="cardBtn" onClick={() => navigate(`/view/${user.id}`)}>View Profile</Button>
+						</div>
+					}
+				</figcaption>
+			</figure>
+		</Col>
+	);
 }

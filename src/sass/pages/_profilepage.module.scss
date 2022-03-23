@@ -1,0 +1,51 @@
+
+.figureCaption{
+	font-size: 95%;
+}
+
+.rowSection{
+	margin-top: 36px;
+}
+
+.profileInfo{
+	margin-top: 12px;
+
+	>span{
+		font-size: 110%;
+	}
+}
+
+.matchedUserCard{
+	height: 450px;
+}
+
+.image{
+	width: 200px;
+	height: 150px; 
+	object-fit: contain;
+	margin-bottom: 12px;
+}
+
+#loader{
+	position: relative;
+	left: 50%;
+	top: 100px;
+}
+
+#profileInfoSection{
+  flex-basis: 400px;
+}
+
+#profilePageContainer{
+	margin-top: 58px;
+	margin-bottom: 58px;
+}
+
+#profileImage{
+	margin-top: 16px;
+	height: 200px;
+	width: 200px;
+	border: 3px solid #888;
+	border-radius: 120px;
+	padding: 0px;
+}

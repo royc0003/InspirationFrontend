@@ -8,9 +8,15 @@
 #navMenu{
 	a{
 		color: #fdfdfd;
+		font-size: 22px;	
 	}
 
 	a:hover{
 		color: $dark-orange;
+	}
+
+	#profileLink{
+		width: 150px;
+		margin-right: 12px;
 	}
 }

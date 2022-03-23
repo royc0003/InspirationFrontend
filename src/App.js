@@ -1,22 +1,22 @@
 import React, { useEffect } from 'react';
+import { connect, useDispatch, useSelector } from 'react-redux';
+import { Navigate, Route, Routes } from 'react-router-dom';
 // Redux-Store Related Imports
 import { bindActionCreators } from 'redux';
-import { Routes, Route, Navigate } from 'react-router-dom';
-import { connect, useDispatch, useSelector } from 'react-redux';
 import * as actionCreators from './actions/actionCreators';
+// Import action
+import { loadUser } from './actions/auth';
 // Component Related Imports
 import Header from './components/Header';
 import PhotoGrid from './components/PhotoGrid';
 import Single from './components/Single';
+import { Formpage } from './pages/Formpage';
 import { Landingpage } from './pages/Landingpage';
 // Pages Related Imports
 import { Login } from './pages/Login';
-import { Signup } from './pages/Signup';
-import { Formpage } from './pages/Formpage';
 import { Profilepage } from './pages/Profilepage';
+import { Signup } from './pages/Signup';
 
-// Import action
-import { loadUser } from './actions/auth';
 
 export function App(props) {
   const dispatch = useDispatch()
@@ -29,7 +29,7 @@ export function App(props) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
-    <main style={{ height: '100vh'}}>
+    <main style={{ height: 'fit-content'}}>
       <Header/>
       <Routes>
         <Route path="/" element={<Landingpage />}/>

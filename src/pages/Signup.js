@@ -1,14 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Button, Card, Container, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { Toasts } from "../components/Toasts";
-import Logo from "../components/Logo";
-import styles from "../sass/pages/signuppage.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
-
 // import actions
-import { signup, clearError, setpicurl } from "../actions/auth";
+import { clearError, setpicurl, signup } from "../actions/auth";
+import Logo from "../components/Logo";
+import { Toasts } from "../components/Toasts";
+import styles from "../sass/pages/signuppage.module.scss";
+
 
 export function Signup(props) {
   const [rerender, setRerender] = useState(false);
@@ -55,6 +55,7 @@ export function Signup(props) {
 
   return (
     <Container id={styles.signupContainer}>
+			<div id={styles.bgContainer}></div>
       {isAuthenticated ? <Navigate to={"/formpage"} /> : ""}
       {errorMessage
         ? errorMessage.map((item, i) => <Toasts key={i} item={item}></Toasts>)

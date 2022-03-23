@@ -1,18 +1,15 @@
 import axios from "axios";
-
 import {
-  GET_ALL_INTERESTS,
-  // GET_ALL_INTERESTS_FAIL,
-  ADD_INTEREST,
-  SET_INTEREST,
-  REMOVE_INTEREST,
+	// GET_ALL_INTERESTS_FAIL,
+	ADD_INTEREST, GET_ALL_INTERESTS, REMOVE_INTEREST, RESET_INTERESTS, SET_INTEREST
 } from "./types";
+
 
 // base url
 const url = "https://zhuweiji.pythonanywhere.com";
 
 // Get All Specified Interests
-export const getinterests = () => (dispatch, getState) => {
+export const getinterests = () => async (dispatch, getState) => {
   // Headers
   const config = {
     headers: {
@@ -32,7 +29,7 @@ export const getinterests = () => (dispatch, getState) => {
       config.headers["Authorization"] = `Token ${key}`;
     }
 
-  axios
+  await axios
     .get(`${url}/interests/`, config)
     .then((res) => {
       dispatch({
@@ -85,3 +82,10 @@ export const removeinterest = (index) => (dispatch, getState) => {
     payload: index,
   });
 };
+
+
+export const resetSelectedInterests = () => async (dispatch, getState) => {
+	dispatch({
+		type: RESET_INTERESTS
+	});
+}

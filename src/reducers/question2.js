@@ -1,10 +1,7 @@
-import { 
-  GET_ALL_INTERESTS, 
-  GET_ALL_INTERESTS_FAIL,
-  ADD_INTEREST,
-  REMOVE_INTEREST,
-  SET_INTEREST,
- } from "../actions/types";
+import {
+	ADD_INTEREST, GET_ALL_INTERESTS,
+	GET_ALL_INTERESTS_FAIL, REMOVE_INTEREST, RESET_INTERESTS, SET_INTEREST
+} from "../actions/types";
 
 const initialState = {
   interests: null,
@@ -44,6 +41,12 @@ function question2(state = initialState, action) {
           ...state,
             interests: null,
         }
+		case RESET_INTERESTS:
+			return {
+				...state,
+				interests: null,
+				selectedInterests: []
+			}
     default:
       return state;
   }
