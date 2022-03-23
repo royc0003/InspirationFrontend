@@ -19,6 +19,13 @@
 	height: 450px;
 }
 
+.image{
+	width: 200px;
+	height: 150px; 
+	object-fit: contain;
+	margin-bottom: 12px;
+}
+
 #loader{
 	position: relative;
 	left: 50%;

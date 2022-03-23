@@ -32,8 +32,7 @@ export function Profilepage(props) {
 
 	// TODO don't understand the conflicting user_interests IDs
 	// flatten_user_interests don't seem to be populated
-	// const { user_info, flatten_matched_users, all_interests, flatten_user_interests } = useSelector((state) => state.profilepage)
-	const { user_info, flatten_matched_users } = useSelector((state) => state.profilepage)
+	const { user_info, flatten_matched_users, all_interests, flatten_user_interests } = useSelector((state) => state.profilepage)
 
 	const handleSaveClick = (e) => {
 		setIsInEditMode(!isInEditMode);
@@ -191,18 +190,23 @@ export function Profilepage(props) {
 							<Row className={styles.rowSection}>
 								<h2 className="mb-4">Selected Interests</h2>
 								{
-									mock_interests.map((v, i) => {
+									flatten_user_interests.map((v, i) => {
 										return (
-											<Col xs={2} key={v.id}>
+											<Col xs={3} key={v.id}>
 												<Figure>
 													<Figure.Image
 														width={100}
 														height={100}
 														alt="200x200"
-														src="https://picsum.photos/100/"
+														className={styles.image}
+														src={
+															require("../assets/new_svgs/" +
+																v.trim().replace(/\s+/g, "").toLowerCase() +
+																".svg").default
+														}
 													/>
 													<Figure.Caption className={styles.figureCaption}>
-														{v.interest.charAt(0).toUpperCase() + v.interest.slice(1)}
+														{v.charAt(0).toUpperCase() + v.slice(1)}
 													</Figure.Caption>
 												</Figure>
 											</Col>

@@ -49,7 +49,7 @@ export function SingleInterest(props) {
           <div className="brandsInternal">
             <Image
               alt="No image available"
-							className={`${styles.image}`}
+							className={styles.image}
               src={
                 require("../assets/new_svgs/" +
                   interest.trim().replace(/\s+/g, "").toLowerCase() +
