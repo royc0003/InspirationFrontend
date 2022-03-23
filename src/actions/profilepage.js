@@ -241,12 +241,14 @@ export const getinterests = () => async (dispatch, getState) => {
 
     // variables that will be used
     const _user_interests = _user_info.interests;
+
     var _flatten_user_interests = []
 
-    for(var _interest_id of _user_interests){
+    for(var _interest of _user_interests){
       var tmp = (_all_interests.filter(
           // eslint-disable-next-line no-loop-func
-          (_singleinterest) => parseInt(_singleinterest.id) === parseInt(_interest_id)
+          (_singleinterest) => 
+						parseInt(_singleinterest.id) === parseInt(_interest.interest.id)
       ));
       if(tmp.length > 0) {
           console.log("inside if ")
