@@ -3,6 +3,9 @@ import React, { useEffect, useState } from "react";
 import { Button, ButtonGroup, Dropdown, DropdownButton } from "react-bootstrap";
 // Import Redux Related Components/Library
 import { useDispatch, useSelector } from "react-redux";
+import {
+	getuserinfo
+} from "../actions/profilepage";
 import { gethalls, selecthall } from "../actions/question1";
 //Import sass
 import "../sass/pages/_Questionaire1.scss";
@@ -151,94 +154,104 @@ export const namedHalls = [
 ];
 
 export function Questionaire1(props) {
-  // Set All States
-  const [halls, setHalls] = useState([]);
-  const [hallInput, setHallInput] = useState("");
-  // Redux-store storeHalls key -- when calling api
-  const storeHalls = useSelector((state) => state.question1.storeHalls);
-  const userHall = useSelector(state => state.question1.userHall);
-  console.log("Checking halls state");
-  console.log(storeHalls);
+	// Set All States
+	const [halls, setHalls] = useState([]);
+	const [hallInput, setHallInput] = useState("");
+	// Redux-store storeHalls key -- when calling api
+	const storeHalls = useSelector((state) => state.question1.storeHalls);
+	const userHall = useSelector(state => state.question1.userHall);
+	const { user_info } = useSelector((state) => state.profilepage)
+	console.log("Checking halls state");
+	console.log(storeHalls);
 
-  // Set Dispatch
-  const dispatch = useDispatch();
+	// Set Dispatch
+	const dispatch = useDispatch();
 
-  // Similar to componentDidMount()
-  useEffect(() => {
-    // Load Halls From API
-    dispatch(gethalls()); 
+	// Similar to componentDidMount()
+	useEffect(() => {
+		// Load Halls From API
 
-    if (storeHalls === null) {
-      // ERROR HANDLING: If API Doesn't Load Any Hall
-      //   // Initialize halls state
-      //   var n = 15;
-      //   // begins from 0; since there isn't a hall 0, we add 1 to it
-      //   var numericalHalls = [];
-      //   for (var i = 0; i < n; i++) {
-      //     numericalHalls.push((i + 1).toString());
-      //   }
-      setHalls((prevArray) => [...prevArray, ...namedHalls]);
-    }
+		(async function () {
+			await dispatch(getuserinfo());
+			console.log("user_info");
+			console.log(user_info);
+		})();
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  // All Functions
-
-  // Destructuring
-  const { nextQuestionHandler } = props;
-
-  const handleSelect = (evt) => {
-    var _selectedID = parseInt(evt);
-    // filter array of objects
-    var tmpArray = [...halls];
-    if (storeHalls) {
-      // change to api's storedHalls if data is present
-      tmpArray = [...storeHalls];
-    }
-    var _selectedHall = tmpArray.filter(
-      (_singleHall) => parseInt(_singleHall.id) === _selectedID
-    );
-    // Save selected hall in store
-    console.log("Dispatched to userHall: " + _selectedHall[0].name);
-
-    setHallInput(_selectedHall[0].name);
-    dispatch(selecthall(_selectedHall[0].name));
-  };
+		dispatch(gethalls());
 
 
-  return (
-    <div className="questionaire1overall">
-      <h1 style={{ marginTop: "40px" }}> Which hall do you stay in?</h1>
-      <DropdownButton
-        onSelect={handleSelect}
-        as={ButtonGroup}
-        size="lg"
-        variant="success"
-        title={hallInput?`${hallInput}`: "Select Hall"}
-        style={{ marginTop: "40px" }}
-      >
-        { // Error Handling: In case API Fails
-        storeHalls === null
-          ? halls.map((value, i) => (
-              <Dropdown.Item
-                eventKey={`${value.id}`}
-                key={i}
-              >{`${value.name}`}</Dropdown.Item>
-            ))
-          : storeHalls.map((value, i) => (
-              <Dropdown.Item
-                eventKey={`${value.id}`}
-                key={i}
-              >{`${value.name}`}</Dropdown.Item>
-            ))}
-      </DropdownButton>
-      <div className="HallSelection"></div>
-      <Button color="green" style={{ marginTop: "20%" }} disabled={userHall === null ? true : false} onClick={nextQuestionHandler}>
-        Continue to next question
-      </Button>
-    </div>
-  );
+		if (storeHalls === null) {
+			// ERROR HANDLING: If API Doesn't Load Any Hall
+			//   // Initialize halls state
+			//   var n = 15;
+			//   // begins from 0; since there isn't a hall 0, we add 1 to it
+			//   var numericalHalls = [];
+			//   for (var i = 0; i < n; i++) {
+			//     numericalHalls.push((i + 1).toString());
+			//   }
+			setHalls((prevArray) => [...prevArray, ...namedHalls]);
+		}
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
+	// All Functions
+
+	// Destructuring
+	const { nextQuestionHandler } = props;
+
+	const handleSelect = (evt) => {
+		var _selectedID = parseInt(evt);
+		// filter array of objects
+		var tmpArray = [...halls];
+		if (storeHalls) {
+			// change to api's storedHalls if data is present
+			tmpArray = [...storeHalls];
+		}
+		var _selectedHall = tmpArray.filter(
+			(_singleHall) => parseInt(_singleHall.id) === _selectedID
+		);
+		// Save selected hall in store
+		console.log("Dispatched to userHall: " + _selectedHall[0].name);
+
+		setHallInput(_selectedHall[0].name);
+		dispatch(selecthall(_selectedHall[0].name));
+	};
+
+
+	return (
+		<div className="questionaire1overall">
+			<h1 style={{ marginTop: "40px" }}> Which hall do you stay in?</h1>
+			<DropdownButton
+				onSelect={handleSelect}
+				as={ButtonGroup}
+				size="lg"
+				variant="success"
+				title={hallInput ? `${hallInput}` : "Select Hall"}
+				style={{ marginTop: "40px" }}
+				defaultValue={user_info !== null && user_info.hall}
+			>
+				{ // Error Handling: In case API Fails
+					storeHalls === null
+						? halls.map((value, i) => (
+							<Dropdown.Item
+								eventKey={`${value.id}`}
+								key={i}
+							>{`${value.name}`}</Dropdown.Item>
+						))
+						: storeHalls.map((value, i) => (
+							<Dropdown.Item
+								eventKey={`${value.id}`}
+								key={i}
+							>{`${value.name}`}</Dropdown.Item>
+						))}
+			</DropdownButton>
+			<div className="HallSelection"></div>
+			<Button color="green" style={{ marginTop: "20%" }} disabled={userHall === null ? true : false} onClick={nextQuestionHandler}>
+				Continue to next question
+			</Button>
+		</div>
+	);
 }
 
 // LEGACY: (FOR REFERENCE)

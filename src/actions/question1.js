@@ -1,12 +1,12 @@
 import axios from "axios";
-
 import { IMPORT_HALL, IMPORT_HALL_FAIL, SELECT_HALL } from "./types";
+
 
 // base url
 const url = "https://zhuweiji.pythonanywhere.com";
 
 // Signup
-export const gethalls = () => (dispatch, getState) => {
+export const gethalls = () => async (dispatch, getState) => {
   // Headers
   const config = {
     headers: {
@@ -25,9 +25,11 @@ export const gethalls = () => (dispatch, getState) => {
   }
 
 
-  axios
+  await axios
     .get(`${url}/hall_residences/`, config)
     .then((res) => {
+			console.log("HALLS");
+			console.log(res);
       dispatch({
         type: IMPORT_HALL,
         payload: res.data,

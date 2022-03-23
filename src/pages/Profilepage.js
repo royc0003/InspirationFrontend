@@ -7,11 +7,10 @@ import {
 	flattenmatchedusers, flattenuserinterests, getallusers, getinterests, getmatchedhistory,
 	getuserinfo
 } from "../actions/profilepage";
-import { selecthall } from "../actions/question1";
+import { gethalls, selecthall } from "../actions/question1";
 import { PhotoGrid } from "../components/PhotoGrid";
 import styles from '../sass/pages/_profilepage.module.scss';
 import { namedHalls } from "./Questionaire1";
-
 export function Profilepage(props) {
 
 	// Set states Related to Spinner
@@ -66,6 +65,8 @@ export function Profilepage(props) {
 	useEffect(() => {
 		const retrieveAllDataPromise = async () => {
 			console.log("This is working");
+			await dispatch(gethalls());
+			
 			await dispatch(getallusers());
 			await dispatch(getmatchedhistory());
 			await dispatch(getinterests());
@@ -83,7 +84,8 @@ export function Profilepage(props) {
 	useEffect(() => {
 		console.log("[DEBUG] matched_history");
 		console.log(flatten_matched_users);
-	}, [flatten_matched_users]);
+		console.log(storeHalls);
+	}, [flatten_matched_users, storeHalls]);
 
 	return (
 		<Container id={styles.profilePageContainer}>
@@ -155,7 +157,9 @@ export function Profilepage(props) {
 												!isInEditMode
 													?
 													<div className="sub-comments">
-														{user_info.hall ? user_info.hall : "User does not have hall"}
+														{
+															namedHalls.filter((h) => h.id === user_info.hall)[0].name
+														}
 													</div>
 													:
 													<DropdownButton

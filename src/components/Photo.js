@@ -94,10 +94,13 @@ export function Photo(props) {
 							? interestIDs[0].map((v, i) => renderInterests(v, i))
 							: ""
 					}
-					<p className="biography">{user.biography}</p>
+
 					{
 						window.location.pathname === '/protected' &&
+						<div>
+							<p className="biography">{user.biography}</p>
 							<Button variant="secondary" className="cardBtn" onClick={() => navigate(`/view/${user.id}`)}>View Profile</Button>
+						</div>
 					}
 				</figcaption>
 			</figure>
