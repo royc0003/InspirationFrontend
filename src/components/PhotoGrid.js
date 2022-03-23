@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 // Bootstrap related components
-import { Col, Container, Row } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import { connect, useDispatch, useSelector } from "react-redux";
 import { ClimbingBoxLoader } from "react-spinners";
 import { bindActionCreators } from "redux";
@@ -63,14 +63,20 @@ export function PhotoGrid(props) {
 			{!isMatched && !hasFoundUsers ? (
 				<Container className="spinner-class">
 					<Row className="justify-content-xs-center">
-						<Col
+						{/* <Col
 							xs={{ span: 6, offset: 5 }}
 							md={{ span: 6, offset: 6 }}
 							lg={{ span: 6, offset: 6 }}
 							xl={{ span: 6, offset: 5 }}
-						>
-							<ClimbingBoxLoader color={color} loading={loading} size={20} />
-						</Col>
+						> */}
+								<div styles={{position: 'relative', left: '50%', top: '100px'}}>
+									<ClimbingBoxLoader
+										color={color}
+										loading={loading}
+										size={20}
+									/>
+								</div>
+						{/* </Col> */}
 					</Row>
 				</Container>
 			) : (
@@ -79,18 +85,20 @@ export function PhotoGrid(props) {
 						<Container className="spinner-class">
 							{console.log("I'm waiting for matchtoallusers")}
 							<Row className="justify-content-xs-center">
-								<Col
+								{/* <Col
 									xs={{ span: 6, offset: 5 }}
 									md={{ span: 6, offset: 6 }}
 									lg={{ span: 6, offset: 6 }}
 									xl={{ span: 6, offset: 5 }}
-								>
+								> */}
+								<div styles={{position: 'relative', left: '50%', top: '100px'}}>
 									<ClimbingBoxLoader
 										color={color}
 										loading={loading}
 										size={20}
 									/>
-								</Col>
+								</div>
+								{/* </Col> */}
 							</Row>
 						</Container>
 					) : (
@@ -102,27 +110,27 @@ export function PhotoGrid(props) {
 
 
 						// <div className="photo-grid2">
-							<Container >
-								<h1 id="matchedFriendsHeader">Your Matched Friends</h1>
-								<Row className="justify-content-center" >
-									{
-										matchToAllUsers.map((user, i) => (
-											<Photo
-												{...props}
-												key={user.id}
-												i={i}
-												user={user}
-												xs_span={12} xs={0}
-												sm_span={12} sm={0}
-												md_span={6} md={0}
-												lg_span={4} lg={0}
-												xl_span={4} xl={0}
-												xxl_span={3} xxl={0}
-											/>
-										))
-									}
-								</Row>
-							</Container>
+						<Container >
+							<h1 id="matchedFriendsHeader">Your Matched Friends</h1>
+							<Row className="justify-content-center" >
+								{
+									matchToAllUsers.map((user, i) => (
+										<Photo
+											{...props}
+											key={user.id}
+											i={i}
+											user={user}
+											xs_span={12} xs={0}
+											sm_span={12} sm={0}
+											md_span={6} md={0}
+											lg_span={4} lg={0}
+											xl_span={4} xl={0}
+											xxl_span={3} xxl={0}
+										/>
+									))
+								}
+							</Row>
+						</Container>
 						// </div>
 					),
 				]
