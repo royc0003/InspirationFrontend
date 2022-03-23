@@ -1,52 +1,55 @@
 import React from "react";
-
 // Bootstrap related components
 import { Col, Stack } from "react-bootstrap";
+import { namedHalls } from "../pages/Questionaire1";
+
 
 export function Comments(props) {
-  // Destructuring props
-  const { post, biography, hall, email } = props;
-  return (
-    <Col className="comments">
-      {/* {this.props.postComments.map(this.renderComment)} */}
-      <Stack gap={3}>
-        <div >
-          <span className="mark">
-            Email:
-          </span>
-        </div>
-        <div className="sub-comments">{email}</div>
-        <div >
-          <span className="mark">
-            Bio:
-          </span>
-        </div>
-        <div className="sub-comments">
-          <span>
-              {biography ? biography : "User does not have a bio"}
-          </span>
-        </div>
+	// Destructuring props
+	const { post, biography, hall, email } = props;
+	return (
+		<Col className="comments">
+			{/* {this.props.postComments.map(this.renderComment)} */}
+			<Stack gap={3}>
+				<div >
+					<span className="mark">
+						Email:
+					</span>
+				</div>
+				<div className="sub-comments">{email}</div>
+				<div >
+					<span className="mark">
+						Bio:
+					</span>
+				</div>
+				<div className="sub-comments">
+					<span>
+						{biography ? biography : "User does not have a bio"}
+					</span>
+				</div>
 
-        <div >
-          <span>
-              <span className="mark">
-                Hall:
-              </span>
-          </span>
-        </div>
+				<div >
+					<span>
+						<span className="mark">
+							Hall:
+						</span>
+					</span>
+				</div>
 
-        <div className="sub-comments">
-          <span>
-            {hall ? hall : "User does not have hall"}
-          </span>
-        </div>
-      </Stack>
-      {console.log(biography)}
-      {console.log(post)}
+				<div className="sub-comments">
+					<span>
+						{
+							namedHalls.filter((h) => h.id === hall)[0].name
+						}
+					</span>
+				</div>
+			</Stack>
+			{console.log(biography)}
+			{console.log(post)}
 
-      {console.log(email)}
+			{console.log(email)}
 
-      {/* <form
+			{/* <form
           ref="commentForm"
           className="comment-form"
           // onSubmit={this.handleSubmit}
@@ -55,8 +58,8 @@ export function Comments(props) {
           <input type="text" ref="comment" placeholder="comment" />
           <input type="submit" hidden />
         </form> */}
-    </Col>
-  );
+		</Col>
+	);
 }
 // export default class Comments extends React.Component {
 //   renderComment(comment, i) {
