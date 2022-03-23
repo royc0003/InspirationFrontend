@@ -40,7 +40,8 @@ export function Profilepage(props) {
 
 	const handleEditClick = (e) => {
 		console.log(e);
-		setIsInEditMode(!isInEditMode);
+		// setIsInEditMode(!isInEditMode);
+		navigate("/formpage")
 	};
 
 	const handleSelect = (evt) => {
