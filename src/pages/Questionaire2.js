@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 // Import Redux Related Components/Library
 import { useDispatch, useSelector } from "react-redux";
-import { getinterests, setinterest } from "../actions/question2";
+import { getinterests, resetSelectedInterests, setinterest } from "../actions/question2";
 // Import Component
 import { SingleInterest } from "../components/SingleInterest";
 // Import CSS
@@ -130,7 +130,11 @@ export function Questionaire2(props) {
 
 	// componentDidMount() -> Retrieve all interests.
 	useEffect(() => {
-		dispatch(getinterests());
+		(async function(){
+			await dispatch(resetSelectedInterests());
+			await dispatch(getinterests());
+		})();
+		
 		console.log("printing interests");
 		console.log(interests);
 		if (!interests) {
@@ -151,36 +155,36 @@ export function Questionaire2(props) {
 	// destructuring
 	const { nextQuestionHandler } = props;
 	return (
-			<Container id="questionaire2" className="justify-content-center">
-				<Row>
-					{/* <Col sm={{span:12, offset:9}}> */}
-					{/* <div className="interest-style-overall"> */}
-					<h1 id="interestHeader">Select your interest</h1>
-					{/* </div> */}
-					{/* </Col> */}
-				</Row>
-				<Row>
-					{
-						// Error Handling: In case API Fails
-						interests === null
-							? localInterests.map((value, i) => (
-								<SingleInterest key={value.id} _interest={value} />
-							))
-							: interests.map((value, i) => (
-								<SingleInterest key={value.id} _interest={value} />
-							))
-					}
-				</Row>
-				<Row
-					xs={4}
-					md={1}
-					lg={1}
-					className="justify-content-md-right justify-content-sm-center justify-content-lg-right"
-				>
-					<Col xs={{ span: 4, offset: 4 }} sm={{ span: 4 }} md={{ span: 4, offset: 10 }} lg={{ span: 4, offset: 10 }} xl={{ span: 4, offset: 10 }} xxl={{ span: 4, offset: 10 }}>
-						<Button style={{ fontSize: "20px" }} onClick={_question2Handler} disabled={selectedInterests.length >= 1 ? false : true}>Continue to Next Question</Button>
-					</Col>
-				</Row>
-			</Container>
+		<Container id="questionaire2" className="justify-content-center">
+			<Row>
+				{/* <Col sm={{span:12, offset:9}}> */}
+				{/* <div className="interest-style-overall"> */}
+				<h1 id="interestHeader">Select your interest</h1>
+				{/* </div> */}
+				{/* </Col> */}
+			</Row>
+			<Row>
+				{
+					// Error Handling: In case API Fails
+					interests === null
+						? localInterests.map((value, i) => (
+							<SingleInterest key={value.id} _interest={value} />
+						))
+						: interests.map((value, i) => (
+							<SingleInterest key={value.id} _interest={value} />
+						))
+				}
+			</Row>
+			<Row
+				xs={4}
+				md={1}
+				lg={1}
+				className="justify-content-md-right justify-content-sm-center justify-content-lg-right"
+			>
+				<Col xs={{ span: 4, offset: 4 }} sm={{ span: 4 }} md={{ span: 4, offset: 10 }} lg={{ span: 4, offset: 10 }} xl={{ span: 4, offset: 10 }} xxl={{ span: 4, offset: 10 }}>
+					<Button style={{ fontSize: "20px" }} onClick={_question2Handler} disabled={selectedInterests.length >= 1 ? false : true}>Continue to Next Question</Button>
+				</Col>
+			</Row>
+		</Container>
 	);
 }
