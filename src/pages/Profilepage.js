@@ -8,6 +8,7 @@ import {
 	getuserinfo
 } from "../actions/profilepage";
 import { selecthall } from "../actions/question1";
+import { PhotoGrid } from "../components/PhotoGrid";
 import styles from '../sass/pages/_profilepage.module.scss';
 import { namedHalls } from "./Questionaire1";
 
@@ -215,6 +216,10 @@ export function Profilepage(props) {
 							</Row>
 
 							{/* Matched History */}
+							<div style={{visibility: 'hidden', position: 'absolute', top: '-1000px', left:'-1000px' }}>
+								<PhotoGrid />
+							</div>
+
 							<Row className={styles.rowSection}>
 								<h2>Matched History</h2>
 								<Row className="g-4 mt-1" xs={3}>
