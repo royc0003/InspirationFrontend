@@ -5,6 +5,19 @@
 	cursor:default;
 }
 
+#bgContainer{
+	position: absolute;
+	left: 0;
+	z-index: -20;
+	opacity: 0.2;
+	width: 100vw;
+	height: calc(100vh - 78px);
+	background-image: url("../../assets/groupfriends.jpg");
+	background-size: cover;
+	background-image: center top;
+	filter: grayscale(100%);
+}
+
 #loginContainer{
 	height: 100%;
 }

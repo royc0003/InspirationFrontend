@@ -1,13 +1,13 @@
-import React  from 'react';
+import React from 'react';
 import { Button, Card, Container, Form } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
-import { Link, Navigate } from "react-router-dom";
-import Logo from '../components/Logo';
-import styles from '../sass/pages/loginpage.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-
+import { Link, Navigate } from "react-router-dom";
 // import actions
 import { login } from '../actions/auth';
+import Logo from '../components/Logo';
+import styles from '../sass/pages/loginpage.module.scss';
+
 
 export function Login(props) {
 	const dispatch = useDispatch();
@@ -31,7 +31,8 @@ export function Login(props) {
 
 	return (
 		<Container id={styles.loginContainer}>
-			{ isAuthenticated ? <Navigate to={"/"}/> : "" }
+			<div id={styles.bgContainer}></div>
+			{isAuthenticated ? <Navigate to={"/"} /> : ""}
 			<div className='d-flex justify-content-center align-items-center' id={styles.loginCardContainer}>
 				<Card id={styles.loginCard}>
 					<Card.Body>
@@ -52,7 +53,7 @@ export function Login(props) {
 									{...register("email", {
 										required: 'Email field is empty!',
 										pattern: {
-											value: /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/,
+											value: /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/,
 											message: 'Invalid email address!'
 										}
 									})}
@@ -81,9 +82,9 @@ export function Login(props) {
 									})}
 									className={errors.password ? 'is-invalid form-control' : 'form-control'}
 								/>
-							<Form.Text className={`${styles.errorMsg} text-danger d-block`}>
-								{errors.password ? errors.password.message : ''}
-							</Form.Text>
+								<Form.Text className={`${styles.errorMsg} text-danger d-block`}>
+									{errors.password ? errors.password.message : ''}
+								</Form.Text>
 							</Form.Group>
 							<br />
 							<Button variant="primary" type="submit">
