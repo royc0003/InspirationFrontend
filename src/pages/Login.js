@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Card, Container, Form } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 // import actions
 import { login } from '../actions/auth';
 import Logo from '../components/Logo';
@@ -66,7 +66,7 @@ export function Login(props) {
 									We'll never share your email with anyone else.
 								</Form.Text>
 							</Form.Group>
-							<Link to="/forgotpassword" style={{ float: 'right' }}>Forgot your Password?</Link>
+							{/* <Link to="/forgotpassword" style={{ float: 'right' }}>Forgot your Password?</Link> */}
 							<Form.Group className="mb-3" controlId="password">
 								<Form.Label>Password</Form.Label>
 								<Form.Control
