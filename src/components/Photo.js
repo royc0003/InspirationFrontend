@@ -68,7 +68,7 @@ export function Photo(props) {
 		>
 			<figure className="grid-figure">
 				<div className="grid-photo-wrap">
-					<Link to={`/view/${parseInt(user.user)}`}>
+					<Link to={`/view/${parseInt(user.id)}`}>
 						{/* Image */}
 						<Image
 							src={

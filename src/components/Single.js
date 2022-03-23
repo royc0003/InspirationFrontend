@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // Bootstrap related components
 import { Col, Container, Row } from "react-bootstrap";
 import { connect, useSelector } from "react-redux";
@@ -35,9 +35,14 @@ export function Single(props) {
   );
   const { postId } = useParams();
   const i = matchToAllUsers.findIndex(
-    (post) => parseInt(post.user) === parseInt(postId)
+    (post) => parseInt(post.id) === parseInt(postId)
   );
   const user = matchToAllUsers[i];
+	
+	useEffect(() => {
+		console.log('matchToAllUsers in Single')
+		console.log(matchToAllUsers);
+	}, [matchToAllUsers]);
 
   return (
     <div className="single-photo">
