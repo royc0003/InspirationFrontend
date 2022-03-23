@@ -251,8 +251,6 @@ export const getinterests = () => async (dispatch, getState) => {
 						parseInt(_singleinterest.id) === parseInt(_interest.interest.id)
       ));
       if(tmp.length > 0) {
-          console.log("inside if ")
-          console.log(tmp)
         _flatten_user_interests.push(tmp[0].interest);
       }
   }

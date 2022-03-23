@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 // Bootstrap related components
-import { Col, Image } from "react-bootstrap";
+import { Button, Col, Image } from "react-bootstrap";
 import { useSelector } from "react-redux";
 // Router Related Imports
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // Import CSS
 import "../sass/components/_Photo.scss";
 
@@ -28,6 +28,7 @@ export function Photo(props) {
 	const listOfInterests = useSelector(
 		(state) => state.photogrid.listOfInterests
 	);
+	const navigate = useNavigate();
 	// Similar to componentDidMount()
 	useEffect(() => {
 		console.log("processing string");
@@ -35,7 +36,8 @@ export function Photo(props) {
 		// Process interest string
 		var _tmp = [];
 		for (var _singleInterest of user.interests) {
-			_tmp.push(listOfInterests[parseInt(_singleInterest) - 1]);
+			console.log(_singleInterest)
+			_tmp.push(listOfInterests[parseInt(_singleInterest.interest.id) - 1]);
 		}
 		// if (_tmp.length >= 1) {
 		//   setValue("#" + _tmp.join(" #").trim());
@@ -51,8 +53,8 @@ export function Photo(props) {
 
 	const renderInterests = (interest, i) => {
 		return (
-			<span key={i} className="photo-caption pink-highlight">
-				#{interest}
+			<span key={interest} className="photo-caption pink-highlight">
+				&nbsp;#{interest}&nbsp;
 			</span>
 		);
 	};
@@ -66,10 +68,10 @@ export function Photo(props) {
 			xl={{ span: xl_span, offset: xl }}
 			xxl={{ span: xxl_span, offset: xxl }}
 		>
+
 			<figure className="grid-figure">
 				<div className="grid-photo-wrap">
 					<Link to={`/view/${parseInt(user.id)}`}>
-						{/* Image */}
 						<Image
 							src={
 								user.pic_url
@@ -94,6 +96,7 @@ export function Photo(props) {
 					}
 					<p className="biography">{user.biography}</p>
 
+					<Button variant="secondary" className="cardBtn" onClick={() => navigate(`/view/${user.id}`)}>View Profile</Button>
 				</figcaption>
 			</figure>
 		</Col>

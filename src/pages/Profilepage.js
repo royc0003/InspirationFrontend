@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button, ButtonGroup, Card, Col, Container, Dropdown, DropdownButton, Figure, Form, Image, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { ClimbingBoxLoader } from "react-spinners";
 import {
 	flattenmatchedusers, flattenuserinterests, getallusers, getinterests, getmatchedhistory,
@@ -22,6 +23,7 @@ export function Profilepage(props) {
 	const [isInEditMode, setIsInEditMode] = useState(false);
 	const [hallInput, setHallInput] = useState("");
 	const [halls, setHalls] = useState([]);
+	const navigate = useNavigate();
 	const storeHalls = useSelector((state) => state.question1.storeHalls);
 
 	// set dispatch
@@ -192,7 +194,7 @@ export function Profilepage(props) {
 								{
 									flatten_user_interests.map((v, i) => {
 										return (
-											<Col xs={3} key={v.id}>
+											<Col xs={3} key={i}>
 												<Figure>
 													<Figure.Image
 														width={100}
@@ -234,7 +236,7 @@ export function Profilepage(props) {
 															</Card.Text>
 														</Card.Body>
 														<Card.Footer>
-															<Button variant="secondary">View Profile</Button>
+															<Button variant="secondary" onClick={() => navigate(`/view/${matched_user.id}`)}>View Profile</Button>
 														</Card.Footer>
 													</Card>
 												</Col>

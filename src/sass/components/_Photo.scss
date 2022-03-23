@@ -68,8 +68,13 @@
 }
 
 .photo-caption {
+	padding-right: 2px;
+	padding-left: 2px;
+	display: inline-block;
 	font-family: $shadow-light-font;
 	font-size: 18px;
+	margin-right: 8px;
+	margin-bottom: 8px;
 }
 
 .figCaptionHeader{
@@ -79,4 +84,10 @@
 
 .biography{
 	margin-top: 20px;
+}
+
+.cardBtn{
+	bottom: 20px;
+	position: absolute;
+	right: 20px;
 }
