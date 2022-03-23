@@ -61,37 +61,37 @@ export function PhotoGrid(props) {
 		<div className="photo-grid">
 			{/** Include Spinner Class Here, check all matched user + filter users are done */}
 			{!isMatched && !hasFoundUsers ? (
-				<Container className="spinner-class">
-					<Row className="justify-content-xs-center">
+				<Container >
+					<Row >
 						{/* <Col
 							xs={{ span: 6, offset: 5 }}
 							md={{ span: 6, offset: 6 }}
 							lg={{ span: 6, offset: 6 }}
 							xl={{ span: 6, offset: 5 }}
 						> */}
-								<div styles={{position: 'relative', left: '50%', top: '100px'}}>
-									<ClimbingBoxLoader
-										color={color}
-										loading={loading}
-										size={20}
-									/>
-								</div>
+						<div style={{ position: 'relative', left: '50%', top: '100px' }}>
+							<ClimbingBoxLoader
+								color={color}
+								loading={loading}
+								size={20}
+							/>
+						</div>
 						{/* </Col> */}
 					</Row>
 				</Container>
 			) : (
 				[
 					!hasMatchToAllUsers ? (
-						<Container className="spinner-class">
+						<Container >
 							{console.log("I'm waiting for matchtoallusers")}
-							<Row className="justify-content-xs-center">
+							<Row >
 								{/* <Col
 									xs={{ span: 6, offset: 5 }}
 									md={{ span: 6, offset: 6 }}
 									lg={{ span: 6, offset: 6 }}
 									xl={{ span: 6, offset: 5 }}
 								> */}
-								<div styles={{position: 'relative', left: '50%', top: '100px'}}>
+								<div style={{ position: 'relative', left: '50%', top: '100px' }}>
 									<ClimbingBoxLoader
 										color={color}
 										loading={loading}
@@ -107,7 +107,6 @@ export function PhotoGrid(props) {
 						// ))
 						//  {const hasMatchToAllUsers = useSelector((state) => state.matchToAllUsers.hasMatchToAllUsers);
 						// 	<h1>Your Matched Friends</h1>
-
 
 						// <div className="photo-grid2">
 						<Container >
