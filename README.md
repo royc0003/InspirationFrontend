@@ -7,7 +7,7 @@ The objective of ‘Friendstagram’ is to provide opportunities for students in
 
 [![Friendstagram](https://i.ytimg.com/vi/mhuxYT8mv8w/maxresdefault.jpg)](https://youtu.be/mhuxYT8mv8w "SCSE Advanced Software Engineering - Friendstagram")
 
-## Presentaiton Slide
+## Presentation Slide
 
 [<img src="/images/presentation_slides.png" width="80%" height="80%"/>](https://docs.google.com/presentation/d/1_DOLCmXakwbbHjOYL3aSEgZtcirnUCfE/edit?usp=sharing&ouid=103675070987504181107&rtpof=true&sd=true)
 
