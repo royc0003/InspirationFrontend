@@ -6,9 +6,8 @@
 
 ## Presentaiton Slide
 
-[![Friendstagram Presentation Slides](<img alt="friendstagram_img" width="40px" src="images/presentation_slides.png" />)](https://docs.google.com/presentation/d/1_DOLCmXakwbbHjOYL3aSEgZtcirnUCfE/edit?usp=sharing&ouid=103675070987504181107&rtpof=true&sd=true)
+[![Friendstagram Presentation Slides](<img alt="friendstagram_img" width="40px" src="./images/presentation_slides.png" />)](https://docs.google.com/presentation/d/1_DOLCmXakwbbHjOYL3aSEgZtcirnUCfE/edit?usp=sharing&ouid=103675070987504181107&rtpof=true&sd=true)
 
-[<img alt="alt_text" width="40px" src="images/image.PNG" />](https://www.google.com/)
 
 ## Running
 
